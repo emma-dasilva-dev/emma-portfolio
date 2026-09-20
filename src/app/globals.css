@@ -991,11 +991,11 @@ a {
 }
 
 .contact-section {
-  min-height: 88svh;
+  min-height: 72svh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: clamp(4rem, 7vw, 6rem) clamp(1.25rem, 3vw, 3rem) 1.5rem;
+  padding: clamp(3.5rem, 6vw, 5rem) clamp(1.25rem, 3vw, 3rem) 1.5rem;
   background: var(--white);
   color: var(--black);
 }
@@ -1008,15 +1008,16 @@ a {
   display: grid;
   grid-template-columns: minmax(10rem, 0.7fr) minmax(0, 2fr);
   gap: clamp(2rem, 6vw, 8rem);
+  align-items: center;
 }
 
 .contact-message h2 {
   max-width: none;
   white-space: nowrap;
-  font-size: clamp(3rem, 7.5vw, 8rem);
+  font-size: clamp(2.2rem, 4.8vw, 5.2rem);
   font-weight: 500;
-  line-height: 0.86;
-  letter-spacing: -0.075em;
+  line-height: 1;
+  letter-spacing: -0.055em;
 }
 
 .contact-message p {
@@ -1029,11 +1030,15 @@ a {
 
 .contact-footer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   padding-top: 2rem;
+  border-top: 1px solid rgba(5, 5, 5, 0.18);
+  color: rgba(5, 5, 5, 0.72);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 @media (max-width: 800px) {
