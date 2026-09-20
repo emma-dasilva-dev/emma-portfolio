@@ -541,16 +541,16 @@ a {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: clamp(0.7rem, 1.4vw, 1.2rem);
-  max-width: 44rem;
+  gap: clamp(0.9rem, 1.8vw, 1.5rem);
+  max-width: 60rem;
 }
 
 .stack-logo {
   position: relative;
   display: grid;
   place-items: center;
-  width: clamp(3rem, 4vw, 3.8rem);
-  height: clamp(3rem, 4vw, 3.8rem);
+  width: clamp(4.2rem, 6vw, 5.8rem);
+  height: clamp(4.2rem, 6vw, 5.8rem);
   border-radius: 50%;
   transition:
     transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -581,8 +581,8 @@ a {
 }
 
 .stack-logo img {
-  width: clamp(1.45rem, 2vw, 2rem);
-  height: clamp(1.45rem, 2vw, 2rem);
+  width: clamp(2.4rem, 3.7vw, 3.6rem);
+  height: clamp(2.4rem, 3.7vw, 3.6rem);
   object-fit: contain;
   filter: grayscale(1) brightness(2.2);
   opacity: 0.78;
