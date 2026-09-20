@@ -239,15 +239,6 @@ a {
   font-size: 1.1rem;
 }
 
-.hero-bottom-line {
-  position: absolute;
-  right: clamp(1.25rem, 3vw, 3rem);
-  bottom: 0;
-  left: clamp(1.25rem, 3vw, 3rem);
-  height: 1px;
-  background: rgba(245, 245, 241, 0.18);
-}
-
 .about-section {
   min-height: 100svh;
   display: grid;
@@ -353,7 +344,6 @@ a {
   grid-template-columns: minmax(10rem, 0.65fr) minmax(0, 1.6fr);
   padding: clamp(5rem, 9vw, 9rem) clamp(1.25rem, 3vw, 3rem)
     clamp(8rem, 12vw, 12rem);
-  border-top: 1px solid rgba(245, 245, 241, 0.16);
 }
 
 .about-page-copy {
@@ -442,7 +432,6 @@ a {
   padding: clamp(3.5rem, 6vw, 5rem) clamp(1.25rem, 3vw, 3rem) clamp(2.5rem, 4vw, 3.5rem);
   background: var(--black);
   color: var(--white);
-  border-top: 1px solid rgba(245, 245, 241, 0.12);
 }
 
 .experience-heading {
@@ -482,11 +471,9 @@ a {
   grid-template-columns: minmax(10rem, 0.7fr) minmax(0, 2fr);
   gap: clamp(2rem, 6vw, 8rem);
   padding: clamp(2.4rem, 4vw, 4rem) 0;
-  border-top: 1px solid rgba(245, 245, 241, 0.12);
 }
 
 .experience-item:last-child {
-  border-bottom: 1px solid rgba(245, 245, 241, 0.12);
 }
 
 .experience-date {
@@ -539,8 +526,6 @@ a {
 .stack-shell {
   position: relative;
   padding: clamp(1.25rem, 2.5vw, 2rem) 0;
-  border-top: 1px solid rgba(245, 245, 241, 0.14);
-  border-bottom: 1px solid rgba(245, 245, 241, 0.14);
 }
 
 .stack-grid {
@@ -706,11 +691,9 @@ a {
   grid-template-columns: minmax(9rem, 0.65fr) minmax(0, 1.7fr);
   gap: clamp(2rem, 6vw, 8rem);
   padding: clamp(3rem, 6vw, 5.5rem) 0;
-  border-top: 1px solid rgba(245, 245, 241, 0.14);
 }
 
 .experience-chapter:last-child {
-  border-bottom: 1px solid rgba(245, 245, 241, 0.14);
 }
 
 .experience-chapter-meta {
@@ -783,8 +766,6 @@ a {
   gap: clamp(1.5rem, 4vw, 4rem);
   align-items: start;
   padding: clamp(2.5rem, 5vw, 4.5rem) 0;
-  border-top: 1px solid rgba(245, 245, 241, 0.16);
-  border-bottom: 1px solid rgba(245, 245, 241, 0.16);
 }
 
 .project-index {
@@ -935,7 +916,6 @@ a {
     clamp(6rem, 10vw, 9rem);
   background: var(--black);
   color: var(--white);
-  border-top: 1px solid rgba(245, 245, 241, 0.12);
 }
 
 .work-heading {
@@ -963,11 +943,9 @@ a {
   grid-template-columns: minmax(4rem, 0.28fr) minmax(0, 1.9fr);
   gap: clamp(1.5rem, 4vw, 4rem);
   padding: clamp(2.2rem, 4vw, 3.5rem) 0;
-  border-top: 1px solid rgba(245, 245, 241, 0.14);
 }
 
 .work-item:last-child {
-  border-bottom: 1px solid rgba(245, 245, 241, 0.14);
 }
 
 .work-item > span {
@@ -1115,7 +1093,6 @@ a {
   align-items: end;
   gap: clamp(1.5rem, 4vw, 4rem);
   padding-top: 2rem;
-  border-top: 1px solid rgba(5, 5, 5, 0.18);
 }
 
 .contact-location,
