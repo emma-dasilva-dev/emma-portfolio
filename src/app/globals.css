@@ -1168,3 +1168,68 @@ a {
     text-align: left;
   }
 }
+
+
+.experience-heading-simple {
+  display: block;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.experience-heading-simple h2 {
+  max-width: none;
+  font-size: clamp(3.8rem, 9vw, 9rem);
+  font-weight: 500;
+  line-height: 0.84;
+  letter-spacing: -0.075em;
+}
+
+.experience-list-simple {
+  max-width: 72rem;
+  margin-left: auto;
+}
+
+.experience-item-simple {
+  display: block;
+  padding: clamp(1.2rem, 2vw, 1.8rem) 0;
+}
+
+.experience-role-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.experience-role {
+  font-size: clamp(1.15rem, 1.7vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.experience-company {
+  color: rgba(245, 245, 241, 0.5);
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  transition: color 200ms ease;
+}
+
+a.experience-company:hover {
+  color: var(--white);
+}
+
+.experience-item-simple .experience-date {
+  margin-top: 0.35rem;
+  color: rgba(245, 245, 241, 0.42);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+@media (max-width: 800px) {
+  .experience-list-simple {
+    margin-left: 0;
+  }
+
+  .experience-heading-simple h2 {
+    font-size: clamp(3.6rem, 18vw, 7rem);
+  }
+}
