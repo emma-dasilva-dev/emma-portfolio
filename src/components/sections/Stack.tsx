@@ -43,7 +43,7 @@ export default function Stack() {
         <div className="stack-grid" aria-label="Technologies I work with">
           {technologies.map(([name, src], index) => (
             <motion.div
-              className="stack-logo"
+              className={`stack-logo ${name === "Express.js" || name === "Bash" ? "stack-logo-light" : ""}`}
               key={name}
               title={name}
               initial={{ opacity: 0, y: 28, scale: 0.96 }}
