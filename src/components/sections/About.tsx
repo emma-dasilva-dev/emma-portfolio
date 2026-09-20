@@ -25,26 +25,34 @@ export default function About() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
           <p>
-            My path into tech started with curiosity, but what kept me going was
-            the feeling of finally understanding something that had confused me
-            before. Every problem I solved made me want to go further, not
-            because it was easy, but because I liked proving to myself that I
-            could figure it out.
+            My path into tech started with curiosity. I wanted to understand
+            what was happening behind the screen instead of only using what was
+            in front of me.
           </p>
 
           <p>
-            Learning C, Linux and web development taught me to be patient with
-            difficult things. I learned to sit with errors, question my own
-            assumptions and keep trying until the problem became clear. That
-            process shaped the way I work more than any single language or
-            framework ever could.
+            Learning C, Linux and programming fundamentals gave me that first
+            feeling of turning confusion into understanding. That feeling made
+            me want to keep going.
           </p>
 
           <p>
-            Over time, that same mindset pulled me toward cybersecurity. I want
-            to keep building, keep understanding systems more deeply and keep
-            becoming the kind of engineer who does not stop at making something
-            work, but asks how it can be safer, stronger and better.
+            Web development gave me a different kind of satisfaction: taking an
+            idea, building it, breaking it, rebuilding it and slowly making it
+            feel like something that was actually mine.
+          </p>
+
+          <p>
+            The harder problems taught me patience. I learned that getting stuck
+            is not the end of the process. Most of the time, it is the part
+            where the real learning starts.
+          </p>
+
+          <p>
+            That mindset is what pulled me toward cybersecurity. I want to keep
+            building, keep understanding systems more deeply, and become the
+            kind of engineer who cares not only that something works, but that
+            it is strong, safe and thoughtfully made.
           </p>
         </motion.div>
 
