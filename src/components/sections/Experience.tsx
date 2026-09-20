@@ -55,21 +55,18 @@ export default function Experience() {
           >
             <p className="experience-date">{item.date}</p>
             <div className="experience-copy">
-              <h3>
-                {"href" in item && item.href ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="experience-link"
-                  >
-                    {item.title} <span aria-hidden="true">↗</span>
-                  </a>
-                ) : (
-                  item.title
-                )}
-              </h3>
+              <h3>{item.title}</h3>
               <p>{item.body}</p>
+              {"href" in item && item.href ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="experience-button"
+                >
+                  Visit website
+                </a>
+              ) : null}
             </div>
           </motion.article>
         ))}
