@@ -5,13 +5,14 @@ import { motion } from "motion/react";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 
 const paragraphs = [
-  "I did not grow up with a fixed plan to work in technology. It started much more simply: I was curious. I liked understanding how things worked, why they behaved the way they did, and what happened when I tried to change them.",
-  "That curiosity became more serious in 2025, when I started learning programming and working with C, Linux and the basic ideas behind computers and software. At first, I was mostly learning how to think through problems. The more I learned, the more I wanted to understand.",
-  "In 2026, I moved into more structured training and expanded into web development. I learned HTML, CSS and JavaScript, and began turning ideas into actual projects. That shift mattered because programming stopped feeling like something abstract. It became something I could build with, break, improve and make my own.",
-  "Projects and professional experience helped me understand that good software is not only about getting something to work. It is also about how it is designed, how people use it, how reliable it is and what happens when something goes wrong.",
-  "Over time, that naturally pulled me toward cybersecurity. I became more interested in systems, networking, Linux security and the questions that sit behind every application: how it works, how it can fail, and how it can be protected.",
-  "I still enjoy building software, and I do not see development and cybersecurity as separate worlds. For me, they reinforce each other. I want to keep becoming better at both: understanding how systems are created, and understanding how to make them safer, stronger and more thoughtful.",
-  "I am still early in that journey, and I like that. There is still a lot to learn, a lot to build and a lot to figure out."
+  "I did not grow up with a perfectly mapped-out plan to work in technology. It started with curiosity, the annoying kind that makes you want to know what is happening behind the screen instead of just accepting that it works.",
+  "In 2025, I started learning programming more seriously through C, Linux and computer fundamentals. I liked the logic of it, but I also liked the messier part: getting stuck, testing something, breaking it, checking one more thing, and eventually understanding what I had missed.",
+  "By 2026, I had moved into more structured training and started learning web development with HTML, CSS and JavaScript. That was when coding began to feel less like a subject and more like a way to turn ideas into something real. I could build something, look at it, dislike half of it, fix it, and make it mine.",
+  "Projects taught me a lot about how I work. I am naturally independent, I like figuring things out for myself, and I tend to keep going until the problem makes sense. I am not interested in collecting technologies just to make a list longer. I would rather understand the tools I use and know why I am using them.",
+  "My internship experience pushed that mindset further. Working on real product ideas, interfaces and technical systems made me realise that software is much bigger than writing code that runs. There are users, architecture decisions, reliability, edge cases, security, and all the small details that decide whether something is actually good.",
+  "That is also where cybersecurity started making more and more sense to me. I became interested in systems, networking, Linux security and the questions that sit behind every application: what is exposed, what can go wrong, and what would make it stronger.",
+  "I still love software development, so I do not see myself choosing one world and abandoning the other. I want to understand how things are built and how they are protected. That combination feels much more like me.",
+  "I am still early in the journey, and I am fine with that. There is a lot I do not know yet. That just means there is more to learn, more to build, and probably more things for me to accidentally break before I understand them properly."
 ];
 
 export default function AboutPage() {
