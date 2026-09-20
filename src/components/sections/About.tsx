@@ -13,7 +13,7 @@ export default function About() {
         viewport={{ once: true, amount: 0.7 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        01 · About
+        About
       </motion.p>
 
       <div className="about-content">
