@@ -1277,3 +1277,8 @@ body > div:not(.old-tv-background) {
     height: 3.15rem;
   }
 }
+
+
+.stack-slider + .stack-slider {
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+}
