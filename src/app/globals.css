@@ -557,3 +557,27 @@ a {
     gap: 1rem 1.25rem;
   }
 }
+
+
+.experience-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.2rem;
+  padding: 0.62rem 0.95rem;
+  border: 1px solid rgba(245, 245, 241, 0.35);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease;
+}
+
+.experience-button:hover {
+  background: var(--white);
+  color: var(--black);
+  border-color: var(--white);
+}
