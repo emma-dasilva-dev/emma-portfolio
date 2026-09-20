@@ -46,12 +46,19 @@ a {
 .intro-screen {
   position: fixed;
   inset: 0;
-  z-index: 100;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100svh;
   display: grid;
   place-items: center;
   overflow: hidden;
   background: var(--intro-blue);
   color: var(--black);
+  transform: translateZ(0);
 }
 
 .intro-e-stage {
