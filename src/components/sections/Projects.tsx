@@ -12,8 +12,7 @@ export default function Projects() {
         viewport={{ once: true, amount: 0.65 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="section-kicker">04 · Projects</p>
-        <p className="projects-count">01 project</p>
+        <p className="section-kicker">Projects</p>
       </motion.div>
 
       <motion.article
@@ -23,8 +22,6 @@ export default function Projects() {
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="project-index">01</div>
-
         <div className="project-main">
           <p className="project-type">Cybersecurity · Linux · SSH</p>
 
