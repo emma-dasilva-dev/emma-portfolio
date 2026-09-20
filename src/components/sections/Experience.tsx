@@ -11,13 +11,15 @@ const experiences = [
   },
   {
     date: "February 2026",
-    title: "Professional training",
+    title: "CJEPE — Professional training",
+    href: "https://cjepebenin.site/",
     body:
       "I started professional training, went deeper into C and learned the fundamentals of web development through HTML, CSS and JavaScript. My final project earned 17/20.",
   },
   {
     date: "July 2026",
     title: "Cashless Africa — Internship",
+    href: "https://cashlesshq.com/",
     body:
       "During my internship at Cashless Africa, I worked on a hotel-management web application, an event landing page and the architecture for a Smart Reminders system.",
   },
@@ -53,7 +55,20 @@ export default function Experience() {
           >
             <p className="experience-date">{item.date}</p>
             <div className="experience-copy">
-              <h3>{item.title}</h3>
+              <h3>
+                {"href" in item && item.href ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="experience-link"
+                  >
+                    {item.title} <span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  item.title
+                )}
+              </h3>
               <p>{item.body}</p>
             </div>
           </motion.article>
