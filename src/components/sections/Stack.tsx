@@ -30,8 +30,16 @@ export default function Stack() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         <p className="section-kicker">03 · Technological stack</p>
+        <p className="stack-counter">14 tools</p>
       </motion.div>
 
+      <motion.div
+        className="stack-shell"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      >
       <div className="stack-grid" aria-label="Technologies I work with">
         {technologies.map(([name, src], index) => (
           <motion.div
@@ -51,6 +59,7 @@ export default function Stack() {
           </motion.div>
         ))}
       </div>
+      </motion.div>
     </section>
   );
 }
