@@ -3,10 +3,26 @@
 import { motion } from "motion/react";
 
 const links = [
-  ["Email", "mailto:emma.dasilva.dev@gmail.com"],
-  ["GitHub", "https://github.com/emma-dasilva-dev"],
-  ["LinkedIn", "https://www.linkedin.com/in/emmadasilvadev"],
-  ["Instagram", "https://www.instagram.com/emmadev.bj"],
+  {
+    label: "Email",
+    href: "mailto:emma.dasilva.dev@gmail.com",
+    icon: "https://cdn.jsdelivr.net/npm/simple-icons@v14/icons/gmail.svg",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/emma-dasilva-dev",
+    icon: "https://cdn.jsdelivr.net/npm/simple-icons@v14/icons/github.svg",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/emmadasilvadev",
+    icon: "https://cdn.jsdelivr.net/npm/simple-icons@v14/icons/linkedin.svg",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/emmadev.bj",
+    icon: "https://cdn.jsdelivr.net/npm/simple-icons@v14/icons/instagram.svg",
+  },
 ] as const;
 
 export default function Contact() {
@@ -25,16 +41,17 @@ export default function Contact() {
         </div>
       </motion.div>
 
-      <div className="contact-links">
-        {links.map(([label, href]) => (
+      <div className="contact-links" aria-label="Social links">
+        {links.map(({ label, href, icon }) => (
           <a
             key={label}
             href={href}
             target={label === "Email" ? undefined : "_blank"}
             rel={label === "Email" ? undefined : "noreferrer"}
+            aria-label={label}
+            title={label}
           >
-            <span>{label}</span>
-            <span aria-hidden="true">↗</span>
+            <img src={icon} alt="" aria-hidden="true" />
           </a>
         ))}
       </div>
