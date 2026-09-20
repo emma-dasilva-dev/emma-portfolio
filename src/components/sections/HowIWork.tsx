@@ -4,19 +4,16 @@ import { motion } from "motion/react";
 
 const principles = [
   {
-    number: "01",
     title: "Curious by default.",
     text:
       "I like understanding why something works, not just learning the steps needed to make it work once.",
   },
   {
-    number: "02",
     title: "Independent, not isolated.",
     text:
       "I try to investigate problems for myself first, test ideas and build context before I ask for help.",
   },
   {
-    number: "03",
     title: "Persistent with the details.",
     text:
       "I do not enjoy leaving things half-understood. If something feels wrong, I keep working until I know what caused it and how to improve it.",
@@ -33,7 +30,7 @@ export default function HowIWork() {
         viewport={{ once: true, amount: 0.65 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="section-kicker">05 · How I work</p>
+        <p className="section-kicker">How I work</p>
         <h2>How I approach problems matters.</h2>
       </motion.div>
 
@@ -41,7 +38,7 @@ export default function HowIWork() {
         {principles.map((principle, index) => (
           <motion.article
             className="work-item"
-            key={principle.number}
+            key={principle.title}
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
@@ -51,7 +48,6 @@ export default function HowIWork() {
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            <span>{principle.number}</span>
             <div>
               <h3>{principle.title}</h3>
               <p>{principle.text}</p>
