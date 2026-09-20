@@ -114,7 +114,7 @@ a {
   min-height: 100svh;
   padding: 1.6rem clamp(1.25rem, 3vw, 3rem) 2rem;
   overflow: hidden;
-  background: var(--black);
+  background: transparent;
   color: var(--white);
 }
 
@@ -246,7 +246,7 @@ a {
   gap: clamp(2rem, 6vw, 8rem);
   align-items: center;
   padding: clamp(2.5rem, 4vw, 3.5rem) clamp(1.25rem, 3vw, 3rem);
-  background: var(--black);
+  background: transparent;
   color: var(--white);
 }
 
@@ -303,7 +303,7 @@ a {
 
 .about-page {
   min-height: 100vh;
-  background: var(--black);
+  background: transparent;
   color: var(--white);
 }
 
@@ -430,7 +430,7 @@ a {
 
 .experience-section {
   padding: clamp(3.5rem, 6vw, 5rem) clamp(1.25rem, 3vw, 3rem) clamp(2.5rem, 4vw, 3.5rem);
-  background: var(--black);
+  background: transparent;
   color: var(--white);
 }
 
@@ -504,7 +504,7 @@ a {
 .stack-section {
   padding: clamp(2.5rem, 4vw, 3.5rem) clamp(1.25rem, 3vw, 3rem)
     clamp(6rem, 10vw, 9rem);
-  background: var(--black);
+  background: transparent;
   color: var(--white);
 }
 
@@ -632,7 +632,7 @@ a {
 
 .experience-page {
   min-height: 100vh;
-  background: var(--black);
+  background: transparent;
   color: var(--white);
 }
 
@@ -707,7 +707,7 @@ a {
 .projects-section {
   padding: clamp(3rem, 5vw, 4.5rem) clamp(1.25rem, 3vw, 3rem)
     clamp(7rem, 11vw, 10rem);
-  background: var(--black);
+  background: transparent;
   color: var(--white);
 }
 
@@ -849,7 +849,7 @@ a {
 .work-section {
   padding: clamp(4rem, 7vw, 6rem) clamp(1.25rem, 3vw, 3rem)
     clamp(6rem, 10vw, 9rem);
-  background: var(--black);
+  background: transparent;
   color: var(--white);
 }
 
@@ -1227,7 +1227,7 @@ a.experience-company:hover {
 .old-tv-background {
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: 0;
   overflow: hidden;
   pointer-events: none;
   background: var(--black);
@@ -1262,4 +1262,17 @@ main,
 .experience-page {
   position: relative;
   z-index: 0;
+}
+
+
+body > main,
+body > div:not(.old-tv-background) {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-section,
+.intro-screen {
+  position: relative;
+  z-index: 2;
 }
