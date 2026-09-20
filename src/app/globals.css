@@ -1011,7 +1011,8 @@ a {
 }
 
 .contact-message h2 {
-  max-width: 12ch;
+  max-width: none;
+  white-space: nowrap;
   font-size: clamp(3rem, 7.5vw, 8rem);
   font-weight: 500;
   line-height: 0.86;
@@ -1102,5 +1103,12 @@ a {
 
   .contact-footer {
     flex-direction: column;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .contact-message h2 {
+    white-space: normal;
   }
 }
