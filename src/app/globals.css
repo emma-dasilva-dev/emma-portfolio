@@ -34,7 +34,12 @@ a {
 }
 
 ::selection {
-  background: var(--cyan);
+  background: #35ACBE;
+  color: var(--black);
+}
+
+::-moz-selection {
+  background: #35ACBE;
   color: var(--black);
 }
 
