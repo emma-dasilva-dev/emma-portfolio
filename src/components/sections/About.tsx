@@ -24,11 +24,12 @@ export default function About() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          My story with technology started from curiosity, then slowly became
-          something I could see myself building a future around. I began by
-          learning how things worked, then moved into creating, experimenting,
-          solving problems and eventually becoming more interested in what
-          happens underneath the surface.
+          I got into tech because I kept wanting to know what was happening
+          underneath everything. One question turned into another, then into
+          code, Linux, broken things, fixed things, and the kind of curiosity
+          that does not really switch off. I like building, but I also like
+          understanding why something works, where it can fail, and how to make
+          it better.
         </motion.p>
 
         <motion.div
