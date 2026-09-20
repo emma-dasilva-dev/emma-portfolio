@@ -25,24 +25,21 @@ export default function About() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
           <p>
-            My path into tech started with curiosity more than a plan. I wanted
-            to understand what was happening behind the screen, so I started
-            learning C, Linux and the foundations of programming.
+            My path into tech started with curiosity. I wanted to understand
+            what was happening behind the screen, so I began with C, Linux and
+            the foundations of programming.
           </p>
 
           <p>
-            That curiosity quickly turned into building websites, experimenting
-            with different tools and spending far too long on problems just
-            because I wanted to know why they were happening. The more I built,
-            the more I realised I liked both creating things and understanding
-            how they worked underneath.
+            Soon, I was building websites, testing ideas and spending way too
+            long on problems just because I needed to know why they were
+            happening.
           </p>
 
           <p>
-            Over time, that naturally pulled me toward cybersecurity while
-            keeping software development as a big part of how I learn and
-            create. I want to understand both sides: how systems are built, and
-            how they can be made safer and stronger.
+            That curiosity gradually pulled me toward cybersecurity, while
+            software development stayed at the center of how I learn, build and
+            think.
           </p>
         </motion.div>
 
