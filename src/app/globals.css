@@ -274,7 +274,7 @@ a {
 
 .about-story {
   max-width: 61rem;
-  font-size: clamp(2.2rem, 4.7vw, 5.2rem);
+  font-size: clamp(1.45rem, 2.6vw, 2.8rem);
   line-height: 0.98;
   letter-spacing: -0.058em;
 }
@@ -326,7 +326,7 @@ a {
 
 .about-page-hero h1 {
   max-width: 10ch;
-  font-size: clamp(4rem, 10vw, 10rem);
+  font-size: clamp(2.8rem, 6.5vw, 6.5rem);
   font-weight: 500;
   line-height: 0.82;
   letter-spacing: -0.075em;
@@ -349,7 +349,7 @@ a {
 }
 
 .about-page-copy p {
-  font-size: clamp(1.35rem, 2.25vw, 2.3rem);
+  font-size: clamp(1.05rem, 1.45vw, 1.4rem);
   line-height: 1.22;
   letter-spacing: -0.035em;
 }
@@ -405,7 +405,7 @@ a {
   }
 
   .about-story {
-    font-size: clamp(2rem, 8.8vw, 4.4rem);
+    font-size: clamp(1.5rem, 6vw, 2.8rem);
   }
 }
 
