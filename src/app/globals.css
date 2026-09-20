@@ -325,10 +325,10 @@ a {
 }
 
 .about-page-hero {
-  min-height: auto;
+  min-height: calc(100svh - 4.5rem);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1.25rem;
   padding: 2rem clamp(1.25rem, 3vw, 3rem) 2.25rem;
   overflow: hidden;
