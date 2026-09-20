@@ -60,12 +60,12 @@ a {
 .intro-e {
   position: absolute;
   color: var(--black);
-  font-size: clamp(10rem, 28vw, 26rem);
+  font-size: clamp(6.5rem, 18vw, 16rem);
   line-height: 0.8;
   letter-spacing: -0.08em;
   -webkit-text-stroke: clamp(1px, 0.12vw, 2px) rgba(5, 5, 5, 0.72);
   paint-order: stroke fill;
-  text-shadow: 0 0 0.01px rgba(5, 5, 5, 0.35);
+  text-shadow: none;
 }
 
 .intro-name {
