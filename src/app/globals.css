@@ -213,7 +213,7 @@ a {
 
 .scroll-mark {
   position: absolute;
-  right: clamp(1.3rem, 3vw, 3rem);
+  left: clamp(1.3rem, 3vw, 3rem);
   bottom: 1.7rem;
   width: 5rem;
   height: 5rem;
