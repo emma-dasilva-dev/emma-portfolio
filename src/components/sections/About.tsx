@@ -24,12 +24,15 @@ export default function About() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          I got into tech because I kept wanting to know what was happening
-          underneath everything. One question turned into another, then into
-          code, Linux, broken things, fixed things, and the kind of curiosity
-          that does not really switch off. I like building, but I also like
-          understanding why something works, where it can fail, and how to make
-          it better.
+          My path into tech started with curiosity more than a plan. I wanted to
+          understand what was happening behind the screen, so I started learning
+          C, Linux and the foundations of programming. That curiosity quickly
+          turned into building websites, experimenting with different tools and
+          spending far too long on problems just because I wanted to know why
+          they were happening. Over time, I realised I was just as interested in
+          how systems work underneath as I was in what people see on the surface.
+          That is what gradually pulled me toward cybersecurity while keeping
+          software development as a big part of how I learn and create.
         </motion.p>
 
         <motion.div
@@ -43,7 +46,7 @@ export default function About() {
           }}
         >
           <Link className="about-link" href="/about">
-            <span>Learn more about me</span>
+            <span>Read more</span>
             <span aria-hidden="true">↗</span>
           </Link>
         </motion.div>
