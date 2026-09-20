@@ -282,6 +282,10 @@ a {
   letter-spacing: -0.02em;
 }
 
+.about-story p + p {
+  margin-top: 1.35rem;
+}
+
 .about-link {
   display: inline-flex;
   align-items: center;
