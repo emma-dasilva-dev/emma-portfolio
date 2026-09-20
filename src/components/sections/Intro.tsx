@@ -9,28 +9,43 @@ const styles = [
   { fontFamily: "'Courier New', Courier, monospace", fontWeight: 700, fontStyle: "normal" },
   { fontFamily: "Arial, Helvetica, sans-serif", fontWeight: 300, fontStyle: "italic" },
   { fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 700, fontStyle: "normal" },
-];
+] as const;
 
 export default function Intro() {
   const [visible, setVisible] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    let index = 0;
+    window.scrollTo(0, 0);
 
-    const interval = window.setInterval(() => {
-      index += 1;
-      setActiveIndex(index % styles.length);
-    }, 170);
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
 
-    const timer = window.setTimeout(() => {
-      window.clearInterval(interval);
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+
+    const fontTimers = styles.slice(1).map((_, index) =>
+      window.setTimeout(() => {
+        setActiveIndex(index + 1);
+      }, (index + 1) * 170),
+    );
+
+    const resetTimer = window.setTimeout(() => {
+      setActiveIndex(0);
+    }, 1020);
+
+    const closeTimer = window.setTimeout(() => {
       setVisible(false);
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBodyOverflow;
     }, 1750);
 
     return () => {
-      window.clearInterval(interval);
-      window.clearTimeout(timer);
+      fontTimers.forEach(window.clearTimeout);
+      window.clearTimeout(resetTimer);
+      window.clearTimeout(closeTimer);
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBodyOverflow;
     };
   }, []);
 
@@ -39,7 +54,7 @@ export default function Intro() {
       {visible && (
         <motion.div
           className="intro-screen"
-          initial={{ y: 0 }}
+          initial={false}
           exit={{
             y: "-100%",
             transition: { duration: 0.82, ease: [0.76, 0, 0.24, 1] },
@@ -51,7 +66,7 @@ export default function Intro() {
             </span>
           </div>
 
-          <p className="intro-caption">Emma's Portfolio</p>
+          <p className="intro-caption">Emma&apos;s Portfolio</p>
         </motion.div>
       )}
     </AnimatePresence>
