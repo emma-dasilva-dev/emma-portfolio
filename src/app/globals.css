@@ -1088,92 +1088,6 @@ a.experience-company:hover {
 }
 
 
-.liquid-metal-wrap {
-  display: inline-block;
-}
-
-.liquid-metal-stage {
-  position: relative;
-  perspective: 1000px;
-  perspective-origin: 50% 50%;
-  transform-style: preserve-3d;
-}
-
-.liquid-metal-label {
-  position: absolute;
-  inset: 0;
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  color: #666;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  transform: translateZ(20px);
-}
-
-.liquid-metal-inner {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  z-index: 20;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #202020 0%, #000 100%);
-  transform: translateZ(10px);
-}
-
-.liquid-metal-surface {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  border-radius: 999px;
-  background: transparent;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.3),
-    0 20px 12px rgba(0, 0, 0, 0.08),
-    0 9px 9px rgba(0, 0, 0, 0.12),
-    0 2px 5px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-}
-
-.liquid-metal-shader {
-  position: relative;
-  overflow: hidden;
-  border-radius: 999px;
-}
-
-.liquid-metal-hit {
-  position: absolute;
-  inset: 0;
-  z-index: 40;
-  display: block;
-  overflow: hidden;
-  border-radius: 999px;
-  background: transparent;
-  cursor: pointer;
-  outline: none;
-  transition: transform 150ms ease;
-}
-
-.liquid-metal-ripple {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0) 70%
-  );
-  pointer-events: none;
-  animation: liquid-metal-ripple 0.6s ease-out;
-  transform: translate(-50%, -50%);
-}
-
 
 .old-tv-background {
   position: fixed;
@@ -1288,4 +1202,95 @@ body > div:not(.old-tv-background) {
 
 .stack-slider + .stack-slider {
   margin-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+
+.interactive-hover-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 11.5rem;
+  min-height: 3rem;
+  padding: 0.8rem 1.35rem;
+  overflow: hidden;
+  border: 1px solid rgba(5, 5, 5, 0.78);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--black);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.interactive-hover-button-front {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 250ms ease;
+}
+
+.interactive-hover-button-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--black);
+  transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+
+.interactive-hover-button-label {
+  white-space: nowrap;
+}
+
+.interactive-hover-button-hover {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  color: var(--white);
+  opacity: 0;
+  transform: translateX(2rem);
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 250ms ease;
+}
+
+.interactive-hover-button-hover svg {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+}
+
+.interactive-hover-button:hover .interactive-hover-button-dot,
+.interactive-hover-button:focus-visible .interactive-hover-button-dot {
+  transform: scale(42);
+}
+
+.interactive-hover-button:hover .interactive-hover-button-front,
+.interactive-hover-button:focus-visible .interactive-hover-button-front {
+  transform: translateX(2rem);
+  opacity: 0;
+}
+
+.interactive-hover-button:hover .interactive-hover-button-hover,
+.interactive-hover-button:focus-visible .interactive-hover-button-hover {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.interactive-hover-button:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 3px;
 }
