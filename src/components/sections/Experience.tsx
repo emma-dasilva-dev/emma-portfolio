@@ -36,7 +36,7 @@ export default function Experience() {
         viewport={{ once: true, amount: 0.65 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="section-kicker">02 · Experience</p>
+        <p className="section-kicker">Experience</p>
         <div className="experience-intro">
           <h2>My experience so far.</h2>
           <p>
