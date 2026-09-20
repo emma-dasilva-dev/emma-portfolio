@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { LiquidMetalButton } from "@/components/ui/liquid-metal-button";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 const socials = [
   ["Instagram", "https://www.instagram.com/emmadev.bj"],
@@ -25,7 +25,7 @@ export default function Contact() {
         <div className="contact-message">
           <h2>Interested in working together?</h2>
 
-          <LiquidMetalButton href="mailto:emma.dasilva.dev@gmail.com?subject=Hello%20there!" />
+          <InteractiveHoverButton href="mailto:emma.dasilva.dev@gmail.com?subject=Hello%20there!">\n            Drop me an email!\n          </InteractiveHoverButton>
         </div>
       </motion.div>
 
