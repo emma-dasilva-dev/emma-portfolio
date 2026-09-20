@@ -1119,26 +1119,28 @@ a {
 
 
 .experience-heading-simple {
-  display: block;
-  margin-bottom: clamp(3rem, 6vw, 5rem);
+  width: min(38rem, 46vw);
+  margin-left: auto;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .experience-heading-simple h2 {
   max-width: none;
-  font-size: clamp(3.8rem, 9vw, 9rem);
+  font-size: clamp(2.4rem, 5vw, 5rem);
   font-weight: 500;
-  line-height: 0.84;
-  letter-spacing: -0.075em;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
 }
 
 .experience-list-simple {
-  max-width: 72rem;
+  width: min(38rem, 46vw);
+  max-width: none;
   margin-left: auto;
 }
 
 .experience-item-simple {
   display: block;
-  padding: clamp(1.2rem, 2vw, 1.8rem) 0;
+  padding: clamp(0.8rem, 1.4vw, 1.1rem) 0;
 }
 
 .experience-role-line {
@@ -1149,14 +1151,14 @@ a {
 }
 
 .experience-role {
-  font-size: clamp(1.15rem, 1.7vw, 1.6rem);
+  font-size: clamp(0.98rem, 1.25vw, 1.18rem);
   font-weight: 500;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
 }
 
 .experience-company {
   color: rgba(245, 245, 241, 0.5);
-  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  font-size: clamp(0.9rem, 1.05vw, 1rem);
   transition: color 200ms ease;
 }
 
@@ -1165,19 +1167,21 @@ a.experience-company:hover {
 }
 
 .experience-item-simple .experience-date {
-  margin-top: 0.35rem;
+  margin-top: 0.25rem;
   color: rgba(245, 245, 241, 0.42);
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   letter-spacing: 0.06em;
   text-transform: none;
 }
 
 @media (max-width: 800px) {
+  .experience-heading-simple,
   .experience-list-simple {
+    width: 100%;
     margin-left: 0;
   }
 
   .experience-heading-simple h2 {
-    font-size: clamp(3.6rem, 18vw, 7rem);
+    font-size: clamp(2.8rem, 15vw, 5.5rem);
   }
 }
