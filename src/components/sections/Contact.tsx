@@ -14,7 +14,7 @@ export default function Contact() {
       >
         <p className="section-kicker">06 · Contact</p>
         <div className="contact-message">
-          <h2>Let&apos;s build something meaningful together.</h2>
+          <h2>Interested in working together?</h2>
         </div>
       </motion.div>
 
