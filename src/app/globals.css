@@ -555,19 +555,6 @@ a {
   object-fit: contain;
   filter: none;
   opacity: 1;
-  animation: stack-logo-rotate 6s linear infinite;
-  transform-style: preserve-3d;
-  backface-visibility: visible;
-}
-
-@keyframes stack-logo-rotate {
-  from {
-    transform: rotateY(0deg);
-  }
-
-  to {
-    transform: rotateY(360deg);
-  }
 }
 
 @media (max-width: 800px) {
