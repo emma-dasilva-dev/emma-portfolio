@@ -46,6 +46,7 @@ export default function Stack() {
               className={`stack-logo ${name === "Express.js" || name === "Bash" ? "stack-logo-light" : ""}`}
               key={name}
               title={name}
+              data-name={name}
               initial={{ opacity: 0, y: 28, scale: 0.96 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.4 }}
