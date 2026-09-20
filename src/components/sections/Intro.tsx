@@ -51,7 +51,7 @@ export default function Intro() {
             </span>
           </div>
 
-          <p className="intro-caption">Portfolio · 2026</p>
+          <p className="intro-caption">Emma's Portfolio</p>
         </motion.div>
       )}
     </AnimatePresence>
