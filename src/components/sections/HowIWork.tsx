@@ -34,7 +34,7 @@ export default function HowIWork() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         <p className="section-kicker">05 · How I work</p>
-        <h2>The way I approach problems matters as much as the tools I use.</h2>
+        <h2>How I approach problems matters.</h2>
       </motion.div>
 
       <div className="work-list">
