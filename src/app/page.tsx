@@ -1,6 +1,8 @@
 import About from "@/components/sections/About";
+import Contact from "@/components/sections/Contact";
 import Experience from "@/components/sections/Experience";
 import Hero from "@/components/sections/Hero";
+import HowIWork from "@/components/sections/HowIWork";
 import Intro from "@/components/sections/Intro";
 import Projects from "@/components/sections/Projects";
 import Stack from "@/components/sections/Stack";
@@ -18,7 +20,8 @@ export default function Home() {
         <Experience />
         <Stack />
         <Projects />
-        <div id="contact" />
+        <HowIWork />
+        <Contact />
       </main>
     </SmoothScroll>
   );
