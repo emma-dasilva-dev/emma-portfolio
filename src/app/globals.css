@@ -433,7 +433,7 @@ a {
 
 
 .experience-section {
-  padding: clamp(3.5rem, 6vw, 5rem) clamp(1.25rem, 3vw, 3rem) clamp(6rem, 10vw, 9rem);
+  padding: clamp(3.5rem, 6vw, 5rem) clamp(1.25rem, 3vw, 3rem) clamp(2.5rem, 4vw, 3.5rem);
   background: var(--black);
   color: var(--white);
   border-top: 1px solid rgba(245, 245, 241, 0.12);
@@ -509,34 +509,80 @@ a {
 }
 
 .stack-section {
-  padding: clamp(6rem, 10vw, 9rem) clamp(1.25rem, 3vw, 3rem)
-    clamp(7rem, 12vw, 11rem);
+  padding: clamp(2.5rem, 4vw, 3.5rem) clamp(1.25rem, 3vw, 3rem)
+    clamp(6rem, 10vw, 9rem);
   background: var(--black);
   color: var(--white);
 }
 
 .stack-heading {
-  margin-bottom: clamp(3rem, 6vw, 5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.stack-counter {
+  color: rgba(245, 245, 241, 0.42);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.stack-shell {
+  position: relative;
+  padding: clamp(1.25rem, 2.5vw, 2rem) 0;
+  border-top: 1px solid rgba(245, 245, 241, 0.14);
+  border-bottom: 1px solid rgba(245, 245, 241, 0.14);
 }
 
 .stack-grid {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: clamp(1.25rem, 2.4vw, 2.25rem);
-  max-width: 52rem;
+  gap: clamp(0.7rem, 1.4vw, 1.2rem);
+  max-width: 44rem;
 }
 
 .stack-logo {
+  position: relative;
   display: grid;
   place-items: center;
-  width: clamp(2.6rem, 4vw, 3.5rem);
-  height: clamp(2.6rem, 4vw, 3.5rem);
+  width: clamp(3rem, 4vw, 3.8rem);
+  height: clamp(3rem, 4vw, 3.8rem);
+  border-radius: 50%;
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 280ms ease;
+}
+
+.stack-logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(245, 245, 241, 0.12);
+  border-radius: inherit;
+  transform: scale(0.82);
+  opacity: 0;
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 280ms ease;
+}
+
+.stack-logo:hover {
+  transform: translateY(-4px);
+  background: rgba(245, 245, 241, 0.04);
+}
+
+.stack-logo:hover::after {
+  transform: scale(1);
+  opacity: 1;
 }
 
 .stack-logo img {
-  width: clamp(1.7rem, 2.6vw, 2.4rem);
-  height: clamp(1.7rem, 2.6vw, 2.4rem);
+  width: clamp(1.45rem, 2vw, 2rem);
+  height: clamp(1.45rem, 2vw, 2rem);
   object-fit: contain;
   filter: grayscale(1) brightness(2.2);
   opacity: 0.78;
@@ -560,13 +606,13 @@ a {
   }
 
   .stack-grid {
-    gap: 1.2rem 1.5rem;
+    gap: 0.75rem;
   }
 }
 
 @media (max-width: 480px) {
   .stack-grid {
-    gap: 1rem 1.25rem;
+    gap: 0.6rem;
   }
 }
 
