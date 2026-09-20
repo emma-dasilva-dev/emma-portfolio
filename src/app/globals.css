@@ -889,3 +889,8 @@ a {
     font-size: clamp(3rem, 13vw, 5rem);
   }
 }
+
+
+.stack-logo-light img {
+  filter: brightness(0) invert(1);
+}
