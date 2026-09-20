@@ -14,12 +14,12 @@ export default function Contact() {
       >
         <p className="section-kicker">06 · Contact</p>
         <div className="contact-message">
-          <h2>Let&apos;s build something worth remembering.</h2>
+          <h2>Let&apos;s build something meaningful together.</h2>
         </div>
       </motion.div>
 
       <div className="contact-footer">
-        <span>© 2026</span>
+        <span>© 2026 Emma Da Silva. All rights reserved.</span>
       </div>
     </footer>
   );
