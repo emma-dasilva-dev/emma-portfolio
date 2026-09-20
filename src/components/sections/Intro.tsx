@@ -16,14 +16,17 @@ export default function Intro() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
+    let index = 0;
+
     const interval = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % styles.length);
-    }, 360);
+      index += 1;
+      setActiveIndex(index % styles.length);
+    }, 170);
 
     const timer = window.setTimeout(() => {
       window.clearInterval(interval);
       setVisible(false);
-    }, 2300);
+    }, 1750);
 
     return () => {
       window.clearInterval(interval);
@@ -39,37 +42,16 @@ export default function Intro() {
           initial={{ y: 0 }}
           exit={{
             y: "-100%",
-            transition: { duration: 0.95, ease: [0.76, 0, 0.24, 1] },
+            transition: { duration: 0.82, ease: [0.76, 0, 0.24, 1] },
           }}
         >
           <div className="intro-e-stage" aria-label="Animated letter E">
-            <AnimatePresence mode="popLayout" initial={false}>
-              <motion.span
-                key={activeIndex}
-                className="intro-e"
-                style={styles[activeIndex]}
-                initial={{ opacity: 0, scale: 0.94, filter: "blur(8px)" }}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, scale: 1.045, filter: "blur(6px)" }}
-                transition={{
-                  opacity: { duration: 0.3, ease: "easeOut" },
-                  scale: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-                  filter: { duration: 0.34, ease: "easeOut" },
-                }}
-              >
-                E
-              </motion.span>
-            </AnimatePresence>
+            <span className="intro-e" style={styles[activeIndex]}>
+              E
+            </span>
           </div>
 
-          <motion.p
-            className="intro-caption"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.7 }}
-            transition={{ delay: 0.35, duration: 0.55 }}
-          >
-            Portfolio · 2026
-          </motion.p>
+          <p className="intro-caption">Portfolio · 2026</p>
         </motion.div>
       )}
     </AnimatePresence>
