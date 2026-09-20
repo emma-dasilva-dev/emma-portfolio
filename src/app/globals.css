@@ -523,8 +523,8 @@ a {
 }
 
 .stack-logo img {
-  width: clamp(2.7rem, 4.5vw, 4.8rem);
-  height: clamp(2.7rem, 4.5vw, 4.8rem);
+  width: clamp(2rem, 3.2vw, 3.4rem);
+  height: clamp(2rem, 3.2vw, 3.4rem);
   object-fit: contain;
   filter: grayscale(1) brightness(2.2);
   opacity: 0.78;
