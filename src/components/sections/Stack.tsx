@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
 
 const technologies = [
   ["HTML5", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"],
@@ -34,30 +35,22 @@ export default function Stack() {
       </motion.div>
 
       <motion.div
-        className="stack-shell"
+        className="stack-slider-wrap"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="stack-grid" aria-label="Technologies I work with">
-          {technologies.map(([name, src], index) => (
-            <motion.div
-              className={`stack-logo ${name === "Express.js" || name === "Bash" ? "stack-logo-light" : ""}`}
+        <InfiniteSlider className="stack-slider" gap={56} speed={52} speedOnHover={18}>
+          {technologies.map(([name, src]) => (
+            <div
+              className={`stack-slider-item ${name === "Express.js" || name === "Bash" ? "stack-logo-light" : ""}`}
               key={name}
-              initial={{ opacity: 0, y: 28, scale: 0.96 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{
-                duration: 0.55,
-                delay: index * 0.04,
-                ease: [0.16, 1, 0.3, 1],
-              }}
             >
               <img src={src} alt={name} />
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </InfiniteSlider>
       </motion.div>
     </section>
   );
