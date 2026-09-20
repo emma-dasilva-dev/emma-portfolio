@@ -25,44 +25,37 @@ export default function About() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
           <p>
-            My path into tech started with curiosity, not a perfect plan. I was
-            interested in what was happening behind the screen and why things
-            worked the way they did, so I started digging into programming,
-            systems and the logic underneath them. The more I understood, the
-            more I wanted to keep going.
+            I got into tech because I was curious about what was happening
+            behind the screen. I did not have a perfect plan, I just kept
+            following the questions that interested me and learning a little
+            more every time.
           </p>
 
           <p>
-            Learning C, Linux and computer fundamentals gave me my first real
-            sense of progress. It taught me to slow down, read what the machine
-            was telling me and work through problems instead of immediately
-            looking for shortcuts. That patience became one of the most
-            important parts of how I learn.
+            C, Linux and computer fundamentals gave me my first real sense of
+            progress. They taught me to slow down, read errors properly and
+            work through a problem instead of giving up the moment it became
+            frustrating.
           </p>
 
           <p>
-            Web development gave me a different kind of motivation. I could
-            take an idea and turn it into something visible, interactive and
-            real. Building websites made me care about both the technical side
-            and the small details people actually experience, which pushed me
-            to keep improving instead of settling for something that merely
-            worked.
+            Web development made everything feel more real. I could take an
+            idea, build it, break parts of it, improve it and eventually end up
+            with something I was genuinely proud to call mine.
           </p>
 
           <p>
-            I have learned that getting stuck is not a sign that I should stop.
-            Most of the time, it is the point where I understand the most about
-            myself and the problem in front of me. I like figuring things out
-            independently, testing different approaches and staying with a
-            challenge until it finally becomes clear.
+            I have learned that being stuck is usually part of the process.
+            I like trying things for myself, questioning what went wrong and
+            staying with a problem until I understand it instead of only
+            finding a quick fix.
           </p>
 
           <p>
-            That mindset is what gradually pulled me toward cybersecurity. I
-            still enjoy building software, but now I also want to understand
-            what makes systems vulnerable, reliable and resilient. I want to
-            keep growing into an engineer who can create useful things, question
-            how they work and care deeply about making them stronger and safer.
+            That same curiosity is what pulled me toward cybersecurity. I still
+            love building software, but I also want to understand how systems
+            can fail, how they can be protected and how I can keep becoming a
+            stronger engineer on both sides.
           </p>
         </motion.div>
 
