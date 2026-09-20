@@ -29,7 +29,7 @@ export default function Stack() {
         viewport={{ once: true, amount: 0.65 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="section-kicker">03 · Technological stack</p>
+        <p className="section-kicker">Technological stack</p>
         <p className="stack-counter">14 tools</p>
       </motion.div>
 
