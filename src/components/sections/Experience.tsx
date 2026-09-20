@@ -5,24 +5,21 @@ import { motion } from "motion/react";
 
 const experiences = [
   {
-    date: "September 2025",
-    title: "Self-learning",
-    body:
-      "This was where things really started for me. I began learning programming on my own through C, Linux and computer fundamentals, mostly because I wanted to understand what was happening behind the screen. It taught me how to search, experiment, get stuck and keep going until something finally made sense.",
+    role: "Self-taught Developer",
+    company: "Independent",
+    date: "Sep 2025 - Present",
   },
   {
-    date: "February 2026",
-    title: "CJEPE — Professional training",
+    role: "Professional Training",
+    company: "CJEPE",
+    date: "Feb 2026",
     href: "https://cjepebenin.site/",
-    body:
-      "I moved into a more structured learning environment and expanded beyond C into HTML, CSS and JavaScript. I worked on practical exercises and finished with a project built around helping beginners learn programming, which I presented during my final evaluation and received 17/20.",
   },
   {
-    date: "July 2026",
-    title: "Cashless Africa — Internship",
+    role: "Software Development Intern",
+    company: "Cashless Africa",
+    date: "Jul 2026 - Sep 2026",
     href: "https://cashlesshq.com/",
-    body:
-      "My internship was the point where I had to think beyond exercises and work with real product ideas. I built a hotel-management web application, worked on an event landing page and contributed to the architecture of a Smart Reminders system, which exposed me to product thinking, backend structure, user flows and reliability.",
   },
 ];
 
@@ -30,53 +27,45 @@ export default function Experience() {
   return (
     <section className="experience-section" id="experience">
       <motion.div
-        className="experience-heading"
+        className="experience-heading experience-heading-simple"
         initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.65 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="section-kicker">Experience</p>
-        <div className="experience-intro">
-          <h2>My experience so far.</h2>
-          <p>
-            A short look at how I moved from learning independently to working
-            on real projects, with each stage changing the way I think about
-            building software.
-          </p>
-        </div>
+        <h2>Experience</h2>
       </motion.div>
 
-      <div className="experience-list">
+      <div className="experience-list experience-list-simple">
         {experiences.map((item, index) => (
           <motion.article
-            className="experience-item"
-            key={item.date}
-            initial={{ opacity: 0, y: 34 }}
+            className="experience-item experience-item-simple"
+            key={item.role + item.company}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
+            viewport={{ once: true, amount: 0.4 }}
             transition={{
-              duration: 0.75,
-              delay: index * 0.06,
+              duration: 0.65,
+              delay: index * 0.05,
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            <p className="experience-date">{item.date}</p>
-            <div className="experience-copy">
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-
+            <div className="experience-role-line">
+              <span className="experience-role">{item.role}</span>
               {"href" in item && item.href ? (
                 <a
+                  className="experience-company"
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="experience-button"
                 >
-                  Visit website
+                  {item.company}
                 </a>
-              ) : null}
+              ) : (
+                <span className="experience-company">{item.company}</span>
+              )}
             </div>
+            <p className="experience-date">{item.date}</p>
           </motion.article>
         ))}
       </div>
