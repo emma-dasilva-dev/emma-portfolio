@@ -523,59 +523,7 @@ a {
   text-transform: uppercase;
 }
 
-.stack-shell {
-  position: relative;
-  padding: clamp(1.25rem, 2.5vw, 2rem) 0;
-}
 
-.stack-grid {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  align-items: center;
-  gap: clamp(1rem, 2vw, 1.6rem);
-  width: 100%;
-  max-width: none;
-}
-
-.stack-logo {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 100%;
-  min-height: clamp(7rem, 10vw, 10rem);
-  border-radius: 50%;
-  transition:
-    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
-    background 280ms ease;
-}
-
-.stack-logo img {
-  width: clamp(3.6rem, 5.8vw, 6rem);
-  height: clamp(3.6rem, 5.8vw, 6rem);
-  object-fit: contain;
-  filter: none;
-  opacity: 1;
-}
-
-@media (max-width: 800px) {
-  .experience-heading,
-  .experience-item {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .stack-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .stack-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
-  }
-}
 
 
 .experience-button {
@@ -838,10 +786,6 @@ a {
   }
 }
 
-
-.stack-logo-light img {
-  filter: brightness(0) invert(1);
-}
 
 
 
@@ -1275,4 +1219,61 @@ body > div:not(.old-tv-background) {
 .intro-screen {
   position: relative;
   z-index: 2;
+}
+
+
+.stack-slider-wrap {
+  position: relative;
+  width: calc(100% + clamp(2.5rem, 6vw, 6rem));
+  margin-left: calc(clamp(1.25rem, 3vw, 3rem) * -1);
+  overflow: hidden;
+  padding: clamp(2rem, 4vw, 3rem) 0;
+}
+
+.stack-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.infinite-slider-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  will-change: transform;
+}
+
+.stack-slider-item {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: clamp(5.5rem, 8vw, 8rem);
+  height: clamp(5.5rem, 8vw, 8rem);
+}
+
+.stack-slider-item img {
+  width: clamp(3.2rem, 4.8vw, 5rem);
+  height: clamp(3.2rem, 4.8vw, 5rem);
+  object-fit: contain;
+  display: block;
+}
+
+.stack-slider-item.stack-logo-light img {
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 800px) {
+  .stack-slider-wrap {
+    width: calc(100% + 2.5rem);
+    margin-left: -1.25rem;
+  }
+
+  .stack-slider-item {
+    width: 5.25rem;
+    height: 5.25rem;
+  }
+
+  .stack-slider-item img {
+    width: 3.15rem;
+    height: 3.15rem;
+  }
 }
