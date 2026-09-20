@@ -20,6 +20,35 @@ const technologies = [
   ["Git", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"],
 ] as const;
 
+const rows = [technologies.slice(0, 7), technologies.slice(7)];
+
+function StackRow({
+  items,
+  reverse = false,
+}: {
+  items: readonly (readonly [string, string])[];
+  reverse?: boolean;
+}) {
+  return (
+    <InfiniteSlider
+      className="stack-slider"
+      gap={56}
+      speed={52}
+      speedOnHover={18}
+      reverse={reverse}
+    >
+      {items.map(([name, src]) => (
+        <div
+          className={`stack-slider-item ${name === "Express.js" || name === "Bash" ? "stack-logo-light" : ""}`}
+          key={name}
+        >
+          <img src={src} alt={name} />
+        </div>
+      ))}
+    </InfiniteSlider>
+  );
+}
+
 export default function Stack() {
   return (
     <section className="stack-section" id="stack">
@@ -41,16 +70,8 @@ export default function Stack() {
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
-        <InfiniteSlider className="stack-slider" gap={56} speed={52} speedOnHover={18}>
-          {technologies.map(([name, src]) => (
-            <div
-              className={`stack-slider-item ${name === "Express.js" || name === "Bash" ? "stack-logo-light" : ""}`}
-              key={name}
-            >
-              <img src={src} alt={name} />
-            </div>
-          ))}
-        </InfiniteSlider>
+        <StackRow items={rows[0]} />
+        <StackRow items={rows[1]} reverse />
       </motion.div>
     </section>
   );
