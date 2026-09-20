@@ -538,19 +538,20 @@ a {
 }
 
 .stack-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   align-items: center;
-  gap: clamp(0.9rem, 1.8vw, 1.5rem);
-  max-width: 60rem;
+  gap: clamp(1rem, 2vw, 1.6rem);
+  width: 100%;
+  max-width: none;
 }
 
 .stack-logo {
   position: relative;
   display: grid;
   place-items: center;
-  width: clamp(5.4rem, 7vw, 7rem);
-  height: clamp(5.4rem, 7vw, 7rem);
+  width: 100%;
+  min-height: clamp(7rem, 10vw, 10rem);
   border-radius: 50%;
   transition:
     transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -581,8 +582,8 @@ a {
 }
 
 .stack-logo img {
-  width: clamp(2.7rem, 4.5vw, 4.8rem);
-  height: clamp(2.7rem, 4.5vw, 4.8rem);
+  width: clamp(3.6rem, 5.8vw, 6rem);
+  height: clamp(3.6rem, 5.8vw, 6rem);
   object-fit: contain;
   filter: grayscale(1) brightness(2.2);
   opacity: 0.78;
@@ -606,13 +607,15 @@ a {
   }
 
   .stack-grid {
-    gap: 0.75rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
   .stack-grid {
-    gap: 0.6rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
   }
 }
 
