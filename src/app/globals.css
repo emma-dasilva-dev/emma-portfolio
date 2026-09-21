@@ -3231,3 +3231,58 @@ html.portfolio-light .work-clean-copy p {
     margin-bottom: 1.5rem;
   }
 }
+
+
+/* Keep the Bandit terminal readable when the portfolio is in light mode */
+html.portfolio-light .projects-section .project-bandit-terminal-v2,
+html.portfolio-light .projects-section .project-bandit-terminal-v2 * {
+  color: #f3f3f3;
+}
+
+html.portfolio-light .projects-section .project-bandit-terminal-title {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+html.portfolio-light .projects-section .project-bandit-terminal-mode {
+  color: rgba(255, 255, 255, 0.34);
+}
+
+html.portfolio-light .projects-section .project-bandit-shell-line {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+html.portfolio-light .projects-section .project-bandit-shell-user {
+  color: #b7ffbd;
+}
+
+html.portfolio-light .projects-section .project-bandit-shell-path {
+  color: #8ab4ff;
+}
+
+html.portfolio-light .projects-section .project-bandit-terminal-muted,
+html.portfolio-light .projects-section .project-bandit-terminal-key span,
+html.portfolio-light .projects-section .project-bandit-terminal-inputline > span,
+html.portfolio-light .projects-section .project-bandit-terminal-inputline button,
+html.portfolio-light .projects-section .project-bandit-terminal-result {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+html.portfolio-light .projects-section .project-bandit-terminal-key code,
+html.portfolio-light .projects-section .project-bandit-terminal-form label,
+html.portfolio-light .projects-section .project-bandit-terminal-inputline input {
+  color: #fff;
+}
+
+html.portfolio-light .projects-section .project-bandit-terminal-inputline input::placeholder {
+  color: rgba(255, 255, 255, 0.22);
+}
+
+html.portfolio-light .projects-section .project-bandit-terminal-result.project-bandit-result-success,
+html.portfolio-light .projects-section .project-bandit-terminal-result.project-bandit-result-success * {
+  color: #37ff72;
+}
+
+html.portfolio-light .projects-section .project-bandit-terminal-result.project-bandit-result-error,
+html.portfolio-light .projects-section .project-bandit-terminal-result.project-bandit-result-error * {
+  color: #ff4d4d;
+}
