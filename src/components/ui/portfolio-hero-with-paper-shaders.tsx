@@ -1,7 +1,7 @@
 "use client";
 
 import { Dithering } from "@paper-design/shaders-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const experience = [
   ["Independent", "Self-taught developer", "2025 → 2026"],
@@ -67,6 +67,14 @@ function SocialIcon({ type }: { type: (typeof links)[number][2] }) {
 
 export default function PortfolioHeroWithPaperShaders() {
   const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("portfolio-light", !isDarkMode);
+
+    return () => {
+      document.documentElement.classList.remove("portfolio-light");
+    };
+  }, [isDarkMode]);
 
   return (
     <section
