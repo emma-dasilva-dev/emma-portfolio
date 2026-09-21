@@ -1,6 +1,7 @@
 "use client";
 
 import { Dithering } from "@paper-design/shaders-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const experience = [
@@ -119,8 +120,15 @@ export default function PortfolioHeroWithPaperShaders() {
         </button>
 
         <div className="paper-hero-header">
-          <a className="paper-hero-brand" href="#home">
-            Emma.dev
+          <a className="paper-hero-brand" href="#home" aria-label="Emma logo">
+            <Image
+              src="/emma-mark.png"
+              alt="Emma brand mark"
+              width={56}
+              height={56}
+              className="paper-hero-brand-image"
+              priority
+            />
           </a>
 
           <div className="paper-hero-title">
