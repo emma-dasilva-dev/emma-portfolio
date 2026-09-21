@@ -4,10 +4,28 @@ import { Dithering } from "@paper-design/shaders-react";
 import { useEffect, useState } from "react";
 
 const experience = [
-  ["Independent", "Self-taught developer", "2025 → 2026"],
-  ["University", "Cybersecurity student", "2026 → Present"],
-  ["CJEPE", "Professional training", "2026"],
-  ["Cashless Africa", "Software dev intern", "2026"],
+  {
+    company: "Independent",
+    role: "Self-taught developer",
+    date: "2025 → 2026",
+  },
+  {
+    company: "CJEPE",
+    role: "Professional training",
+    date: "2026",
+    href: "https://cjepebenin.site/",
+  },
+  {
+    company: "Cashless Africa",
+    role: "Software dev intern",
+    date: "2026",
+    href: "https://cashless.africa/",
+  },
+  {
+    company: "University",
+    role: "Cybersecurity student",
+    date: "2026 → Present",
+  },
 ] as const;
 
 const links = [
@@ -111,12 +129,23 @@ export default function PortfolioHeroWithPaperShaders() {
           </div>
         </div>
 
-        <div className="paper-hero-experience" aria-label="Experience">
-          {experience.map(([company, role, date]) => (
-            <div className="paper-experience-row" key={company}>
-              <span>{company}</span>
-              <span>{role}</span>
-              <span>{date}</span>
+        <div className="paper-hero-experience" aria-label="Experience timeline">
+          {experience.map((item) => (
+            <div className="paper-experience-row" key={item.company}>
+              <span className="paper-experience-marker" aria-hidden="true" />
+
+              <span className="paper-experience-company">
+                {"href" in item && item.href ? (
+                  <a href={item.href} target="_blank" rel="noreferrer">
+                    {item.company}
+                  </a>
+                ) : (
+                  item.company
+                )}
+              </span>
+
+              <span>{item.role}</span>
+              <span>{item.date}</span>
             </div>
           ))}
         </div>
