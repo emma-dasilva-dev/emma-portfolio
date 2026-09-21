@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const pointer = useRef({ x: -100, y: -100 });
   const [active, setActive] = useState(false);
 
   useEffect(() => {
@@ -12,15 +13,22 @@ export default function CustomCursor() {
 
     document.documentElement.classList.add("custom-cursor-enabled");
 
-    const move = (event: MouseEvent) => {
-      if (cursorRef.current) {
-        cursorRef.current.style.transform =
-          `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
-      }
+    const renderCursor = () => {
+      if (!cursorRef.current) return;
+
+      cursorRef.current.style.left = `${pointer.current.x}px`;
+      cursorRef.current.style.top = `${pointer.current.y}px`;
     };
 
-    const over = (event: MouseEvent) => {
+    const move = (event: PointerEvent) => {
+      pointer.current.x = event.clientX;
+      pointer.current.y = event.clientY;
+      renderCursor();
+    };
+
+    const over = (event: PointerEvent) => {
       const target = event.target as HTMLElement | null;
+
       setActive(
         Boolean(
           target?.closest(
@@ -30,13 +38,21 @@ export default function CustomCursor() {
       );
     };
 
-    window.addEventListener("mousemove", move, { passive: true });
-    window.addEventListener("mouseover", over, { passive: true });
+    const syncOnScroll = () => {
+      renderCursor();
+    };
+
+    window.addEventListener("pointermove", move, { passive: true });
+    window.addEventListener("pointerover", over, { passive: true });
+    window.addEventListener("scroll", syncOnScroll, { passive: true });
+    window.addEventListener("wheel", syncOnScroll, { passive: true });
 
     return () => {
       document.documentElement.classList.remove("custom-cursor-enabled");
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mouseover", over);
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerover", over);
+      window.removeEventListener("scroll", syncOnScroll);
+      window.removeEventListener("wheel", syncOnScroll);
     };
   }, []);
 
