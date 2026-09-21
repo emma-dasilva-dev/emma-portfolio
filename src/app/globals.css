@@ -2798,3 +2798,208 @@ html.portfolio-light .project-bandit-challenge-card {
     justify-self: start;
   }
 }
+
+
+/* Bandit terminal v2 */
+.project-bandit-terminal-v2 {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  background: #090909;
+  color: #f3f3f3;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+}
+
+.project-bandit-terminal-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  background: #111;
+}
+
+.project-bandit-terminal-dots {
+  display: flex;
+  gap: 0.42rem;
+}
+
+.project-bandit-terminal-dots span {
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.project-bandit-terminal-title {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.78em !important;
+}
+
+.project-bandit-terminal-mode {
+  justify-self: end;
+  color: rgba(255, 255, 255, 0.34);
+  font-size: 0.72em !important;
+  letter-spacing: 0.1em;
+}
+
+.project-bandit-terminal-body {
+  min-height: clamp(24rem, 39vw, 31rem);
+  padding: clamp(1.2rem, 2.8vw, 2rem);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.025), transparent 25%),
+    #090909;
+}
+
+.project-bandit-shell-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.55;
+}
+
+.project-bandit-shell-user {
+  color: #b7ffbd;
+}
+
+.project-bandit-shell-path {
+  color: #8ab4ff;
+}
+
+.project-bandit-terminal-intro {
+  margin-top: clamp(2rem, 4vw, 3.25rem);
+}
+
+.project-bandit-terminal-intro p {
+  margin: 0;
+}
+
+.project-bandit-terminal-muted {
+  margin-top: 0.45rem !important;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.project-bandit-terminal-key {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 1.6rem;
+  padding: 0.9rem 1rem;
+  border-left: 2px solid rgba(183, 255, 189, 0.72);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.project-bandit-terminal-key span {
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 0.75em !important;
+}
+
+.project-bandit-terminal-key code {
+  color: #fff;
+  font: inherit;
+  overflow-wrap: anywhere;
+}
+
+.project-bandit-terminal-form {
+  margin-top: 1.8rem;
+}
+
+.project-bandit-terminal-form label {
+  display: block;
+  margin-bottom: 0.7rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.project-bandit-terminal-inputline {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.65rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.project-bandit-terminal-inputline > span {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.project-bandit-terminal-inputline input {
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  outline: none;
+}
+
+.project-bandit-terminal-inputline input::placeholder {
+  color: rgba(255, 255, 255, 0.22);
+}
+
+.project-bandit-terminal-inputline button {
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  font: inherit;
+  font-size: 0.78em !important;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.project-bandit-terminal-inputline button:hover {
+  color: #fff;
+}
+
+.project-bandit-terminal-result {
+  display: flex;
+  gap: 0.65rem;
+  min-height: 2.2rem;
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.38);
+  line-height: 1.5;
+}
+
+.project-bandit-terminal-result-prefix {
+  flex: 0 0 auto;
+  color: inherit;
+}
+
+.project-bandit-terminal-result.project-bandit-result-success {
+  color: #37ff72;
+}
+
+.project-bandit-terminal-result.project-bandit-result-error {
+  color: #ff4d4d;
+}
+
+html.portfolio-light .project-bandit-terminal-v2 {
+  border-color: rgba(0, 0, 0, 0.14);
+}
+
+@media (max-width: 560px) {
+  .project-bandit-terminal-bar {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .project-bandit-terminal-title {
+    justify-self: center;
+  }
+
+  .project-bandit-terminal-body {
+    min-height: 22rem;
+    padding: 1rem;
+  }
+
+  .project-bandit-terminal-inputline {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .project-bandit-terminal-inputline button {
+    grid-column: 2;
+    justify-self: start;
+    padding: 0.35rem 0 0;
+  }
+}
