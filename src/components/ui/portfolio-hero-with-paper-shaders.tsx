@@ -138,6 +138,7 @@ export default function PortfolioHeroWithPaperShaders() {
         </div>
 
         <div className="paper-hero-experience" aria-label="Experience timeline">
+          <p className="paper-experience-label">Experience</p>
           {experience.map((item) => (
             <div className="paper-experience-row" key={item.company}>
               <span className="paper-experience-marker" aria-hidden="true" />
