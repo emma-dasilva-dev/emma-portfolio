@@ -2511,3 +2511,117 @@ html.portfolio-light .project-bandit-terminal {
   color: #ff4d4d;
   text-shadow: 0 0 12px rgba(255, 77, 77, 0.22);
 }
+
+
+/* How I work: process-based editorial layout */
+.work-heading {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.work-heading h2 {
+  max-width: 20ch;
+  margin: 0;
+  font: inherit;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.work-process {
+  display: grid;
+}
+
+.work-process-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr) auto;
+  gap: clamp(1.25rem, 3vw, 3rem);
+  align-items: start;
+  padding: clamp(1.6rem, 3vw, 2.4rem) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  transition:
+    transform 220ms ease,
+    opacity 220ms ease;
+}
+
+.work-process-item:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.work-process-item:hover {
+  transform: translateX(6px);
+}
+
+.work-process-number {
+  color: rgba(255, 255, 255, 0.45);
+  white-space: nowrap;
+}
+
+.work-process-copy {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.45fr) minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 3rem);
+  align-items: start;
+}
+
+.work-process-copy h3,
+.work-process-copy p {
+  margin: 0;
+  font: inherit;
+}
+
+.work-process-copy h3 {
+  letter-spacing: -0.03em;
+}
+
+.work-process-copy p {
+  max-width: 42rem;
+  color: rgba(245, 245, 241, 0.62);
+  line-height: 1.55;
+}
+
+.work-process-symbol {
+  color: rgba(255, 255, 255, 0.32);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.work-process-item:hover .work-process-symbol {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+html.portfolio-light .work-process-item {
+  border-color: rgba(0, 0, 0, 0.14);
+}
+
+html.portfolio-light .work-process-number {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+html.portfolio-light .work-process-copy p {
+  color: rgba(0, 0, 0, 0.62);
+}
+
+html.portfolio-light .work-process-symbol {
+  color: rgba(0, 0, 0, 0.34);
+}
+
+@media (max-width: 760px) {
+  .work-process-item {
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+  }
+
+  .work-process-copy {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .work-process-symbol {
+    display: none;
+  }
+}
