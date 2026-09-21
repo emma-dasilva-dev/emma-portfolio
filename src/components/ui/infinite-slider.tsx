@@ -22,10 +22,19 @@ export function InfiniteSlider({
   className,
 }: InfiniteSliderProps) {
   const [currentSpeed, setCurrentSpeed] = useState(speed);
+  const [canHover, setCanHover] = useState(true);
   const [ref, { width }] = useMeasure();
   const translation = useMotionValue(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const updateHover = () => setCanHover(media.matches);
+    updateHover();
+    media.addEventListener("change", updateHover);
+    return () => media.removeEventListener("change", updateHover);
+  }, []);
 
   useEffect(() => {
     if (!width) return;
@@ -68,10 +77,12 @@ export function InfiniteSlider({
         className="infinite-slider-track"
         style={{ x: translation, gap }}
         onHoverStart={() => {
+          if (!canHover) return;
           setIsTransitioning(true);
           setCurrentSpeed(speedOnHover);
         }}
         onHoverEnd={() => {
+          if (!canHover) return;
           setIsTransitioning(true);
           setCurrentSpeed(speed);
         }}
