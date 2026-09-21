@@ -3871,3 +3871,70 @@ html.portfolio-light .contact-email-button:focus-visible {
     transform: scale(0.98);
   }
 }
+
+
+/* Theme accent system: pink in dark mode, blue in light mode */
+html {
+  --portfolio-accent: #ff66cc;
+  --portfolio-accent-contrast: #000;
+}
+
+html.portfolio-light {
+  --portfolio-accent: #6699ff;
+  --portfolio-accent-contrast: #fff;
+}
+
+::selection {
+  background: var(--portfolio-accent);
+  color: var(--portfolio-accent-contrast);
+}
+
+::-moz-selection {
+  background: var(--portfolio-accent);
+  color: var(--portfolio-accent-contrast);
+}
+
+.section-kicker,
+.paper-experience-label,
+.paper-hero-title p,
+.paper-theme-toggle,
+.project-bandit-link {
+  color: var(--portfolio-accent) !important;
+}
+
+.paper-experience-marker {
+  background: var(--portfolio-accent) !important;
+}
+
+.paper-experience-row:not(:last-child)::after {
+  background: var(--portfolio-accent) !important;
+}
+
+.paper-hero-links a:hover,
+.paper-experience-company a:hover,
+.contact-socials a:hover {
+  color: var(--portfolio-accent) !important;
+}
+
+.contact-socials a:hover::after {
+  background: var(--portfolio-accent);
+}
+
+.contact-email-button {
+  border-color: var(--portfolio-accent) !important;
+  color: var(--portfolio-accent) !important;
+}
+
+.contact-email-button:hover,
+.contact-email-button:focus-visible,
+html.portfolio-light .contact-email-button:hover,
+html.portfolio-light .contact-email-button:focus-visible {
+  background: var(--portfolio-accent) !important;
+  border-color: var(--portfolio-accent) !important;
+  color: var(--portfolio-accent-contrast) !important;
+}
+
+html.portfolio-light .contact-email-button {
+  border-color: var(--portfolio-accent) !important;
+  color: var(--portfolio-accent) !important;
+}
