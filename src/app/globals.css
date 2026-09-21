@@ -2000,3 +2000,20 @@ html.portfolio-light .about-visual-card::after {
     top: 0.52em;
   }
 }
+
+
+.paper-hero-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: clamp(3rem, 7vw, 5.5rem);
+}
+
+.paper-hero-brand-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
