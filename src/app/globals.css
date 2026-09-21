@@ -1947,7 +1947,7 @@ html.portfolio-light .about-visual-card::after {
   content: "";
   position: absolute;
   left: 0.22rem;
-  top: 0.35rem;
+  top: 2rem;
   bottom: 0.35rem;
   width: 1px;
   background: currentColor;
@@ -2032,4 +2032,10 @@ html.portfolio-light .about-visual-card::after {
 /* Remove vertical timeline line while keeping the experience entries */
 .paper-hero-experience::before {
   display: none;
+}
+
+
+.paper-experience-label {
+  margin: 0 0 0.9rem 0;
+  padding-left: 0;
 }
