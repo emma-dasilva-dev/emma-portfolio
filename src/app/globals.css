@@ -1388,6 +1388,7 @@ body > div:not(.old-tv-background) {
   transform: rotate(12deg) scale(1.25);
 }
 
+@media (pointer: coarse), (max-width: 800px) {
   .about-visual-card {
     width: 12rem;
     height: 8rem;
