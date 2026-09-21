@@ -1788,3 +1788,48 @@ body > div:not(.old-tv-background) {
     height: 1.6rem;
   }
 }
+
+
+/* Match the full portfolio to the hero's black background */
+html,
+body {
+  background: #000;
+  color: #fff;
+}
+
+.about-section,
+.experience-section,
+.stack-section,
+.projects-section,
+.work-section,
+.contact-section,
+.about-page,
+.experience-page {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+.contact-section .section-kicker,
+.contact-section .contact-location,
+.contact-section .contact-socials,
+.contact-section .contact-credit,
+.contact-section .contact-message {
+  color: #fff;
+}
+
+.interactive-hover-button {
+  border-color: rgba(255, 255, 255, 0.78);
+  color: #fff;
+}
+
+.interactive-hover-button-dot {
+  background: #fff;
+}
+
+.interactive-hover-button-hover {
+  color: #000;
+}
+
+.interactive-hover-button:focus-visible {
+  outline-color: #fff;
+}
