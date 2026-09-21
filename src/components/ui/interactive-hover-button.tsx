@@ -3,14 +3,23 @@
 type InteractiveHoverButtonProps = {
   href: string;
   children: React.ReactNode;
+  target?: string;
+  rel?: string;
 };
 
 export function InteractiveHoverButton({
   href,
   children,
+  target,
+  rel,
 }: InteractiveHoverButtonProps) {
   return (
-    <a className="interactive-hover-button" href={href}>
+    <a
+      className="interactive-hover-button"
+      href={href}
+      target={target}
+      rel={rel}
+    >
       <span className="interactive-hover-button-front">
         <span className="interactive-hover-button-dot" />
         <span className="interactive-hover-button-label">{children}</span>
