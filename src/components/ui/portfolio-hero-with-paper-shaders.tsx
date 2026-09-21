@@ -86,14 +86,25 @@ function SocialIcon({ type }: { type: (typeof links)[number][2] }) {
 
 export default function PortfolioHeroWithPaperShaders() {
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle("portfolio-light", !isDarkMode);
+    document.body.classList.toggle("portfolio-light", !isDarkMode);
 
     return () => {
       document.documentElement.classList.remove("portfolio-light");
+      document.body.classList.remove("portfolio-light");
     };
   }, [isDarkMode]);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 700px)");
+    const updateMobile = () => setIsMobile(media.matches);
+    updateMobile();
+    media.addEventListener("change", updateMobile);
+    return () => media.removeEventListener("change", updateMobile);
+  }, []);
 
   return (
     <section
@@ -103,18 +114,23 @@ export default function PortfolioHeroWithPaperShaders() {
       <div className="paper-hero-copy">
         <button
           onClick={() => setIsDarkMode((current) => !current)}
+          onPointerUp={(event) => {
+            if (event.pointerType === "touch") {
+              event.preventDefault();
+              setIsDarkMode((current) => !current);
+            }
+          }}
           className="paper-theme-toggle"
-          aria-label="Toggle hero theme"
+          aria-label="Toggle portfolio theme"
           type="button"
         >
           {isDarkMode ? (
-            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-              <circle cx="12" cy="12" r="5" />
-              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+              <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.64 5.64l1.55 1.55M16.81 16.81l1.55 1.55M18.36 5.64l-1.55 1.55M7.19 16.81l-1.55 1.55M9 12h6M12 9v6" />
             </svg>
           ) : (
-            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+              <path d="M20.2 14.4A8.2 8.2 0 0 1 9.6 3.8 8.4 8.4 0 1 0 20.2 14.4Z" />
             </svg>
           )}
         </button>
@@ -184,10 +200,10 @@ export default function PortfolioHeroWithPaperShaders() {
           colorFront={isDarkMode ? "hsl(320, 100%, 70%)" : "hsl(220, 100%, 70%)"}
           shape="cat"
           type="4x4"
-          pxSize={3}
+          pxSize={isMobile ? 2 : 3}
           offsetX={0}
           offsetY={0}
-          scale={0.8}
+          scale={isMobile ? 0.34 : 0.8}
           rotation={0}
           speed={0.1}
         />
