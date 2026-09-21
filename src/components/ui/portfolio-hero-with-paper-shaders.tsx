@@ -114,7 +114,6 @@ export default function PortfolioHeroWithPaperShaders() {
         </div>
 
         <div className="paper-hero-bottom">
-          <span className="paper-links-label">Links</span>
           <nav className="paper-hero-links" aria-label="Social links">
             {links.map(([label, href, type]) => (
               <a
