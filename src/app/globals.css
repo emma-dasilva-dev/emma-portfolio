@@ -1388,57 +1388,40 @@ body > div:not(.old-tv-background) {
   transform: rotate(12deg) scale(1.25);
 }
 
-.custom-cursor-ring,
-.custom-cursor-dot {
+  .about-visual-card {
+    width: 12rem;
+    height: 8rem;
+  }
+}
+
+
+.custom-cursor {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9000;
+  width: 0.72rem;
+  height: 0.72rem;
+  margin-left: -0.36rem;
+  margin-top: -0.36rem;
+  border-radius: 50%;
+  background: #b8b8b8;
   pointer-events: none;
   mix-blend-mode: difference;
   will-change: transform;
-}
-
-.custom-cursor-ring {
-  width: 2rem;
-  height: 2rem;
-  margin-left: -1rem;
-  margin-top: -1rem;
-  border: 1px solid #fff;
-  border-radius: 50%;
   transition:
-    width 180ms ease,
-    height 180ms ease,
-    margin 180ms ease,
-    opacity 180ms ease;
+    width 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    margin 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 180ms ease;
 }
 
-.custom-cursor-dot {
-  width: 0.35rem;
-  height: 0.35rem;
-  margin-left: -0.175rem;
-  margin-top: -0.175rem;
-  border-radius: 50%;
+.custom-cursor.is-active {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-left: -0.575rem;
+  margin-top: -0.575rem;
   background: #fff;
-  transition:
-    width 180ms ease,
-    height 180ms ease,
-    margin 180ms ease,
-    opacity 180ms ease;
-}
-
-.custom-cursor-ring.is-active {
-  width: 3rem;
-  height: 3rem;
-  margin-left: -1.5rem;
-  margin-top: -1.5rem;
-}
-
-.custom-cursor-dot.is-active {
-  width: 0.2rem;
-  height: 0.2rem;
-  margin-left: -0.1rem;
-  margin-top: -0.1rem;
 }
 
 @media (pointer: fine) {
@@ -1452,17 +1435,11 @@ body > div:not(.old-tv-background) {
 }
 
 @media (pointer: coarse), (max-width: 800px) {
-  .custom-cursor-ring,
-  .custom-cursor-dot {
+  .custom-cursor {
     display: none;
   }
 
   .section-transition {
     transform: none !important;
-  }
-
-  .about-visual-card {
-    width: 12rem;
-    height: 8rem;
   }
 }
