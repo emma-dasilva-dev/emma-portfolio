@@ -2,21 +2,24 @@
 
 import { motion } from "motion/react";
 
-const principles = [
+const steps = [
   {
-    title: "Curious by default.",
+    number: "01",
+    title: "Understand",
     text:
-      "I like understanding why something works, not just learning the steps needed to make it work once.",
+      "I start by figuring out what the problem actually is, what is failing, and what I need to learn before touching the solution.",
   },
   {
-    title: "Independent, not isolated.",
+    number: "02",
+    title: "Test",
     text:
-      "I try to investigate problems for myself first, test ideas and build context before I ask for help.",
+      "I try things, inspect what breaks, compare results, and keep narrowing the problem down instead of guessing.",
   },
   {
-    title: "Persistent with the details.",
+    number: "03",
+    title: "Build",
     text:
-      "I do not enjoy leaving things half-understood. If something feels wrong, I keep working until I know what caused it and how to improve it.",
+      "Once I understand the cause, I focus on making the solution clear, reliable, and something I can explain later.",
   },
 ];
 
@@ -31,27 +34,33 @@ export default function HowIWork() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         <p className="section-kicker">How I work</p>
-        <h2>How I approach problems matters.</h2>
+        <h2>Understand it. Break it. Build it better.</h2>
       </motion.div>
 
-      <div className="work-list">
-        {principles.map((principle, index) => (
+      <div className="work-process">
+        {steps.map((step, index) => (
           <motion.article
-            className="work-item"
-            key={principle.title}
-            initial={{ opacity: 0, y: 28 }}
+            className="work-process-item"
+            key={step.number}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
+            viewport={{ once: true, amount: 0.35 }}
             transition={{
               duration: 0.65,
-              delay: index * 0.05,
+              delay: index * 0.06,
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            <div>
-              <h3>{principle.title}</h3>
-              <p>{principle.text}</p>
+            <div className="work-process-number">[{step.number}]</div>
+
+            <div className="work-process-copy">
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
             </div>
+
+            <span className="work-process-symbol" aria-hidden="true">
+              &gt;_
+            </span>
           </motion.article>
         ))}
       </div>
