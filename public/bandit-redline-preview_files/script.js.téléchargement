@@ -1,0 +1,1013 @@
+const GITHUB_URL = "https://github.com/emma-dasilva-dev";
+
+const translations = {
+  en: {
+    nav_byline: "by Emma DA SILVA",
+    nav_home: "Home",
+    nav_levels: "Levels",
+    nav_about: "About",
+
+    hero_eyebrow: "Linux • Terminal • Cybersecurity Fundamentals",
+    hero_title: "OverTheWire — Bandit Learning Journal",
+    hero_subtitle:
+      "A personal Linux terminal learning journal documenting each level, command, mistake, and lesson from the Bandit wargame.",
+    hero_author: "Written and built by Emma DA SILVA",
+
+    meta_published: "Published: June 2026",
+    meta_levels: "Levels Covered: 0 → 14",
+    meta_journal: "Personal Learning Journal",
+    meta_hosted: "Hosted on GitHub Pages",
+
+    btn_start: "Start Reading",
+    btn_github: "View GitHub",
+    btn_view_github: "View Emma’s GitHub",
+    btn_top: "↑ Top",
+
+    ethical_label: "Learning note",
+    ethical_note:
+      "This journal does not share real Bandit passwords. The goal is to explain the reasoning, commands, and learning process so others can understand how to approach each level.",
+
+    intro_eyebrow: "Why this journal exists",
+    intro_title: "Learning through the terminal, one level at a time.",
+    intro_p1:
+      "This page documents Emma’s progress through OverTheWire Bandit. The purpose is to practice Linux commands, file navigation, SSH, permissions, hidden files, searching, decoding, compression, private keys, and problem-solving.",
+    intro_p2:
+      "Each level includes the goal, what you need to know, commands used, explanation, common mistake, and takeaway. The writing is designed to feel like Emma is teaching another beginner how to think through the level.",
+
+    toc_title: "Levels Covered",
+
+    article_eyebrow: "Bandit levels",
+    article_title: "My notes from Level 0 to Level 14",
+    article_subtitle:
+      "Each section is collapsible so the journal stays readable instead of becoming one endless scroll.",
+
+    status_completed: "Completed",
+    status_learning: "Currently Learning",
+
+    label_goal: "A. Level Goal",
+    label_know: "B. What You Need To Know",
+    label_commands: "C. Commands Used",
+    label_explanation: "D. Step-by-Step Explanation",
+    label_mistake: "E. Common Mistake",
+    label_takeaway: "F. Takeaway",
+
+    copy: "Copy",
+    copied: "Copied!",
+
+    closing_1: "More levels coming soon as I continue the Bandit wargame.",
+    closing_2:
+      "Passwords are hidden intentionally so the focus stays on learning, not copying answers.",
+
+    about_eyebrow: "About the builder",
+    about_title: "About Emma",
+    about_text:
+      "Emma DA SILVA is documenting her Linux and cybersecurity learning journey through practical terminal-based challenges.",
+
+    footer_line1:
+      "Built by Emma DA SILVA as part of a Linux and cybersecurity learning journey.",
+    footer_line2: "Hosted on GitHub Pages.",
+    footer_line3: "Passwords are hidden intentionally."
+  },
+
+  fr: {
+    nav_byline: "par Emma DA SILVA",
+    nav_home: "Accueil",
+    nav_levels: "Niveaux",
+    nav_about: "À propos",
+
+    hero_eyebrow: "Linux • Terminal • Bases de la cybersécurité",
+    hero_title: "Journal d’apprentissage OverTheWire — Bandit",
+    hero_subtitle:
+      "Un journal personnel d’apprentissage du terminal Linux qui documente chaque niveau, commande, erreur et leçon du wargame Bandit.",
+    hero_author: "Écrit et développé par Emma DA SILVA",
+
+    meta_published: "Publié : juin 2026",
+    meta_levels: "Niveaux couverts : 0 → 14",
+    meta_journal: "Journal d’apprentissage personnel",
+    meta_hosted: "Hébergé sur GitHub Pages",
+
+    btn_start: "Commencer la lecture",
+    btn_github: "Voir GitHub",
+    btn_view_github: "Voir le GitHub d’Emma",
+    btn_top: "↑ Haut",
+
+    ethical_label: "Note d’apprentissage",
+    ethical_note:
+      "Ce journal ne partage pas les vrais mots de passe de Bandit. L’objectif est d’expliquer le raisonnement, les commandes et le processus d’apprentissage afin que d’autres personnes comprennent comment aborder chaque niveau.",
+
+    intro_eyebrow: "Pourquoi ce journal existe",
+    intro_title: "Apprendre avec le terminal, un niveau à la fois.",
+    intro_p1:
+      "Cette page documente la progression d’Emma dans OverTheWire Bandit. L’objectif est de pratiquer les commandes Linux, la navigation dans les fichiers, SSH, les permissions, les fichiers cachés, la recherche, le décodage, la compression, les clés privées et la résolution de problèmes.",
+    intro_p2:
+      "Chaque niveau contient l’objectif, ce qu’il faut comprendre, les commandes utilisées, l’explication, l’erreur fréquente et la leçon à retenir. Le texte est écrit comme si Emma expliquait le niveau à un autre débutant.",
+
+    toc_title: "Niveaux couverts",
+
+    article_eyebrow: "Niveaux Bandit",
+    article_title: "Mes notes du niveau 0 au niveau 14",
+    article_subtitle:
+      "Chaque section est pliable pour que le journal reste lisible au lieu de devenir une longue page interminable.",
+
+    status_completed: "Terminé",
+    status_learning: "En cours d’apprentissage",
+
+    label_goal: "A. Objectif du niveau",
+    label_know: "B. Ce qu’il faut comprendre",
+    label_commands: "C. Commandes utilisées",
+    label_explanation: "D. Explication étape par étape",
+    label_mistake: "E. Erreur fréquente",
+    label_takeaway: "F. Leçon à retenir",
+
+    copy: "Copier",
+    copied: "Copié !",
+
+    closing_1:
+      "D’autres niveaux seront ajoutés au fur et à mesure que je continue le wargame Bandit.",
+    closing_2:
+      "Les mots de passe sont volontairement masqués afin que l’objectif reste l’apprentissage, et non la copie des réponses.",
+
+    about_eyebrow: "À propos de la créatrice",
+    about_title: "À propos d’Emma",
+    about_text:
+      "Emma DA SILVA documente son parcours d’apprentissage de Linux et de la cybersécurité à travers des défis pratiques basés sur le terminal.",
+
+    footer_line1:
+      "Développé par Emma DA SILVA dans le cadre d’un parcours d’apprentissage de Linux et de la cybersécurité.",
+    footer_line2: "Hébergé sur GitHub Pages.",
+    footer_line3: "Les mots de passe sont volontairement masqués."
+  }
+};
+
+const levels = [
+  {
+    id: "level-0",
+    status: "completed",
+    title: {
+      en: "Level 0",
+      fr: "Niveau 0"
+    },
+    content: {
+      en: {
+        goal: "Log in to the Bandit server using SSH.",
+        know: "SSH lets you connect to another computer through the terminal. For this level, the important details are the username, host, and port.",
+        commands: "ssh bandit0@bandit.labs.overthewire.org -p 2220",
+        explanation:
+          "The command starts an SSH connection. `bandit0` is the username, `bandit.labs.overthewire.org` is the host, and `-p 2220` tells SSH to use port 2220 instead of the default port 22.",
+        mistake:
+          "A common mistake is forgetting `-p 2220`. Without it, SSH tries the default port and the connection may fail.",
+        takeaway:
+          "Before connecting to any server, always check the username, host, and port."
+      },
+      fr: {
+        goal: "Se connecter au serveur Bandit avec SSH.",
+        know: "SSH permet de se connecter à un autre ordinateur depuis le terminal. Pour ce niveau, les éléments importants sont le nom d’utilisateur, l’hôte et le port.",
+        commands: "ssh bandit0@bandit.labs.overthewire.org -p 2220",
+        explanation:
+          "La commande démarre une connexion SSH. `bandit0` est le nom d’utilisateur, `bandit.labs.overthewire.org` est l’hôte, et `-p 2220` indique à SSH d’utiliser le port 2220 au lieu du port 22 par défaut.",
+        mistake:
+          "Une erreur fréquente est d’oublier `-p 2220`. Sans cela, SSH essaie le port par défaut et la connexion peut échouer.",
+        takeaway:
+          "Avant de se connecter à un serveur, il faut toujours vérifier le nom d’utilisateur, l’hôte et le port."
+      }
+    }
+  },
+  {
+    id: "level-0-1",
+    status: "completed",
+    title: {
+      en: "Level 0 → Level 1",
+      fr: "Niveau 0 → Niveau 1"
+    },
+    content: {
+      en: {
+        goal: "Find the password stored in a file named `readme`.",
+        know: "`ls` lists files in the current directory. `cat` prints the contents of a file.",
+        commands: "ls\ncat readme",
+        explanation:
+          "First, use `ls` to see what files are available. When you see `readme`, use `cat readme` to display its contents.",
+        mistake:
+          "Do not assume the file name. Linux is case-sensitive, so `Readme`, `README`, and `readme` are different.",
+        takeaway:
+          "`ls` helps you observe your environment. `cat` helps you read simple text files."
+      },
+      fr: {
+        goal: "Trouver le mot de passe stocké dans un fichier nommé `readme`.",
+        know: "`ls` liste les fichiers du répertoire actuel. `cat` affiche le contenu d’un fichier.",
+        commands: "ls\ncat readme",
+        explanation:
+          "D’abord, utilisez `ls` pour voir les fichiers disponibles. Quand vous voyez `readme`, utilisez `cat readme` pour afficher son contenu.",
+        mistake:
+          "Ne devinez pas le nom du fichier. Linux est sensible à la casse, donc `Readme`, `README` et `readme` sont différents.",
+        takeaway:
+          "`ls` aide à observer l’environnement. `cat` aide à lire des fichiers texte simples."
+      }
+    }
+  },
+  {
+    id: "level-1-2",
+    status: "completed",
+    title: {
+      en: "Level 1 → Level 2",
+      fr: "Niveau 1 → Niveau 2"
+    },
+    content: {
+      en: {
+        goal: "Read a file named `-`.",
+        know: "A dash can have special meaning in terminal commands, so you need to reference the file path clearly.",
+        commands: "ls\ncat ./-",
+        explanation:
+          "If you run `cat -`, the terminal may treat `-` as standard input instead of a filename. Using `./-` tells the shell: read the file named `-` in the current directory.",
+        mistake:
+          "Running `cat -` and thinking the terminal is broken when it starts waiting for input.",
+        takeaway:
+          "When a filename looks like an option or special symbol, use a clear path such as `./filename`."
+      },
+      fr: {
+        goal: "Lire un fichier nommé `-`.",
+        know: "Un tiret peut avoir une signification spéciale dans les commandes du terminal, donc il faut préciser clairement le chemin du fichier.",
+        commands: "ls\ncat ./-",
+        explanation:
+          "Si vous lancez `cat -`, le terminal peut traiter `-` comme une entrée standard au lieu d’un nom de fichier. Avec `./-`, vous dites au shell : lis le fichier nommé `-` dans le répertoire actuel.",
+        mistake:
+          "Lancer `cat -` et penser que le terminal est bloqué alors qu’il attend une entrée.",
+        takeaway:
+          "Quand un nom de fichier ressemble à une option ou à un symbole spécial, utilisez un chemin clair comme `./filename`."
+      }
+    }
+  },
+  {
+    id: "level-2-3",
+    status: "completed",
+    title: {
+      en: "Level 2 → Level 3",
+      fr: "Niveau 2 → Niveau 3"
+    },
+    content: {
+      en: {
+        goal: "Read a file with spaces in its name.",
+        know: "Spaces separate command arguments. Quotes allow the shell to treat multiple words as one filename.",
+        commands: "ls\ncat \"spaces in this filename\"",
+        explanation:
+          "The shell normally splits text at spaces. Wrapping the filename in quotes keeps the full filename together.",
+        mistake:
+          "Typing the filename without quotes, which makes the shell think you are naming several different files.",
+        takeaway:
+          "Use quotes when a filename contains spaces."
+      },
+      fr: {
+        goal: "Lire un fichier dont le nom contient des espaces.",
+        know: "Les espaces séparent les arguments d’une commande. Les guillemets permettent au shell de traiter plusieurs mots comme un seul nom de fichier.",
+        commands: "ls\ncat \"spaces in this filename\"",
+        explanation:
+          "Le shell sépare normalement le texte au niveau des espaces. Mettre le nom du fichier entre guillemets garde le nom complet ensemble.",
+        mistake:
+          "Taper le nom du fichier sans guillemets, ce qui fait croire au shell que vous indiquez plusieurs fichiers différents.",
+        takeaway:
+          "Utilisez des guillemets quand un nom de fichier contient des espaces."
+      }
+    }
+  },
+  {
+    id: "level-3-4",
+    status: "completed",
+    title: {
+      en: "Level 3 → Level 4",
+      fr: "Niveau 3 → Niveau 4"
+    },
+    content: {
+      en: {
+        goal: "Find a hidden file inside the `inhere` directory.",
+        know: "Files starting with a dot are hidden. `ls -la` shows all files, including hidden ones.",
+        commands: "cd inhere\nls -la\ncat .hidden",
+        explanation:
+          "Move into the directory using `cd inhere`. A normal `ls` may not show anything useful, so use `ls -la` to reveal hidden files. Then read the hidden file.",
+        mistake:
+          "Using only `ls` and assuming the directory is empty.",
+        takeaway:
+          "Hidden files are not gone. They are simply not shown unless you ask for all files."
+      },
+      fr: {
+        goal: "Trouver un fichier caché dans le répertoire `inhere`.",
+        know: "Les fichiers qui commencent par un point sont cachés. `ls -la` affiche tous les fichiers, y compris les fichiers cachés.",
+        commands: "cd inhere\nls -la\ncat .hidden",
+        explanation:
+          "Entrez dans le répertoire avec `cd inhere`. Un simple `ls` peut ne rien montrer d’utile, donc utilisez `ls -la` pour révéler les fichiers cachés. Ensuite, lisez le fichier caché.",
+        mistake:
+          "Utiliser seulement `ls` et penser que le répertoire est vide.",
+        takeaway:
+          "Les fichiers cachés ne sont pas absents. Ils ne sont simplement pas affichés sans l’option appropriée."
+      }
+    }
+  },
+  {
+    id: "level-4-5",
+    status: "completed",
+    title: {
+      en: "Level 4 → Level 5",
+      fr: "Niveau 4 → Niveau 5"
+    },
+    content: {
+      en: {
+        goal: "Find the only human-readable file inside the `inhere` directory.",
+        know: "`file` identifies what type of content a file contains.",
+        commands: "cd inhere\nls\nfile ./*\ncat ./-file07",
+        explanation:
+          "Instead of opening every file manually, run `file ./*` to inspect each file type. Look for the one that appears to contain readable text, then use `cat` on that file.",
+        mistake:
+          "Opening random files one by one instead of using the right tool to inspect them first.",
+        takeaway:
+          "`file` saves time when you do not know what a file contains."
+      },
+      fr: {
+        goal: "Trouver le seul fichier lisible par un humain dans le répertoire `inhere`.",
+        know: "`file` identifie le type de contenu d’un fichier.",
+        commands: "cd inhere\nls\nfile ./*\ncat ./-file07",
+        explanation:
+          "Au lieu d’ouvrir chaque fichier manuellement, lancez `file ./*` pour inspecter le type de chaque fichier. Cherchez celui qui semble contenir du texte lisible, puis utilisez `cat` sur ce fichier.",
+        mistake:
+          "Ouvrir les fichiers au hasard un par un au lieu d’utiliser le bon outil pour les inspecter d’abord.",
+        takeaway:
+          "`file` fait gagner du temps quand on ne sait pas ce qu’un fichier contient."
+      }
+    }
+  },
+  {
+    id: "level-5-6",
+    status: "completed",
+    title: {
+      en: "Level 5 → Level 6",
+      fr: "Niveau 5 → Niveau 6"
+    },
+    content: {
+      en: {
+        goal: "Find a file with specific properties: human-readable, 1033 bytes, and not executable.",
+        know: "`find` can search by type, size, permissions, and other file properties.",
+        commands: "find . -type f -size 1033c ! -executable",
+        explanation:
+          "`-type f` searches only for regular files. `-size 1033c` looks for a file that is exactly 1033 bytes. `! -executable` excludes executable files.",
+        mistake:
+          "Using the wrong size unit. The `c` means bytes.",
+        takeaway:
+          "`find` becomes powerful when you combine filters."
+      },
+      fr: {
+        goal: "Trouver un fichier avec des propriétés précises : lisible, 1033 octets et non exécutable.",
+        know: "`find` peut rechercher par type, taille, permissions et autres propriétés.",
+        commands: "find . -type f -size 1033c ! -executable",
+        explanation:
+          "`-type f` recherche uniquement les fichiers réguliers. `-size 1033c` cherche un fichier exactement de 1033 octets. `! -executable` exclut les fichiers exécutables.",
+        mistake:
+          "Utiliser la mauvaise unité de taille. Le `c` signifie octets.",
+        takeaway:
+          "`find` devient puissant quand on combine plusieurs filtres."
+      }
+    }
+  },
+  {
+    id: "level-6-7",
+    status: "completed",
+    title: {
+      en: "Level 6 → Level 7",
+      fr: "Niveau 6 → Niveau 7"
+    },
+    content: {
+      en: {
+        goal: "Find a file owned by a specific user and group with a specific size.",
+        know: "System-wide searches often produce permission errors. Redirecting errors keeps the output readable.",
+        commands: "find / -user bandit7 -group bandit6 -size 33c 2>/dev/null",
+        explanation:
+          "`find /` searches from the root of the filesystem. `-user`, `-group`, and `-size` filter the results. `2>/dev/null` hides permission error messages.",
+        mistake:
+          "Not redirecting errors and getting overwhelmed by `Permission denied` messages.",
+        takeaway:
+          "When searching across the whole system, clean error output helps you see the useful result."
+      },
+      fr: {
+        goal: "Trouver un fichier appartenant à un utilisateur et un groupe précis avec une taille précise.",
+        know: "Les recherches dans tout le système produisent souvent des erreurs de permission. Rediriger les erreurs rend la sortie plus lisible.",
+        commands: "find / -user bandit7 -group bandit6 -size 33c 2>/dev/null",
+        explanation:
+          "`find /` recherche depuis la racine du système de fichiers. `-user`, `-group` et `-size` filtrent les résultats. `2>/dev/null` masque les messages d’erreur de permission.",
+        mistake:
+          "Ne pas rediriger les erreurs et se retrouver noyé dans les messages `Permission denied`.",
+        takeaway:
+          "Quand on cherche dans tout le système, nettoyer les erreurs aide à voir le vrai résultat."
+      }
+    }
+  },
+  {
+    id: "level-7-8",
+    status: "completed",
+    title: {
+      en: "Level 7 → Level 8",
+      fr: "Niveau 7 → Niveau 8"
+    },
+    content: {
+      en: {
+        goal: "Find the password next to the word `millionth` in `data.txt`.",
+        know: "`grep` searches for text patterns inside files.",
+        commands: "grep \"millionth\" data.txt",
+        explanation:
+          "Instead of reading a huge file manually, use `grep` to search for the exact word. It prints the line where the word appears.",
+        mistake:
+          "Using `cat` on a very large file and trying to visually scan everything.",
+        takeaway:
+          "`grep` is one of the most important commands for searching text quickly."
+      },
+      fr: {
+        goal: "Trouver le mot de passe à côté du mot `millionth` dans `data.txt`.",
+        know: "`grep` recherche des motifs de texte dans des fichiers.",
+        commands: "grep \"millionth\" data.txt",
+        explanation:
+          "Au lieu de lire un énorme fichier manuellement, utilisez `grep` pour rechercher le mot exact. Il affiche la ligne où le mot apparaît.",
+        mistake:
+          "Utiliser `cat` sur un très grand fichier et essayer de tout scanner visuellement.",
+        takeaway:
+          "`grep` est l’une des commandes les plus importantes pour rechercher rapidement du texte."
+      }
+    }
+  },
+  {
+    id: "level-8-9",
+    status: "completed",
+    title: {
+      en: "Level 8 → Level 9",
+      fr: "Niveau 8 → Niveau 9"
+    },
+    content: {
+      en: {
+        goal: "Find the only line that appears once in `data.txt`.",
+        know: "`uniq` works best when repeated lines are next to each other, so sorting first matters.",
+        commands: "sort data.txt | uniq -u",
+        explanation:
+          "`sort data.txt` groups identical lines together. The pipe sends the sorted output into `uniq -u`, which prints only lines that appear once.",
+        mistake:
+          "Running `uniq -u data.txt` without sorting first.",
+        takeaway:
+          "For unique-line problems, the pattern is often `sort file | uniq -u`."
+      },
+      fr: {
+        goal: "Trouver la seule ligne qui apparaît une seule fois dans `data.txt`.",
+        know: "`uniq` fonctionne mieux quand les lignes répétées sont côte à côte, donc il faut trier d’abord.",
+        commands: "sort data.txt | uniq -u",
+        explanation:
+          "`sort data.txt` regroupe les lignes identiques. Le pipe envoie la sortie triée vers `uniq -u`, qui affiche uniquement les lignes présentes une seule fois.",
+        mistake:
+          "Lancer `uniq -u data.txt` sans trier d’abord.",
+        takeaway:
+          "Pour les problèmes de ligne unique, le modèle est souvent `sort file | uniq -u`."
+      }
+    }
+  },
+  {
+    id: "level-9-10",
+    status: "completed",
+    title: {
+      en: "Level 9 → Level 10",
+      fr: "Niveau 9 → Niveau 10"
+    },
+    content: {
+      en: {
+        goal: "Find readable text inside a file that looks like binary data.",
+        know: "`strings` extracts readable character sequences from binary-looking files.",
+        commands: "strings data.txt | grep \"=\"",
+        explanation:
+          "The file may contain unreadable data. `strings` pulls out readable text. Piping to `grep` helps filter the output to useful lines.",
+        mistake:
+          "Using `cat` on binary-looking files and making the terminal display strange characters.",
+        takeaway:
+          "`strings` is the safer first move when a file does not look like normal text."
+      },
+      fr: {
+        goal: "Trouver du texte lisible dans un fichier qui ressemble à des données binaires.",
+        know: "`strings` extrait les séquences de caractères lisibles dans des fichiers d’apparence binaire.",
+        commands: "strings data.txt | grep \"=\"",
+        explanation:
+          "Le fichier peut contenir des données illisibles. `strings` extrait le texte lisible. Le pipe vers `grep` aide à filtrer la sortie pour trouver les lignes utiles.",
+        mistake:
+          "Utiliser `cat` sur des fichiers d’apparence binaire et afficher des caractères étranges dans le terminal.",
+        takeaway:
+          "`strings` est souvent le meilleur premier réflexe quand un fichier ne ressemble pas à du texte normal."
+      }
+    }
+  },
+  {
+    id: "level-10-11",
+    status: "completed",
+    title: {
+      en: "Level 10 → Level 11",
+      fr: "Niveau 10 → Niveau 11"
+    },
+    content: {
+      en: {
+        goal: "Decode a Base64-encoded file.",
+        know: "Base64 is an encoding format, not encryption. It can be decoded back into readable text.",
+        commands: "base64 -d data.txt",
+        explanation:
+          "`base64 -d` decodes the contents of `data.txt`. The `-d` flag means decode.",
+        mistake:
+          "Running `base64 data.txt` without `-d`, which encodes instead of decoding.",
+        takeaway:
+          "When you see Base64 text, use decoding before assuming it is encrypted."
+      },
+      fr: {
+        goal: "Décoder un fichier encodé en Base64.",
+        know: "Base64 est un format d’encodage, pas un chiffrement. Il peut être décodé en texte lisible.",
+        commands: "base64 -d data.txt",
+        explanation:
+          "`base64 -d` décode le contenu de `data.txt`. L’option `-d` signifie decode.",
+        mistake:
+          "Lancer `base64 data.txt` sans `-d`, ce qui encode au lieu de décoder.",
+        takeaway:
+          "Quand vous voyez du texte Base64, décodez-le avant de supposer qu’il est chiffré."
+      }
+    }
+  },
+  {
+    id: "level-11-12",
+    status: "completed",
+    title: {
+      en: "Level 11 → Level 12",
+      fr: "Niveau 11 → Niveau 12"
+    },
+    content: {
+      en: {
+        goal: "Decode text that has been rotated using ROT13.",
+        know: "ROT13 shifts letters by 13 positions. `tr` can translate one set of characters into another.",
+        commands: "cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'",
+        explanation:
+          "`cat data.txt` outputs the encoded text. `tr` maps each letter to its ROT13 equivalent, turning the text back into readable form.",
+        mistake:
+          "Trying to solve the substitution manually. It wastes time and increases errors.",
+        takeaway:
+          "`tr` is useful for character substitution tasks."
+      },
+      fr: {
+        goal: "Décoder un texte transformé avec ROT13.",
+        know: "ROT13 décale les lettres de 13 positions. `tr` peut traduire un ensemble de caractères vers un autre.",
+        commands: "cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'",
+        explanation:
+          "`cat data.txt` affiche le texte encodé. `tr` remplace chaque lettre par son équivalent ROT13, ce qui rend le texte lisible.",
+        mistake:
+          "Essayer de résoudre la substitution manuellement. Cela fait perdre du temps et augmente les erreurs.",
+        takeaway:
+          "`tr` est utile pour les tâches de substitution de caractères."
+      }
+    }
+  },
+  {
+    id: "level-12-13",
+    status: "completed",
+    title: {
+      en: "Level 12 → Level 13",
+      fr: "Niveau 12 → Niveau 13"
+    },
+    content: {
+      en: {
+        goal: "Reverse a hex dump and unpack several compressed files.",
+        know: "This level combines `xxd`, `file`, and compression tools such as gzip, bzip2, and tar.",
+        commands:
+          "mkdir /tmp/emma-bandit\ncp data.txt /tmp/emma-bandit\ncd /tmp/emma-bandit\nxxd -r data.txt > data\nfile data",
+        explanation:
+          "Work inside `/tmp` so you can create and modify files. The original file is a hex dump, so reverse it with `xxd -r`. Then use `file` repeatedly to identify the current format before unpacking it with the correct tool.",
+        mistake:
+          "Trying to decompress the original `data.txt` before reversing the hex dump.",
+        takeaway:
+          "When a file changes formats multiple times, identify the file type at every step before choosing the next command."
+      },
+      fr: {
+        goal: "Inverser un dump hexadécimal et décompresser plusieurs fichiers.",
+        know: "Ce niveau combine `xxd`, `file` et des outils de compression comme gzip, bzip2 et tar.",
+        commands:
+          "mkdir /tmp/emma-bandit\ncp data.txt /tmp/emma-bandit\ncd /tmp/emma-bandit\nxxd -r data.txt > data\nfile data",
+        explanation:
+          "Travaillez dans `/tmp` pour pouvoir créer et modifier des fichiers. Le fichier original est un dump hexadécimal, donc il faut l’inverser avec `xxd -r`. Ensuite, utilisez `file` à chaque étape pour identifier le format actuel avant de le décompresser avec le bon outil.",
+        mistake:
+          "Essayer de décompresser directement `data.txt` avant d’inverser le dump hexadécimal.",
+        takeaway:
+          "Quand un fichier change de format plusieurs fois, identifiez le type du fichier à chaque étape avant de choisir la commande suivante."
+      }
+    }
+  },
+  {
+    id: "level-13-14",
+    status: "learning",
+    title: {
+      en: "Level 13 → Level 14",
+      fr: "Niveau 13 → Niveau 14"
+    },
+    content: {
+      en: {
+        goal: "Log in to the next level using an SSH private key instead of a password.",
+        know: "SSH keys are used for authentication. Private keys must have strict permissions before SSH will accept them.",
+        commands:
+          "ls\nchmod 600 sshkey.private\nssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220",
+        explanation:
+          "The `sshkey.private` file acts like a key for the next account. `chmod 600` makes the key readable only by the owner. Then `ssh -i` tells SSH to use that private key for login. This is the level I am currently working on, so these notes may be updated as I understand the process better.",
+        mistake:
+          "Getting a permissions error because the private key is too open.",
+        takeaway:
+          "SSH private keys must be protected. If the permissions are too open, SSH refuses to use them."
+      },
+      fr: {
+        goal: "Se connecter au niveau suivant avec une clé privée SSH au lieu d’un mot de passe.",
+        know: "Les clés SSH servent à l’authentification. Les clés privées doivent avoir des permissions strictes avant que SSH les accepte.",
+        commands:
+          "ls\nchmod 600 sshkey.private\nssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220",
+        explanation:
+          "Le fichier `sshkey.private` fonctionne comme une clé pour le compte suivant. `chmod 600` rend la clé lisible uniquement par son propriétaire. Ensuite, `ssh -i` indique à SSH d’utiliser cette clé privée pour se connecter. C’est le niveau sur lequel je travaille actuellement, donc ces notes pourront être mises à jour au fur et à mesure que je comprends mieux le processus.",
+        mistake:
+          "Obtenir une erreur de permissions parce que la clé privée est trop ouverte.",
+        takeaway:
+          "Les clés privées SSH doivent être protégées. Si les permissions sont trop ouvertes, SSH refuse de les utiliser."
+      }
+    }
+  }
+];
+
+let currentLanguage = localStorage.getItem("banditJournalLanguage") || "en";
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderLevels();
+  renderToc();
+  applyLanguage(currentLanguage);
+  initTerminalAnimation();
+  initMobileMenu();
+  initMobileToc();
+  initLanguageButtons();
+  initScrollProgress();
+  initBackToTop();
+  initScrollSpy();
+  initCloseMobileMenuOnClick();
+});
+
+function applyLanguage(lang) {
+  currentLanguage = lang;
+  localStorage.setItem("banditJournalLanguage", lang);
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.getAttribute("data-i18n");
+    if (translations[lang][key]) {
+      element.textContent = translations[lang][key];
+    }
+  });
+
+  document.querySelectorAll(".language-button").forEach((button) => {
+    button.classList.toggle("active", button.dataset.lang === lang);
+  });
+
+  renderLevels();
+  renderToc();
+  updateBackToTopText();
+}
+
+function renderLevels() {
+  const container = document.getElementById("levels-container");
+  if (!container) return;
+
+  const t = translations[currentLanguage];
+  container.innerHTML = "";
+
+  levels.forEach((level, index) => {
+    const content = level.content[currentLanguage];
+    const isOpen = index === 0;
+    const statusText =
+      level.status === "completed" ? t.status_completed : t.status_learning;
+    const statusClass =
+      level.status === "completed" ? "status-completed" : "status-learning";
+
+    const card = document.createElement("article");
+    card.className = `level-card ${isOpen ? "open" : ""}`;
+    card.id = level.id;
+
+    card.innerHTML = `
+      <button class="level-header" type="button" aria-expanded="${isOpen}">
+        <span class="level-title-group">
+          <span class="level-title">${level.title[currentLanguage]}</span>
+          <span class="status-badge ${statusClass}">${statusText}</span>
+        </span>
+        <span class="accordion-icon" aria-hidden="true">⌄</span>
+      </button>
+
+      <div class="level-panel">
+        <div class="level-inner">
+          ${renderContentBlock(t.label_goal, content.goal)}
+          ${renderContentBlock(t.label_know, content.know)}
+          ${renderCodeBlock(t.label_commands, content.commands)}
+          ${renderContentBlock(t.label_explanation, content.explanation)}
+          ${renderContentBlock(t.label_mistake, content.mistake)}
+          ${renderContentBlock(t.label_takeaway, content.takeaway)}
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+
+    const panel = card.querySelector(".level-panel");
+    if (isOpen) {
+      panel.style.maxHeight = `${panel.scrollHeight}px`;
+    }
+
+    const header = card.querySelector(".level-header");
+    header.addEventListener("click", () => toggleAccordion(card));
+  });
+}
+
+function renderContentBlock(label, text) {
+  return `
+    <section class="content-block">
+      <h3 class="content-label">${label}</h3>
+      <p class="level-text">${formatInlineCode(text)}</p>
+    </section>
+  `;
+}
+
+function renderCodeBlock(label, commands) {
+  return `
+    <section class="content-block">
+      <h3 class="content-label">${label}</h3>
+      <div class="code-wrapper">
+        <pre class="code-block"><code>${escapeHtml(commands)}</code></pre>
+        <button class="copy-button" type="button">${translations[currentLanguage].copy}</button>
+      </div>
+    </section>
+  `;
+}
+
+function renderToc() {
+  const desktopToc = document.getElementById("desktop-toc");
+  const mobileToc = document.getElementById("mobile-toc");
+
+  if (!desktopToc || !mobileToc) return;
+
+  desktopToc.innerHTML = "";
+  mobileToc.innerHTML = "";
+
+  levels.forEach((level) => {
+    const title = level.title[currentLanguage];
+    const itemHtml = `
+      <li>
+        <a class="toc-link" href="#${level.id}">${title}</a>
+      </li>
+    `;
+
+    desktopToc.insertAdjacentHTML("beforeend", itemHtml);
+    mobileToc.insertAdjacentHTML("beforeend", itemHtml);
+  });
+
+  document.querySelectorAll(".toc-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      closeMobileToc();
+    });
+  });
+}
+
+function toggleAccordion(card) {
+  const panel = card.querySelector(".level-panel");
+  const header = card.querySelector(".level-header");
+  const isOpen = card.classList.contains("open");
+
+  if (isOpen) {
+    card.classList.remove("open");
+    header.setAttribute("aria-expanded", "false");
+    panel.style.maxHeight = "0px";
+  } else {
+    card.classList.add("open");
+    header.setAttribute("aria-expanded", "true");
+    panel.style.maxHeight = `${panel.scrollHeight}px`;
+  }
+}
+
+document.addEventListener("click", async (event) => {
+  const button = event.target.closest(".copy-button");
+  if (!button) return;
+
+  const code = button.parentElement.querySelector("code");
+  if (!code) return;
+
+  const textToCopy = code.innerText;
+  const t = translations[currentLanguage];
+
+  try {
+    await navigator.clipboard.writeText(textToCopy);
+    button.textContent = t.copied;
+
+    setTimeout(() => {
+      button.textContent = translations[currentLanguage].copy;
+    }, 2000);
+  } catch {
+    button.textContent = "Error";
+
+    setTimeout(() => {
+      button.textContent = translations[currentLanguage].copy;
+    }, 2000);
+  }
+});
+
+function initLanguageButtons() {
+  document.querySelectorAll(".language-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      applyLanguage(button.dataset.lang);
+    });
+  });
+}
+
+function initMobileMenu() {
+  const button = document.getElementById("mobile-menu-button");
+  const menu = document.getElementById("nav-menu");
+
+  if (!button || !menu) return;
+
+  button.addEventListener("click", () => {
+    const isOpen = menu.classList.toggle("open");
+    button.setAttribute("aria-expanded", String(isOpen));
+  });
+}
+
+function initCloseMobileMenuOnClick() {
+  const menu = document.getElementById("nav-menu");
+  const button = document.getElementById("mobile-menu-button");
+
+  if (!menu || !button) return;
+
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("open");
+      button.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+function initMobileToc() {
+  const button = document.getElementById("mobile-toc-button");
+  const panel = document.getElementById("mobile-toc-panel");
+
+  if (!button || !panel) return;
+
+  button.addEventListener("click", () => {
+    const isOpen = panel.classList.toggle("open");
+    button.setAttribute("aria-expanded", String(isOpen));
+  });
+}
+
+function closeMobileToc() {
+  const button = document.getElementById("mobile-toc-button");
+  const panel = document.getElementById("mobile-toc-panel");
+
+  if (!button || !panel) return;
+
+  panel.classList.remove("open");
+  button.setAttribute("aria-expanded", "false");
+}
+
+function initTerminalAnimation() {
+  const terminalBody = document.getElementById("terminal-body");
+  if (!terminalBody) return;
+
+  const lines = [
+    {
+      command: "ssh bandit0@bandit.labs.overthewire.org -p 2220",
+      output: "Welcome to OverTheWire Bandit."
+    },
+    {
+      command: "ls",
+      output: "readme"
+    },
+    {
+      command: "cat readme",
+      output: "[PASSWORD_REDACTED]"
+    },
+    {
+      command: "find . -type f -size 1033c ! -executable",
+      output: "./inhere/maybehere07/.file2"
+    },
+    {
+      command: "grep millionth data.txt",
+      output: "millionth    [PASSWORD_REDACTED]"
+    },
+    {
+      command: "base64 -d data.txt",
+      output: "Decoded content hidden for learning."
+    },
+    {
+      command:
+        "ssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220",
+      output: "Authentication method: private key"
+    }
+  ];
+
+  terminalBody.innerHTML = "";
+
+  lines.forEach((line, index) => {
+    setTimeout(() => {
+      const commandLine = document.createElement("div");
+      commandLine.className = "terminal-line";
+      commandLine.innerHTML = `
+        <span class="terminal-prompt">emma@bandit:~$</span>
+        <span class="terminal-command">${escapeHtml(line.command)}</span>
+      `;
+      terminalBody.appendChild(commandLine);
+
+      setTimeout(() => {
+        const outputLine = document.createElement("div");
+        outputLine.className = "terminal-output";
+        outputLine.textContent = line.output;
+        terminalBody.appendChild(outputLine);
+      }, 350);
+    }, index * 950);
+  });
+
+  setTimeout(() => {
+    const cursorLine = document.createElement("div");
+    cursorLine.className = "terminal-line";
+    cursorLine.style.opacity = "1";
+    cursorLine.style.transform = "translateY(0)";
+    cursorLine.innerHTML = `
+      <span class="terminal-prompt">emma@bandit:~$</span>
+      <span class="cursor"></span>
+    `;
+    terminalBody.appendChild(cursorLine);
+  }, lines.length * 950 + 500);
+}
+
+function initScrollProgress() {
+  const progress = document.getElementById("scroll-progress");
+  if (!progress) return;
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progressWidth = pageHeight > 0 ? (scrollTop / pageHeight) * 100 : 0;
+
+    progress.style.width = `${progressWidth}%`;
+  });
+}
+
+function initBackToTop() {
+  const button = document.getElementById("back-to-top");
+  if (!button) return;
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 500) {
+      button.classList.add("visible");
+    } else {
+      button.classList.remove("visible");
+    }
+  });
+
+  button.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
+
+function updateBackToTopText() {
+  const button = document.getElementById("back-to-top");
+  if (!button) return;
+
+  button.textContent = translations[currentLanguage].btn_top;
+}
+
+function initScrollSpy() {
+  window.addEventListener("scroll", updateActiveTocLink);
+  window.addEventListener("resize", updateActiveTocLink);
+  updateActiveTocLink();
+}
+
+function updateActiveTocLink() {
+  const cards = document.querySelectorAll(".level-card");
+  const tocLinks = document.querySelectorAll(".toc-link");
+
+  if (!cards.length || !tocLinks.length) return;
+
+  let currentId = cards[0].id;
+
+  cards.forEach((card) => {
+    const rect = card.getBoundingClientRect();
+    if (rect.top <= 150) {
+      currentId = card.id;
+    }
+  });
+
+  tocLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    link.classList.toggle("active", href === `#${currentId}`);
+  });
+}
+
+function formatInlineCode(text) {
+  return escapeHtml(text).replace(/`([^`]+)`/g, "<code>$1</code>");
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
