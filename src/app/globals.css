@@ -3507,3 +3507,20 @@ html.portfolio-light .paper-hero-copy {
     min-height: 34svh !important;
   }
 }
+
+
+/* Mobile: remove the decorative shader panel entirely so content follows the hero */
+@media (max-width: 700px) {
+  .paper-hero-shader {
+    display: none !important;
+  }
+
+  .paper-hero {
+    min-height: auto !important;
+  }
+
+  .paper-hero-copy {
+    min-height: auto !important;
+    padding-bottom: 2rem;
+  }
+}
