@@ -15,14 +15,6 @@ const resultMessages = {
     "AUTHENTICATION FAILED // INPUT MISMATCH DETECTED // VERIFY CREDENTIAL STRING.",
 } as const;
 
-const banditLogo = [
-  " _                     _ _ _",
-  "| |__   __ _ _ __   __| (_) |_",
-  "| '_ \\ / _` | '_ \\ / _` | | __|",
-  "| |_) | (_| | | | | (_| | | |_",
-  "|_.__/ \\__,_|_| |_|\\__,_|_|\\__|",
-].join("\n");
-
 export default function Projects() {
   const [password, setPassword] = useState("");
   const [result, setResult] = useState<"idle" | "success" | "error">("idle");
@@ -52,13 +44,7 @@ export default function Projects() {
 
   function checkPassword(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    if (password === demoPassword) {
-      setResult("success");
-      return;
-    }
-
-    setResult("error");
+    setResult(password === demoPassword ? "success" : "error");
   }
 
   return (
@@ -80,76 +66,66 @@ export default function Projects() {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="project-bandit-terminal">
-          <div className="project-bandit-topbar">
-            <span className="project-bandit-tab">Command Prompt - ssh bandit</span>
-            <span className="project-bandit-window-icons" aria-hidden="true">
-              <span>−</span>
-              <span>□</span>
-              <span>×</span>
-            </span>
+        <div className="project-bandit-challenge-card">
+          <div className="project-bandit-challenge-head">
+            <span>ACCESS NODE 01</span>
+            <span>STATUS: LOCKED</span>
           </div>
 
-          <div className="project-bandit-screen">
-            <p className="project-bandit-line">
-              C:\\Users\\emma&gt;ssh bandit0@bandit.labs.overthewire.org -p2220
+          <div className="project-bandit-challenge-body">
+            <p className="project-bandit-eyebrow">MINI CHALLENGE</p>
+
+            <h3>Enter the recovered credential.</h3>
+
+            <p className="project-bandit-challenge-copy">
+              Copy the key exactly. One wrong character and the node stays locked.
             </p>
 
-            <pre className="project-bandit-ascii" aria-hidden="true">
-              {banditLogo}
-            </pre>
+            <div className="project-bandit-key">
+              <span>RECOVERED KEY</span>
+              <code>{demoPassword}</code>
+            </div>
 
-            <p className="project-bandit-center">
-              This is an OverTheWire-inspired mini challenge.
-            </p>
+            <form className="project-bandit-form" onSubmit={checkPassword}>
+              <label htmlFor="bandit-password">PASSWORD INPUT</label>
 
-            <p className="project-bandit-center project-bandit-muted">
-              A recovered password was found in the previous level.
-            </p>
+              <div className="project-bandit-input-row">
+                <input
+                  id="bandit-password"
+                  type="text"
+                  value={password}
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                    if (result !== "idle") setResult("idle");
+                  }}
+                  autoComplete="off"
+                  spellCheck={false}
+                  aria-describedby="bandit-result"
+                  placeholder="paste credential..."
+                />
+                <button type="submit">UNLOCK</button>
+              </div>
+            </form>
 
-            <div className="project-bandit-challenge">
-              <p className="project-bandit-hint">
-                recovered_password: <strong>{demoPassword}</strong>
-              </p>
-
-              <form className="project-bandit-form" onSubmit={checkPassword}>
-                <label htmlFor="bandit-password">
-                  bandit1@portfolio&apos;s password:
-                </label>
-
-                <div className="project-bandit-input-row">
-                  <input
-                    id="bandit-password"
-                    type="text"
-                    value={password}
-                    onChange={(event) => {
-                      setPassword(event.target.value);
-                      if (result !== "idle") setResult("idle");
-                    }}
-                    autoComplete="off"
-                    spellCheck={false}
-                    aria-describedby="bandit-result"
-                  />
-                  <button type="submit">enter</button>
-                </div>
-              </form>
-
-              <p
-                id="bandit-result"
-                className={`project-bandit-result ${
-                  result === "success"
-                    ? "project-bandit-result-success"
-                    : result === "error"
-                      ? "project-bandit-result-error"
-                      : ""
-                }`}
-                aria-live="polite"
-              >
-                {typedResult}
-                {result !== "idle" && typedResult.length < resultMessages[result].length && (
-                  <span className="project-bandit-caret" aria-hidden="true" />
-                )}
-              </p>
+            <div
+              id="bandit-result"
+              className={`project-bandit-status ${
+                result === "success"
+                  ? "project-bandit-result-success"
+                  : result === "error"
+                    ? "project-bandit-result-error"
+                    : ""
+              }`}
+              aria-live="polite"
+            >
+              <span className="project-bandit-status-dot" aria-hidden="true" />
+              <span>
+                {typedResult || "AWAITING INPUT // NODE LOCKED"}
+                {result !== "idle" &&
+                  typedResult.length < resultMessages[result].length && (
+                    <span className="project-bandit-caret" aria-hidden="true" />
+                  )}
+              </span>
             </div>
           </div>
         </div>
