@@ -2,61 +2,79 @@
 
 import { motion } from "motion/react";
 
-const expertises = [
-  "Software Development",
-  "Cybersecurity",
-  "Web Development",
-  "Linux",
-  "Networking",
-  "C",
-  "JavaScript / TypeScript",
-] as const;
+const story = [
+  "I am a developer driven by curiosity, the kind that makes me want to know what is happening behind the screen instead of just accepting that it works.",
+  "I started by learning C, Linux and computer fundamentals. They taught me how to slow down, read errors properly and stay with a problem long enough to understand it.",
+  "Then web development gave me a way to turn ideas into something real. I like building things, breaking them, improving them and watching an idea slowly become something people can actually use.",
+  "I do not mind getting stuck. Most of the time, that is where I learn the most. I test things, question what went wrong and keep digging until the problem finally makes sense.",
+  "That same curiosity is what pulled me toward cybersecurity. I want to understand not only how software is built, but how systems fail, how they are protected and how both sides make me a stronger engineer.",
+];
+
+function StoryParagraph({
+  text,
+  index,
+}: {
+  text: string;
+  index: number;
+}) {
+  const words = text.split(" ");
+
+  return (
+    <motion.p
+      className="about-story-line"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.55 }}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.028,
+            delayChildren: index * 0.04,
+          },
+        },
+      }}
+    >
+      {words.map((word, wordIndex) => (
+        <motion.span
+          key={`${word}-${wordIndex}`}
+          variants={{
+            hidden: { opacity: 0.12, y: 7 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.42, ease: [0.16, 1, 0.3, 1] },
+            },
+          }}
+        >
+          {word}
+          {wordIndex < words.length - 1 ? " " : ""}
+        </motion.span>
+      ))}
+    </motion.p>
+  );
+}
 
 export default function About() {
   return (
-    <section className="about-section about-emanuele" id="about">
-      <motion.div
-        className="about-emanuele-main"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <h2>
-          Software developer &amp; cybersecurity student based in Cotonou
-        </h2>
-
-        <div className="about-emanuele-copy">
-          <p>
-            I&apos;m a curious developer interested in how software works both
-            on the surface and underneath it. I build for the web, work with C
-            and Linux, and keep pushing deeper into systems, networks and
-            security.
-          </p>
-
-          <p>
-            I like turning ideas into things people can actually use, then
-            understanding what makes them reliable, secure and worth improving.
-            That mix of building and questioning is what keeps me learning.
-          </p>
-        </div>
-      </motion.div>
-
-      <motion.div
-        className="about-emanuele-expertises"
+    <section className="about-section" id="about">
+      <motion.p
+        className="section-kicker"
         initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, amount: 0.7 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="about-emanuele-label">Expertises</p>
+        About
+      </motion.p>
 
-        <div className="about-emanuele-list">
-          {expertises.map((item) => (
-            <span key={item}>{item}</span>
+      <div className="about-content">
+        <div className="about-story">
+          {story.map((paragraph, index) => (
+            <StoryParagraph key={paragraph} text={paragraph} index={index} />
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
