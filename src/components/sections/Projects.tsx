@@ -1,9 +1,12 @@
 "use client";
 
+import { FormEvent, useState } from "react";
 import { motion } from "motion/react";
 
 const projectUrl =
   "https://emma-dasilva-dev.github.io/bandit-redline-journal/";
+
+const demoPassword = "cYb3rCur10sity_0v3rTh3W1r3_2026";
 
 const banditLogo = [
   " _                     _ _ _",
@@ -14,6 +17,20 @@ const banditLogo = [
 ].join("\n");
 
 export default function Projects() {
+  const [password, setPassword] = useState("");
+  const [result, setResult] = useState<"idle" | "success" | "error">("idle");
+
+  function checkPassword(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (password === demoPassword) {
+      setResult("success");
+      return;
+    }
+
+    setResult("error");
+  }
+
   return (
     <section className="projects-section" id="projects">
       <motion.div
@@ -33,13 +50,7 @@ export default function Projects() {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <a
-          className="project-bandit-terminal"
-          href={projectUrl}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Open Bandit Redline Journal"
-        >
+        <div className="project-bandit-terminal">
           <div className="project-bandit-topbar">
             <span className="project-bandit-tab">Command Prompt - ssh bandit</span>
             <span className="project-bandit-window-icons" aria-hidden="true">
@@ -59,19 +70,53 @@ export default function Projects() {
             </pre>
 
             <p className="project-bandit-center">
-              This is an OverTheWire game server.
+              This is an OverTheWire-inspired mini challenge.
             </p>
 
             <p className="project-bandit-center project-bandit-muted">
-              More information on overthewire.org/wargames
+              A recovered password was found in the previous level.
             </p>
 
-            <p className="project-bandit-line project-bandit-password">
-              bandit0@bandit.labs.overthewire.org&apos;s password:
-              <span className="project-bandit-caret" aria-hidden="true" />
-            </p>
+            <div className="project-bandit-challenge">
+              <p className="project-bandit-hint">
+                recovered_password: <strong>{demoPassword}</strong>
+              </p>
+
+              <form className="project-bandit-form" onSubmit={checkPassword}>
+                <label htmlFor="bandit-password">
+                  bandit1@portfolio&apos;s password:
+                </label>
+
+                <div className="project-bandit-input-row">
+                  <input
+                    id="bandit-password"
+                    type="text"
+                    value={password}
+                    onChange={(event) => {
+                      setPassword(event.target.value);
+                      if (result !== "idle") setResult("idle");
+                    }}
+                    autoComplete="off"
+                    spellCheck={false}
+                    aria-describedby="bandit-result"
+                  />
+                  <button type="submit">enter</button>
+                </div>
+              </form>
+
+              <p
+                id="bandit-result"
+                className="project-bandit-result"
+                aria-live="polite"
+              >
+                {result === "success" &&
+                  "ACCESS GRANTED // nice. curiosity survives another level."}
+                {result === "error" &&
+                  "Permission denied. Check every character and try again."}
+              </p>
+            </div>
           </div>
-        </a>
+        </div>
 
         <div className="project-bandit-copy">
           <div className="project-bandit-meta">
@@ -79,11 +124,7 @@ export default function Projects() {
             <span>2026</span>
           </div>
 
-          <h2>
-            <a href={projectUrl} target="_blank" rel="noreferrer">
-              Bandit Redline Journal
-            </a>
-          </h2>
+          <h2>Bandit Redline Journal</h2>
 
           <p className="project-bandit-description">
             A cybersecurity journal documenting my progress through OverTheWire
