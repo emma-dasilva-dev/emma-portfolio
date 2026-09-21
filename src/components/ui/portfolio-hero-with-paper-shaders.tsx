@@ -86,7 +86,6 @@ function SocialIcon({ type }: { type: (typeof links)[number][2] }) {
 
 export default function PortfolioHeroWithPaperShaders() {
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [renderShader, setRenderShader] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle("portfolio-light", !isDarkMode);
@@ -95,16 +94,6 @@ export default function PortfolioHeroWithPaperShaders() {
       document.documentElement.classList.remove("portfolio-light");
     };
   }, [isDarkMode]);
-
-  useEffect(() => {
-    const media = window.matchMedia("(min-width: 701px)");
-
-    const updateShader = () => setRenderShader(media.matches);
-    updateShader();
-
-    media.addEventListener("change", updateShader);
-    return () => media.removeEventListener("change", updateShader);
-  }, []);
 
   return (
     <section
@@ -189,27 +178,19 @@ export default function PortfolioHeroWithPaperShaders() {
       </div>
 
       <div className="paper-hero-shader" aria-hidden="true">
-        {renderShader ? (
-          <Dithering
-            style={{ height: "100%", width: "100%" }}
-            colorBack={isDarkMode ? "hsl(0, 0%, 0%)" : "hsl(0, 0%, 95%)"}
-            colorFront={isDarkMode ? "hsl(320, 100%, 70%)" : "hsl(220, 100%, 70%)"}
-            shape="cat"
-            type="4x4"
-            pxSize={3}
-            offsetX={0}
-            offsetY={0}
-            scale={0.8}
-            rotation={0}
-            speed={0.1}
-          />
-        ) : (
-          <div
-            className={`paper-hero-mobile-art ${
-              isDarkMode ? "paper-hero-mobile-art-dark" : "paper-hero-mobile-art-light"
-            }`}
-          />
-        )}
+        <Dithering
+          style={{ height: "100%", width: "100%" }}
+          colorBack={isDarkMode ? "hsl(0, 0%, 0%)" : "hsl(0, 0%, 95%)"}
+          colorFront={isDarkMode ? "hsl(320, 100%, 70%)" : "hsl(220, 100%, 70%)"}
+          shape="cat"
+          type="4x4"
+          pxSize={3}
+          offsetX={0}
+          offsetY={0}
+          scale={0.8}
+          rotation={0}
+          speed={0.1}
+        />
       </div>
     </section>
   );
