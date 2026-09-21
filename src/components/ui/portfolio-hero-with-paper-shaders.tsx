@@ -4,6 +4,7 @@ import { Dithering } from "@paper-design/shaders-react";
 import { useState } from "react";
 
 const experience = [
+  ["Independent", "Self-taught developer", "2025 → 2026"],
   ["University", "Cybersecurity student", "2026 → Present"],
   ["CJEPE", "Professional training", "2026"],
   ["Cashless Africa", "Software dev intern", "2026"],
