@@ -136,7 +136,13 @@ export default function Projects() {
 
               <p
                 id="bandit-result"
-                className="project-bandit-result"
+                className={`project-bandit-result ${
+                  result === "success"
+                    ? "project-bandit-result-success"
+                    : result === "error"
+                      ? "project-bandit-result-error"
+                      : ""
+                }`}
                 aria-live="polite"
               >
                 {typedResult}
