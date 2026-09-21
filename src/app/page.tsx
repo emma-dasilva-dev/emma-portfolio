@@ -1,6 +1,5 @@
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
-import HowIWork from "@/components/sections/HowIWork";
 import Projects from "@/components/sections/Projects";
 import Stack from "@/components/sections/Stack";
 import PortfolioHeroWithPaperShaders from "@/components/ui/portfolio-hero-with-paper-shaders";
@@ -25,9 +24,6 @@ export default function Home() {
           <Projects />
         </SectionTransition>
 
-        <SectionTransition direction="up">
-          <HowIWork />
-        </SectionTransition>
 
         <Contact />
       </main>
