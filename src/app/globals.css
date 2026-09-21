@@ -1833,3 +1833,105 @@ body {
 .interactive-hover-button:focus-visible {
   outline-color: #fff;
 }
+
+
+/* Global light mode controlled from the hero toggle */
+html.portfolio-light,
+html.portfolio-light body {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+html.portfolio-light .about-section,
+html.portfolio-light .experience-section,
+html.portfolio-light .stack-section,
+html.portfolio-light .projects-section,
+html.portfolio-light .work-section,
+html.portfolio-light .contact-section,
+html.portfolio-light .about-page,
+html.portfolio-light .experience-page {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+html.portfolio-light .about-section *,
+html.portfolio-light .experience-section *,
+html.portfolio-light .stack-section *,
+html.portfolio-light .projects-section *,
+html.portfolio-light .work-section *,
+html.portfolio-light .contact-section *,
+html.portfolio-light .about-page *,
+html.portfolio-light .experience-page * {
+  color: inherit;
+}
+
+html.portfolio-light .section-kicker,
+html.portfolio-light .experience-company,
+html.portfolio-light .experience-date,
+html.portfolio-light .project-type,
+html.portfolio-light .project-description,
+html.portfolio-light .project-note {
+  color: rgba(0, 0, 0, 0.62) !important;
+}
+
+html.portfolio-light .stack-logo-light img {
+  filter: none;
+}
+
+html.portfolio-light .project-button,
+html.portfolio-light .project-arrow,
+html.portfolio-light .interactive-hover-button {
+  border-color: rgba(0, 0, 0, 0.42);
+  color: #000;
+}
+
+html.portfolio-light .project-button:hover,
+html.portfolio-light .project-arrow:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+html.portfolio-light .interactive-hover-button-dot {
+  background: #000;
+}
+
+html.portfolio-light .interactive-hover-button-hover {
+  color: #fff;
+}
+
+html.portfolio-light .interactive-hover-button:focus-visible {
+  outline-color: #000;
+}
+
+html.portfolio-light .old-tv-background {
+  opacity: 0;
+}
+
+html.portfolio-light .about-visual-card {
+  background: #f2f2f2;
+  color: #000 !important;
+}
+
+html.portfolio-light .about-visual-card-2,
+html.portfolio-light .about-visual-card-6 {
+  background: #e8e8e8;
+}
+
+html.portfolio-light .about-visual-card::before {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.08) 0 1px,
+      transparent 1px 24px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.05) 0 1px,
+      transparent 1px 24px
+    );
+}
+
+html.portfolio-light .about-visual-card::after {
+  border-color: rgba(0, 0, 0, 0.22);
+}
