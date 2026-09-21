@@ -3677,3 +3677,59 @@ html.portfolio-light .paper-hero-copy {
     flex: 0 0 auto;
   }
 }
+
+
+/* Mobile corrections: preserve shader composition, reliable theme tap, desktop-like stack */
+@media (max-width: 700px) {
+  .paper-hero-shader {
+    height: 18svh !important;
+    min-height: 18svh !important;
+  }
+
+  .paper-hero-shader > div,
+  .paper-hero-shader canvas {
+    height: 18svh !important;
+    min-height: 18svh !important;
+  }
+
+  .paper-theme-toggle,
+  .paper-hero-dark .paper-theme-toggle,
+  .paper-hero-light .paper-theme-toggle {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    z-index: 999;
+    width: 2.7rem;
+    height: 2.7rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0 !important;
+    border-radius: 0 !important;
+    outline: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+    pointer-events: auto !important;
+    touch-action: manipulation;
+  }
+
+  .paper-theme-toggle svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .stack-slider-wrap {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .stack-slider-item {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .stack-slider-item img {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+}
