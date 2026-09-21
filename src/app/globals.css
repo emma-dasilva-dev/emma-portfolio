@@ -1759,3 +1759,32 @@ body > div:not(.old-tv-background) {
     text-align: left;
   }
 }
+
+
+.paper-hero-bottom {
+  gap: 0;
+}
+
+.paper-links-label {
+  display: none;
+}
+
+.paper-hero-links {
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.paper-hero-links a {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+@media (max-width: 620px) {
+  .paper-hero-links {
+    gap: 1.4rem;
+  }
+
+  .paper-hero-links a {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}
