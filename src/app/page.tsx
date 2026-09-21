@@ -1,6 +1,5 @@
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
-import Experience from "@/components/sections/Experience";
 import HowIWork from "@/components/sections/HowIWork";
 import Projects from "@/components/sections/Projects";
 import Stack from "@/components/sections/Stack";
@@ -16,10 +15,6 @@ export default function Home() {
 
         <SectionTransition direction="left">
           <About />
-        </SectionTransition>
-
-        <SectionTransition direction="right">
-          <Experience />
         </SectionTransition>
 
         <SectionTransition direction="left">
