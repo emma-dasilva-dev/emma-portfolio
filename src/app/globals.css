@@ -3775,3 +3775,99 @@ html.portfolio-light .paper-hero-copy {
     min-width: 11.5rem;
   }
 }
+
+
+/* Footer: true centered question + reliable CTA */
+.contact-top {
+  position: relative;
+  flex: 1 1 auto;
+  display: grid !important;
+  place-items: center !important;
+  width: 100%;
+}
+
+.contact-message {
+  width: min(100%, 72rem) !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 1.6rem;
+}
+
+.contact-message h2 {
+  width: 100%;
+  max-width: none !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+.contact-email-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-width: 11.5rem;
+  min-height: 3rem;
+  padding: 0.8rem 1.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.contact-email-button:hover,
+.contact-email-button:focus-visible {
+  background: #fff;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+html.portfolio-light .contact-email-button {
+  border-color: rgba(0, 0, 0, 0.55);
+  color: #000;
+}
+
+html.portfolio-light .contact-email-button:hover,
+html.portfolio-light .contact-email-button:focus-visible {
+  background: #000;
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .contact-top {
+    min-height: 62svh !important;
+    padding: 3.5rem 0 4rem !important;
+  }
+
+  .contact-message {
+    width: 100% !important;
+    gap: 1.4rem;
+  }
+
+  .contact-message h2 {
+    max-width: 12ch !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+  }
+
+  .contact-email-button {
+    min-width: 12rem;
+    min-height: 3.15rem;
+  }
+
+  .contact-email-button:active {
+    transform: scale(0.98);
+  }
+}
