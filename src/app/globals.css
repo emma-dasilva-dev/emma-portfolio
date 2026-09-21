@@ -1688,3 +1688,33 @@ body > div:not(.old-tv-background) {
 .contact-message h2 * {
   font-size: inherit !important;
 }
+
+
+.paper-hero-links a {
+  display: inline-grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+}
+
+.paper-hero-links a::after {
+  display: none;
+}
+
+.paper-hero-links svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.paper-hero-links a {
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.paper-hero-links a:hover {
+  transform: translateY(-2px);
+  opacity: 0.68;
+}
