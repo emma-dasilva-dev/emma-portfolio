@@ -1,12 +1,19 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { motion } from "motion/react";
 
 const projectUrl =
   "https://emma-dasilva-dev.github.io/bandit-redline-journal/";
 
 const demoPassword = "cYb3rCur10sity_0v3rTh3W1r3_2026";
+
+const resultMessages = {
+  success:
+    "AUTHENTICATION ACCEPTED // IDENTITY VERIFIED // ACCESS NODE UNLOCKED // PROCEED, OPERATOR.",
+  error:
+    "AUTHENTICATION FAILED // INPUT MISMATCH DETECTED // VERIFY CREDENTIAL STRING.",
+} as const;
 
 const banditLogo = [
   " _                     _ _ _",
@@ -19,6 +26,29 @@ const banditLogo = [
 export default function Projects() {
   const [password, setPassword] = useState("");
   const [result, setResult] = useState<"idle" | "success" | "error">("idle");
+  const [typedResult, setTypedResult] = useState("");
+
+  useEffect(() => {
+    if (result === "idle") {
+      setTypedResult("");
+      return;
+    }
+
+    const message = resultMessages[result];
+    let index = 0;
+    setTypedResult("");
+
+    const timer = window.setInterval(() => {
+      index += 1;
+      setTypedResult(message.slice(0, index));
+
+      if (index >= message.length) {
+        window.clearInterval(timer);
+      }
+    }, 28);
+
+    return () => window.clearInterval(timer);
+  }, [result]);
 
   function checkPassword(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -109,10 +139,10 @@ export default function Projects() {
                 className="project-bandit-result"
                 aria-live="polite"
               >
-                {result === "success" &&
-                  "ACCESS GRANTED // nice. curiosity survives another level."}
-                {result === "error" &&
-                  "Permission denied. Check every character and try again."}
+                {typedResult}
+                {result !== "idle" && typedResult.length < resultMessages[result].length && (
+                  <span className="project-bandit-caret" aria-hidden="true" />
+                )}
               </p>
             </div>
           </div>
