@@ -6,6 +6,7 @@ import HowIWork from "@/components/sections/HowIWork";
 import Intro from "@/components/sections/Intro";
 import Projects from "@/components/sections/Projects";
 import Stack from "@/components/sections/Stack";
+import SectionTransition from "@/components/ui/SectionTransition";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 
 export default function Home() {
@@ -15,12 +16,26 @@ export default function Home() {
       <main>
         <Hero />
 
-        <About />
+        <SectionTransition direction="left">
+          <About />
+        </SectionTransition>
 
-        <Experience />
-        <Stack />
-        <Projects />
-        <HowIWork />
+        <SectionTransition direction="right">
+          <Experience />
+        </SectionTransition>
+
+        <SectionTransition direction="left">
+          <Stack />
+        </SectionTransition>
+
+        <SectionTransition direction="right">
+          <Projects />
+        </SectionTransition>
+
+        <SectionTransition direction="up">
+          <HowIWork />
+        </SectionTransition>
+
         <Contact />
       </main>
     </SmoothScroll>
