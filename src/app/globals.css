@@ -3524,3 +3524,35 @@ html.portfolio-light .paper-hero-copy {
     padding-bottom: 2rem;
   }
 }
+
+
+/* Mobile: bypass viewport-animation hiding so every section is always rendered */
+@media (max-width: 700px) {
+  .about-section .section-kicker,
+  .about-section .about-story,
+  .stack-section .stack-heading,
+  .stack-section .stack-slider-wrap,
+  .projects-section .projects-heading,
+  .projects-section .project-bandit,
+  .work-section .work-heading,
+  .work-section .work-clean-item,
+  .contact-section .contact-top {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+
+  .section-transition {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .about-section,
+  .stack-section,
+  .projects-section,
+  .work-section,
+  .contact-section {
+    position: relative;
+    z-index: 1;
+  }
+}
