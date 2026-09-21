@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 const socials = [
   ["Instagram", "https://www.instagram.com/emmadev.bj"],
@@ -25,11 +24,15 @@ export default function Contact() {
         <div className="contact-message">
           <h2>Interested in working together?</h2>
 
-          <InteractiveHoverButton
+          <a
+            className="contact-email-button"
             href="https://mail.google.com/mail/?view=cm&fs=1&to=emma.dasilva.dev@gmail.com&su=Hello%20Emma"
             target="_blank"
             rel="noreferrer"
-          >\n            Drop me an email!\n          </InteractiveHoverButton>
+          >
+            <span>Drop me an email!</span>
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </motion.div>
 
