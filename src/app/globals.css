@@ -1660,3 +1660,31 @@ body > div:not(.old-tv-background) {
     gap: .65rem;
   }
 }
+
+
+/* Compact typography pass below the hero */
+.about-section,
+.experience-section,
+.stack-section,
+.projects-section,
+.work-section,
+.contact-section {
+  font-size: clamp(0.9rem, 1.15vw, 1.1rem);
+}
+
+.about-section *,
+.experience-section *,
+.stack-section *,
+.projects-section *,
+.work-section *,
+.contact-section * {
+  font-size: inherit !important;
+}
+
+.contact-message h2 {
+  font-size: clamp(2.2rem, 4.8vw, 5.2rem) !important;
+}
+
+.contact-message h2 * {
+  font-size: inherit !important;
+}
