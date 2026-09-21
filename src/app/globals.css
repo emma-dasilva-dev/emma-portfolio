@@ -1935,3 +1935,68 @@ html.portfolio-light .about-visual-card::before {
 html.portfolio-light .about-visual-card::after {
   border-color: rgba(0, 0, 0, 0.22);
 }
+
+
+/* Hero experience timeline */
+.paper-hero-experience {
+  position: relative;
+  padding-left: 1.15rem;
+}
+
+.paper-hero-experience::before {
+  content: "";
+  position: absolute;
+  left: 0.22rem;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  width: 1px;
+  background: currentColor;
+  opacity: 0.24;
+}
+
+.paper-experience-row {
+  position: relative;
+  grid-template-columns: 8.5rem minmax(11rem, 1fr) 8.5rem;
+}
+
+.paper-experience-marker {
+  position: absolute;
+  left: -1.05rem;
+  top: 0.48em;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translateY(-50%);
+}
+
+.paper-experience-company a {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.paper-experience-company a:hover {
+  opacity: 0.62;
+  transform: translateX(2px);
+}
+
+@media (max-width: 760px) {
+  .paper-experience-row {
+    grid-template-columns: 7.5rem minmax(9rem, 1fr) 7.5rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .paper-experience-row {
+    grid-template-columns: 1fr;
+    padding-bottom: 0.75rem;
+  }
+
+  .paper-experience-marker {
+    top: 0.52em;
+  }
+}
