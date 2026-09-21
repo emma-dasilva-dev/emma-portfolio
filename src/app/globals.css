@@ -1400,11 +1400,11 @@ body > div:not(.old-tv-background) {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9000;
-  width: 0.72rem;
-  height: 0.72rem;
-  margin-left: -0.36rem;
-  margin-top: -0.36rem;
+  z-index: 8999;
+  width: 1rem;
+  height: 1rem;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
   border-radius: 50%;
   background: #b8b8b8;
   pointer-events: none;
@@ -1418,21 +1418,11 @@ body > div:not(.old-tv-background) {
 }
 
 .custom-cursor.is-active {
-  width: 1.15rem;
-  height: 1.15rem;
-  margin-left: -0.575rem;
-  margin-top: -0.575rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-left: -0.675rem;
+  margin-top: -0.675rem;
   background: #fff;
-}
-
-@media (pointer: fine) {
-  .custom-cursor-enabled,
-  .custom-cursor-enabled body,
-  .custom-cursor-enabled a,
-  .custom-cursor-enabled button,
-  .custom-cursor-enabled [role="button"] {
-    cursor: none !important;
-  }
 }
 
 @media (pointer: coarse), (max-width: 800px) {
