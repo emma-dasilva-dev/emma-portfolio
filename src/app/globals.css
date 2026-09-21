@@ -3286,3 +3286,19 @@ html.portfolio-light .projects-section .project-bandit-terminal-result.project-b
 html.portfolio-light .projects-section .project-bandit-terminal-result.project-bandit-result-error * {
   color: #ff4d4d;
 }
+
+
+/* Match the full light theme to the hero shader's soft white */
+html.portfolio-light,
+html.portfolio-light body,
+html.portfolio-light .about-section,
+html.portfolio-light .experience-section,
+html.portfolio-light .stack-section,
+html.portfolio-light .projects-section,
+html.portfolio-light .work-section,
+html.portfolio-light .contact-section,
+html.portfolio-light .about-page,
+html.portfolio-light .experience-page,
+html.portfolio-light .paper-hero-copy {
+  background: #f2f2f2 !important;
+}
