@@ -2027,3 +2027,9 @@ html.portfolio-light .about-visual-card::after {
 .paper-hero-light .paper-hero-brand-image {
   filter: none;
 }
+
+
+/* Remove vertical timeline line while keeping the experience entries */
+.paper-hero-experience::before {
+  display: none;
+}
