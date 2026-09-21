@@ -2500,3 +2500,14 @@ html.portfolio-light .project-bandit-terminal {
     justify-self: start;
   }
 }
+
+
+.project-bandit-result-success {
+  color: #37ff72;
+  text-shadow: 0 0 12px rgba(55, 255, 114, 0.25);
+}
+
+.project-bandit-result-error {
+  color: #ff4d4d;
+  text-shadow: 0 0 12px rgba(255, 77, 77, 0.22);
+}
