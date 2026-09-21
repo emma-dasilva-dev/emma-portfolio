@@ -3,31 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
-  const cursorRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
   const pointer = useRef({ x: -100, y: -100 });
+  const frameRef = useRef<number | null>(null);
   const [active, setActive] = useState(false);
 
   useEffect(() => {
     const finePointer = window.matchMedia("(pointer: fine)");
     if (!finePointer.matches) return;
 
-    document.documentElement.classList.add("custom-cursor-enabled");
-
-    const renderCursor = () => {
-      if (!cursorRef.current) return;
-
-      cursorRef.current.style.left = `${pointer.current.x}px`;
-      cursorRef.current.style.top = `${pointer.current.y}px`;
-    };
-
-    const move = (event: PointerEvent) => {
-      pointer.current.x = event.clientX;
-      pointer.current.y = event.clientY;
-      renderCursor();
-    };
-
-    const over = (event: PointerEvent) => {
-      const target = event.target as HTMLElement | null;
+    const updateActiveState = () => {
+      const target = document.elementFromPoint(pointer.current.x, pointer.current.y) as HTMLElement | null;
 
       setActive(
         Boolean(
@@ -38,29 +24,36 @@ export default function CustomCursor() {
       );
     };
 
-    const syncOnScroll = () => {
-      renderCursor();
+    const move = (event: PointerEvent) => {
+      pointer.current.x = event.clientX;
+      pointer.current.y = event.clientY;
+    };
+
+    const tick = () => {
+      if (dotRef.current) {
+        dotRef.current.style.transform =
+          `translate3d(${pointer.current.x}px, ${pointer.current.y}px, 0)`;
+      }
+
+      updateActiveState();
+      frameRef.current = requestAnimationFrame(tick);
     };
 
     window.addEventListener("pointermove", move, { passive: true });
-    window.addEventListener("pointerover", over, { passive: true });
-    window.addEventListener("scroll", syncOnScroll, { passive: true });
-    window.addEventListener("wheel", syncOnScroll, { passive: true });
+    frameRef.current = requestAnimationFrame(tick);
 
     return () => {
-      document.documentElement.classList.remove("custom-cursor-enabled");
       window.removeEventListener("pointermove", move);
-      window.removeEventListener("pointerover", over);
-      window.removeEventListener("scroll", syncOnScroll);
-      window.removeEventListener("wheel", syncOnScroll);
+      if (frameRef.current) cancelAnimationFrame(frameRef.current);
     };
   }, []);
 
   return (
-    <div
-      ref={cursorRef}
-      className={`custom-cursor ${active ? "is-active" : ""}`}
-      aria-hidden="true"
-    />
+    <div className="custom-cursor-layer" aria-hidden="true">
+      <div
+        ref={dotRef}
+        className={`custom-cursor ${active ? "is-active" : ""}`}
+      />
+    </div>
   );
 }
