@@ -66,32 +66,47 @@ export default function Projects() {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="project-bandit-challenge-card">
-          <div className="project-bandit-challenge-head">
-            <span>ACCESS NODE 01</span>
-            <span>STATUS: LOCKED</span>
+        <div className="project-bandit-terminal-v2">
+          <div className="project-bandit-terminal-bar">
+            <div className="project-bandit-terminal-dots" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="project-bandit-terminal-title">bandit@portfolio:~</span>
+            <span className="project-bandit-terminal-mode">SSH</span>
           </div>
 
-          <div className="project-bandit-challenge-body">
-            <p className="project-bandit-eyebrow">MINI CHALLENGE</p>
-
-            <h3>Enter the recovered credential.</h3>
-
-            <p className="project-bandit-challenge-copy">
-              Copy the key exactly. One wrong character and the node stays locked.
+          <div className="project-bandit-terminal-body">
+            <p className="project-bandit-shell-line">
+              <span className="project-bandit-shell-user">emma@portfolio</span>
+              <span>:</span>
+              <span className="project-bandit-shell-path">~</span>
+              <span>$</span>
+              <span> ssh bandit1@bandit.labs.overthewire.org -p 2220</span>
             </p>
 
-            <div className="project-bandit-key">
-              <span>RECOVERED KEY</span>
+            <div className="project-bandit-terminal-intro">
+              <p>OVER THE WIRE // BANDIT</p>
+              <p className="project-bandit-terminal-muted">
+                Previous level credential recovered.
+              </p>
+            </div>
+
+            <div className="project-bandit-terminal-key">
+              <span>password.txt</span>
               <code>{demoPassword}</code>
             </div>
 
-            <form className="project-bandit-form" onSubmit={checkPassword}>
-              <label htmlFor="bandit-password">PASSWORD INPUT</label>
+            <form className="project-bandit-terminal-form" onSubmit={checkPassword}>
+              <label htmlFor="bandit-password-v2">
+                bandit1@bandit.labs.overthewire.org&apos;s password:
+              </label>
 
-              <div className="project-bandit-input-row">
+              <div className="project-bandit-terminal-inputline">
+                <span aria-hidden="true">&gt;</span>
                 <input
-                  id="bandit-password"
+                  id="bandit-password-v2"
                   type="text"
                   value={password}
                   onChange={(event) => {
@@ -100,16 +115,16 @@ export default function Projects() {
                   }}
                   autoComplete="off"
                   spellCheck={false}
-                  aria-describedby="bandit-result"
-                  placeholder="paste credential..."
+                  aria-describedby="bandit-result-v2"
+                  placeholder="type password"
                 />
-                <button type="submit">UNLOCK</button>
+                <button type="submit">ENTER</button>
               </div>
             </form>
 
             <div
-              id="bandit-result"
-              className={`project-bandit-status ${
+              id="bandit-result-v2"
+              className={`project-bandit-terminal-result ${
                 result === "success"
                   ? "project-bandit-result-success"
                   : result === "error"
@@ -118,9 +133,9 @@ export default function Projects() {
               }`}
               aria-live="polite"
             >
-              <span className="project-bandit-status-dot" aria-hidden="true" />
+              <span className="project-bandit-terminal-result-prefix">system:</span>
               <span>
-                {typedResult || "AWAITING INPUT // NODE LOCKED"}
+                {typedResult || "waiting for authentication..."}
                 {result !== "idle" &&
                   typedResult.length < resultMessages[result].length && (
                     <span className="project-bandit-caret" aria-hidden="true" />
