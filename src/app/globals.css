@@ -2054,3 +2054,21 @@ html.portfolio-light .about-visual-card::after {
 .paper-experience-marker {
   z-index: 1;
 }
+
+
+/* Keep the experience line strictly between timeline entries */
+.paper-hero-experience::before {
+  display: none !important;
+}
+
+.paper-experience-row:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: -0.84rem;
+  top: 0.48em;
+  width: 1px;
+  height: calc(100% + 0.45rem);
+  background: currentColor;
+  opacity: 0.45;
+  pointer-events: none;
+}
