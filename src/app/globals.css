@@ -1718,3 +1718,44 @@ body > div:not(.old-tv-background) {
   transform: translateY(-2px);
   opacity: 0.68;
 }
+
+
+.paper-hero-experience {
+  width: 100%;
+}
+
+.paper-experience-row {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(11rem, 1fr) 8.5rem;
+  column-gap: 1.25rem;
+  align-items: baseline;
+}
+
+.paper-experience-row span:nth-child(1),
+.paper-experience-row span:nth-child(2),
+.paper-experience-row span:nth-child(3) {
+  min-width: 0;
+}
+
+.paper-experience-row span:nth-child(3) {
+  text-align: left;
+  justify-self: start;
+}
+
+@media (max-width: 760px) {
+  .paper-experience-row {
+    grid-template-columns: 7.5rem minmax(9rem, 1fr) 7.5rem;
+    column-gap: 0.9rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .paper-experience-row {
+    grid-template-columns: 1fr;
+    row-gap: 0.08rem;
+  }
+
+  .paper-experience-row span:nth-child(3) {
+    text-align: left;
+  }
+}
