@@ -3,10 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
   const pointer = useRef({ x: -100, y: -100 });
-  const ring = useRef({ x: -100, y: -100 });
+  const current = useRef({ x: -100, y: -100 });
   const frameRef = useRef<number | null>(null);
   const [active, setActive] = useState(false);
 
@@ -19,10 +18,6 @@ export default function CustomCursor() {
     const move = (event: MouseEvent) => {
       pointer.current.x = event.clientX;
       pointer.current.y = event.clientY;
-
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
-      }
     };
 
     const over = (event: MouseEvent) => {
@@ -37,11 +32,12 @@ export default function CustomCursor() {
     };
 
     const tick = () => {
-      ring.current.x += (pointer.current.x - ring.current.x) * 0.16;
-      ring.current.y += (pointer.current.y - ring.current.y) * 0.16;
+      current.current.x += (pointer.current.x - current.current.x) * 0.42;
+      current.current.y += (pointer.current.y - current.current.y) * 0.42;
 
-      if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${ring.current.x}px, ${ring.current.y}px, 0)`;
+      if (cursorRef.current) {
+        cursorRef.current.style.transform =
+          `translate3d(${current.current.x}px, ${current.current.y}px, 0)`;
       }
 
       frameRef.current = requestAnimationFrame(tick);
@@ -60,9 +56,10 @@ export default function CustomCursor() {
   }, []);
 
   return (
-    <>
-      <div ref={ringRef} className={`custom-cursor-ring ${active ? "is-active" : ""}`} />
-      <div ref={dotRef} className={`custom-cursor-dot ${active ? "is-active" : ""}`} />
-    </>
+    <div
+      ref={cursorRef}
+      className={`custom-cursor ${active ? "is-active" : ""}`}
+      aria-hidden="true"
+    />
   );
 }
