@@ -3302,3 +3302,159 @@ html.portfolio-light .experience-page,
 html.portfolio-light .paper-hero-copy {
   background: #f2f2f2 !important;
 }
+
+
+/* Mobile stability + visibility pass */
+@media (max-width: 700px) {
+  html,
+  body {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  /* The old WebGL background is unnecessary behind solid sections on mobile. */
+  .old-tv-background {
+    display: none !important;
+  }
+
+  /* Never leave content hidden because an in-view animation failed to trigger. */
+  .section-transition {
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100%;
+  }
+
+  .paper-hero {
+    display: block;
+    width: 100%;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .paper-hero-copy,
+  .paper-hero-shader {
+    width: 100%;
+  }
+
+  .paper-hero-copy {
+    min-height: auto;
+    padding: 1.1rem;
+  }
+
+  .paper-hero-header {
+    padding-right: 3rem;
+  }
+
+  .paper-hero-brand {
+    width: 2.85rem;
+    height: 2.85rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .paper-hero-title h1,
+  .paper-hero-title p {
+    font-size: 0.95rem;
+    line-height: 1.28;
+  }
+
+  .paper-hero-experience {
+    max-width: none;
+    margin-top: 2.5rem;
+    padding-left: 1rem;
+    gap: 0.7rem;
+  }
+
+  .paper-experience-label {
+    margin-bottom: 0.45rem;
+  }
+
+  .paper-experience-row {
+    grid-template-columns: 1fr;
+    gap: 0.12rem;
+    padding-bottom: 0.7rem;
+    font-size: 0.78rem;
+  }
+
+  .paper-experience-row span:last-child {
+    text-align: left;
+    white-space: normal;
+  }
+
+  .paper-hero-bottom {
+    margin-top: 2.5rem;
+    padding-top: 0;
+  }
+
+  .paper-hero-links {
+    gap: 1.4rem;
+  }
+
+  .paper-hero-shader,
+  .paper-hero-shader > div,
+  .paper-hero-shader canvas {
+    min-height: 42svh !important;
+    height: 42svh !important;
+  }
+
+  .about-section,
+  .stack-section,
+  .projects-section,
+  .work-section,
+  .contact-section {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+  }
+
+  .about-section {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .about-story {
+    max-width: none;
+    line-height: 1.55;
+  }
+
+  .project-bandit {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .project-bandit-copy {
+    position: static;
+  }
+
+  .project-bandit-terminal-v2 {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .project-bandit-terminal-body {
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .project-bandit-shell-line {
+    overflow-wrap: anywhere;
+  }
+
+  .project-bandit-terminal-key code {
+    word-break: break-all;
+  }
+
+  .work-clean-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-message h2 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+}
