@@ -2039,3 +2039,18 @@ html.portfolio-light .about-visual-card::after {
   margin: 0 0 0.9rem 0;
   padding-left: 0;
 }
+
+
+/* Ensure the hero timeline line is visible from first to last entry */
+.paper-hero-experience::before {
+  display: block;
+  top: 2.25rem;
+  bottom: 0.7rem;
+  width: 1px;
+  background: currentColor;
+  opacity: 0.45;
+}
+
+.paper-experience-marker {
+  z-index: 1;
+}
