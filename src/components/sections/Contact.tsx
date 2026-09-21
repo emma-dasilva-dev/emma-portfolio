@@ -19,8 +19,6 @@ export default function Contact() {
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="section-kicker">Contact</p>
-
         <div className="contact-message">
           <h2>Interested in working together?</h2>
 
