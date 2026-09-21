@@ -2017,3 +2017,13 @@ html.portfolio-light .about-visual-card::after {
   object-fit: contain;
   display: block;
 }
+
+
+/* Blend the uploaded black-on-white logo into both hero themes */
+.paper-hero-dark .paper-hero-brand-image {
+  filter: invert(1);
+}
+
+.paper-hero-light .paper-hero-brand-image {
+  filter: none;
+}
