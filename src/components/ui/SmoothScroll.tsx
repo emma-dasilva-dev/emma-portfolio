@@ -9,6 +9,12 @@ export default function SmoothScroll({
   children: React.ReactNode;
 }) {
   useEffect(() => {
+    const isMobile =
+      window.matchMedia("(max-width: 700px)").matches ||
+      window.matchMedia("(pointer: coarse)").matches;
+
+    if (isMobile) return;
+
     const lenis = new Lenis({
       duration: 1.15,
       smoothWheel: true,
