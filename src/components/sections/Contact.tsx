@@ -25,7 +25,11 @@ export default function Contact() {
         <div className="contact-message">
           <h2>Interested in working together?</h2>
 
-          <InteractiveHoverButton href="mailto:emma.dasilva.dev@gmail.com?subject=Hello%20there!">\n            Drop me an email!\n          </InteractiveHoverButton>
+          <InteractiveHoverButton
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=emma.dasilva.dev@gmail.com&su=Hello%20Emma"
+            target="_blank"
+            rel="noreferrer"
+          >\n            Drop me an email!\n          </InteractiveHoverButton>
         </div>
       </motion.div>
 
