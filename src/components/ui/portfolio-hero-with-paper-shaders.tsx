@@ -14,7 +14,7 @@ const links = [
   ["GitHub", "https://github.com/emma-dasilva-dev", "github"],
   ["LinkedIn", "https://www.linkedin.com/in/emmadasilvadev", "linkedin"],
   ["Instagram", "https://www.instagram.com/emmadev.bj", "instagram"],
-  ["Email", "mailto:emma.dasilva.dev@gmail.com", "email"],
+  ["Email", "https://mail.google.com/mail/?view=cm&fs=1&to=emma.dasilva.dev@gmail.com", "email"],
 ] as const;
 
 function SocialIcon({ type }: { type: (typeof links)[number][2] }) {
