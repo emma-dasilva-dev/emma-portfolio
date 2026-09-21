@@ -3163,3 +3163,71 @@ html.portfolio-light .work-display-card-copy p {
     transition: none;
   }
 }
+
+
+/* How I work: clean three-column layout */
+.work-clean-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.work-clean-item {
+  min-height: 15rem;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.work-clean-number {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.work-clean-copy {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.work-clean-copy h3,
+.work-clean-copy p {
+  margin: 0;
+  font: inherit;
+}
+
+.work-clean-copy h3 {
+  letter-spacing: -0.035em;
+}
+
+.work-clean-copy p {
+  max-width: 24rem;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.55;
+}
+
+html.portfolio-light .work-clean-item {
+  border-color: rgba(0, 0, 0, 0.14);
+}
+
+html.portfolio-light .work-clean-number {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+html.portfolio-light .work-clean-copy p {
+  color: rgba(0, 0, 0, 0.58);
+}
+
+@media (max-width: 760px) {
+  .work-clean-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .work-clean-item {
+    min-height: auto;
+  }
+
+  .work-clean-number {
+    margin-bottom: 1.5rem;
+  }
+}
