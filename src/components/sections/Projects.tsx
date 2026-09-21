@@ -37,6 +37,7 @@ export default function Projects() {
             src="/bandit-redline-preview.png"
             alt="Preview of the Bandit Redline Journal project"
             fill
+            loading="eager"
             sizes="(max-width: 860px) 100vw, 60vw"
             className="project-preview-image"
           />
