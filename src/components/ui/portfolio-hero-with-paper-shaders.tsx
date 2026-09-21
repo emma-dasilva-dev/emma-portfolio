@@ -11,11 +11,59 @@ const experience = [
 ] as const;
 
 const links = [
-  ["GitHub", "https://github.com/emma-dasilva-dev"],
-  ["LinkedIn", "https://www.linkedin.com/in/emmadasilvadev"],
-  ["Instagram", "https://www.instagram.com/emmadev.bj"],
-  ["Email", "mailto:emma.dasilva.dev@gmail.com"],
+  ["GitHub", "https://github.com/emma-dasilva-dev", "github"],
+  ["LinkedIn", "https://www.linkedin.com/in/emmadasilvadev", "linkedin"],
+  ["Instagram", "https://www.instagram.com/emmadev.bj", "instagram"],
+  ["Email", "mailto:emma.dasilva.dev@gmail.com", "email"],
 ] as const;
+
+function SocialIcon({ type }: { type: (typeof links)[number][2] }) {
+  if (type === "github") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.23c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.29-5.27-5.72 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.16 1.18A10.9 10.9 0 0 1 12 6.05c.98 0 1.96.13 2.88.39 2.19-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.44-2.71 5.42-5.29 5.71.42.36.79 1.07.79 2.16v3.26c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .7Z"
+        />
+      </svg>
+    );
+  }
+
+  if (type === "linkedin") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"
+        />
+      </svg>
+    );
+  }
+
+  if (type === "instagram") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.81.25 2.24.42a4.5 4.5 0 0 1 1.63 1.06 4.5 4.5 0 0 1 1.06 1.63c.17.43.37 1.07.42 2.24.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.81-.42 2.24a4.5 4.5 0 0 1-1.06 1.63 4.5 4.5 0 0 1-1.63 1.06c-.43.17-1.07.37-2.24.42-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.81-.25-2.24-.42a4.5 4.5 0 0 1-1.63-1.06 4.5 4.5 0 0 1-1.06-1.63c-.17-.43-.37-1.07-.42-2.24C2.17 16 2.16 15.62 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.81.42-2.24a4.5 4.5 0 0 1 1.06-1.63 4.5 4.5 0 0 1 1.63-1.06c.43-.17 1.07-.37 2.24-.42C8.85 2.17 9.23 2.16 12 2.16Zm0 4.69A5.15 5.15 0 1 0 12 17.15 5.15 5.15 0 0 0 12 6.85Zm0 8.49A3.34 3.34 0 1 1 12 8.66a3.34 3.34 0 0 1 0 6.68Zm6.56-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z"
+        />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3 5.5h18v13H3zM3.5 6l8.5 7 8.5-7"
+      />
+    </svg>
+  );
+}
 
 export default function PortfolioHeroWithPaperShaders() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -68,14 +116,16 @@ export default function PortfolioHeroWithPaperShaders() {
         <div className="paper-hero-bottom">
           <span className="paper-links-label">Links</span>
           <nav className="paper-hero-links" aria-label="Social links">
-            {links.map(([label, href]) => (
+            {links.map(([label, href, type]) => (
               <a
                 key={label}
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noreferrer" : undefined}
+                aria-label={label}
+                title={label}
               >
-                {label}
+                <SocialIcon type={type} />
               </a>
             ))}
           </nav>
