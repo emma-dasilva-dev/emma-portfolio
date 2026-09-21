@@ -3556,3 +3556,47 @@ html.portfolio-light .paper-hero-copy {
     z-index: 1;
   }
 }
+
+
+/* Final mobile hero: keep the pink/blue panel, just compact */
+@media (max-width: 700px) {
+  .paper-hero-shader {
+    display: block !important;
+    width: 100% !important;
+    height: 22svh !important;
+    min-height: 22svh !important;
+    overflow: hidden;
+  }
+
+  .paper-hero-shader > div,
+  .paper-hero-mobile-art {
+    width: 100% !important;
+    height: 22svh !important;
+    min-height: 22svh !important;
+  }
+
+  .paper-theme-toggle {
+    top: 0.9rem;
+    right: 0.9rem;
+    z-index: 50;
+    width: 2.6rem;
+    height: 2.6rem;
+    border: 1px solid currentColor;
+    background: rgba(0, 0, 0, 0.06);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .paper-hero-dark .paper-theme-toggle {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .paper-hero-light .paper-theme-toggle {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .paper-theme-toggle svg {
+    display: block;
+    pointer-events: none;
+  }
+}
