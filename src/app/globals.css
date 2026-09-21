@@ -3600,3 +3600,80 @@ html.portfolio-light .paper-hero-copy {
     pointer-events: none;
   }
 }
+
+
+/* Mobile hero + slider final pass */
+@media (max-width: 700px) {
+  /* Use the real Paper shader on mobile too, only shorter. */
+  .paper-hero-shader {
+    display: block !important;
+    width: 100% !important;
+    height: 14svh !important;
+    min-height: 14svh !important;
+    overflow: hidden;
+  }
+
+  .paper-hero-shader > div,
+  .paper-hero-shader canvas {
+    width: 100% !important;
+    height: 14svh !important;
+    min-height: 14svh !important;
+  }
+
+  /* Icon-only theme control. Large invisible tap target, no visible circle. */
+  .paper-theme-toggle,
+  .paper-hero-dark .paper-theme-toggle,
+  .paper-hero-light .paper-theme-toggle {
+    top: 0.85rem;
+    right: 0.85rem;
+    z-index: 100;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: inherit;
+    pointer-events: auto;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .paper-theme-toggle:hover,
+  .paper-theme-toggle:active,
+  .paper-hero-dark .paper-theme-toggle:hover,
+  .paper-hero-light .paper-theme-toggle:hover {
+    background: transparent !important;
+    transform: none;
+  }
+
+  .paper-theme-toggle svg {
+    width: 1.45rem;
+    height: 1.45rem;
+    pointer-events: none;
+  }
+
+  /* Keep the same two-row continuous stack movement as desktop. */
+  .stack-slider-wrap {
+    overflow: hidden;
+    width: calc(100% + 2.2rem);
+    margin-left: -1.1rem;
+  }
+
+  .stack-slider {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .infinite-slider-track {
+    display: flex;
+    width: max-content;
+    flex-wrap: nowrap;
+    will-change: transform;
+  }
+
+  .stack-slider-item {
+    flex: 0 0 auto;
+  }
+}
