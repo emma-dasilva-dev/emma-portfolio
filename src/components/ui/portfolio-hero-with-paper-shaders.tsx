@@ -189,7 +189,7 @@ export default function PortfolioHeroWithPaperShaders() {
       </div>
 
       <div className="paper-hero-shader" aria-hidden="true">
-        {renderShader && (
+        {renderShader ? (
           <Dithering
             style={{ height: "100%", width: "100%" }}
             colorBack={isDarkMode ? "hsl(0, 0%, 0%)" : "hsl(0, 0%, 95%)"}
@@ -202,6 +202,12 @@ export default function PortfolioHeroWithPaperShaders() {
             scale={0.8}
             rotation={0}
             speed={0.1}
+          />
+        ) : (
+          <div
+            className={`paper-hero-mobile-art ${
+              isDarkMode ? "paper-hero-mobile-art-dark" : "paper-hero-mobile-art-light"
+            }`}
           />
         )}
       </div>
