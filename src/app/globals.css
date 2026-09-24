@@ -5547,3 +5547,14 @@ html.portfolio-light .paper-hero-mobile-fallback::before {
     animation-name: stackMobileSlideRight !important;
   }
 }
+
+
+/* Keep monochrome stack wordmarks visible in both themes */
+html:not(.portfolio-light) .stack-logo-light img {
+  filter: brightness(0) invert(1) !important;
+}
+
+html.portfolio-light .stack-logo-light img,
+.portfolio-light-page .stack-logo-light img {
+  filter: none !important;
+}
