@@ -4867,3 +4867,228 @@ html.portfolio-light .project-cashless-meta {
     align-items: center;
   }
 }
+
+
+/* Mobile visual polish */
+@media (max-width: 700px) {
+  body {
+    font-size: 15px;
+  }
+
+  .paper-hero-copy {
+    padding-bottom: 2.75rem !important;
+  }
+
+  .paper-hero-title h1,
+  .paper-hero-title p {
+    font-size: 0.98rem !important;
+  }
+
+  .paper-hero-experience {
+    margin-top: 2rem !important;
+  }
+
+  .paper-hero-bottom {
+    margin-top: 2.25rem !important;
+  }
+
+  .paper-hero-shader {
+    height: 20svh !important;
+    min-height: 8.75rem !important;
+  }
+
+  .about-section {
+    min-height: auto !important;
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  .about-story {
+    font-size: 0.96rem !important;
+    line-height: 1.7 !important;
+  }
+
+  .stack-section {
+    padding-top: 3.25rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  .stack-heading {
+    margin-bottom: 1.25rem !important;
+  }
+
+  .projects-section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+
+  .projects-heading {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .project-bandit,
+  .project-cashless {
+    gap: 1.75rem !important;
+  }
+
+  .project-bandit-terminal-v2 {
+    border-radius: 12px !important;
+  }
+
+  .project-bandit-terminal-body {
+    padding: 0.9rem !important;
+  }
+
+  .project-bandit-terminal-intro {
+    margin-top: 1.5rem !important;
+  }
+
+  .project-bandit-terminal-key {
+    margin-top: 1.15rem !important;
+  }
+
+  .project-bandit-terminal-form {
+    margin-top: 1.25rem !important;
+  }
+
+  .project-bandit-copy,
+  .project-cashless-copy {
+    width: 100%;
+  }
+
+  .project-number {
+    margin-bottom: 0.65rem !important;
+    font-size: 0.68rem !important;
+  }
+
+  .project-bandit-meta,
+  .project-cashless-meta {
+    margin-bottom: 1rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  .project-bandit-copy h2,
+  .project-cashless-copy h2 {
+    margin-bottom: 0.85rem !important;
+    font-size: 1.18rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .project-bandit-description,
+  .project-cashless-description {
+    font-size: 0.94rem !important;
+    line-height: 1.62 !important;
+  }
+
+  .project-bandit-tags,
+  .project-cashless-tags {
+    margin-top: 1.15rem !important;
+    gap: 0.45rem 0.72rem !important;
+    font-size: 0.76rem !important;
+  }
+
+  .project-bandit-link,
+  .project-cashless-link {
+    margin-top: 1.35rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .project-cashless {
+    margin-top: 4rem !important;
+    padding-top: 2.5rem !important;
+  }
+
+  .project-cashless-card {
+    width: min(88vw, 20.5rem) !important;
+    justify-self: center !important;
+    padding: 0.95rem !important;
+    border-radius: 15px !important;
+    transform: perspective(900px) rotateX(3deg) rotateY(-5deg) rotateZ(-0.4deg) !important;
+    box-shadow:
+      0 22px 34px rgba(0, 0, 0, 0.28),
+      8px 10px 20px rgba(0, 0, 0, 0.14) !important;
+  }
+
+  .project-cashless-card:hover {
+    transform: perspective(900px) rotateX(1deg) rotateY(-2deg) rotateZ(0deg) translateY(-2px) !important;
+  }
+
+  .cashless-card-brand {
+    font-size: 1rem !important;
+  }
+
+  .cashless-card-kind {
+    padding: 0.28rem 0.45rem !important;
+    font-size: 0.55rem !important;
+  }
+
+  .cashless-card-chip {
+    width: 2.65rem !important;
+    height: 2rem !important;
+    margin-bottom: 1.1rem !important;
+  }
+
+  .cashless-card-number {
+    grid-template-columns: repeat(4, auto) !important;
+    gap: 0.45rem !important;
+    margin-bottom: 1.2rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .cashless-card-label {
+    font-size: 0.5rem !important;
+  }
+
+  .cashless-card-foot strong {
+    font-size: 0.65rem !important;
+  }
+
+  .contact-section {
+    min-height: auto !important;
+    padding-top: 1rem !important;
+  }
+
+  .contact-top {
+    min-height: 52svh !important;
+    padding: 3rem 0 !important;
+  }
+
+  .contact-message h2 {
+    font-size: clamp(2rem, 11vw, 3.1rem) !important;
+  }
+
+  .contact-email-button {
+    min-height: 3rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .contact-footer-grid {
+    padding-top: 1rem !important;
+    gap: 1rem !important;
+  }
+
+  .contact-location,
+  .contact-socials,
+  .contact-credit {
+    font-size: 0.62rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .paper-language-toggle {
+    right: 3.55rem !important;
+  }
+
+  .project-cashless-card {
+    width: min(90vw, 19rem) !important;
+  }
+
+  .cashless-card-number {
+    gap: 0.35rem !important;
+    font-size: 0.76rem !important;
+  }
+
+  .project-bandit-terminal-title {
+    max-width: 6.6rem !important;
+  }
+}
