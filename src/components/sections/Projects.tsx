@@ -34,12 +34,12 @@ export default function Projects() {
         system: "système :",
         waiting: "en attente d’authentification...",
         meta: "Cybersécurité / Linux / SSH",
-        description: "Un journal de cybersécurité qui documente ma progression dans OverTheWire Bandit, avec les commandes, les concepts et le raisonnement derrière chaque défi.",
+        description: "Mon carnet de terrain pour OverTheWire Bandit. J’y garde les commandes, les erreurs, les déclics et surtout la logique derrière chaque niveau, pour transformer chaque blocage en quelque chose que je comprends vraiment.",
         concepts: "Technologies et concepts",
         view: "Voir le projet",
         cashlessMeta: "Landing page / Fintech",
         cashlessDescription:
-          "Une landing page conçue pour Cashless Africa afin de présenter clairement l’offre, guider les visiteurs vers l’action et offrir une expérience moderne et responsive.",
+          "Une landing page conçue pour présenter l’application Cashless de façon claire et immédiate. L’idée était de rendre le produit facile à comprendre dès les premières secondes, avec une interface propre, moderne et pensée pour donner envie d’aller plus loin.",
         cashlessConcepts: "Technologies et focus",
         cashlessVisit: "Voir le projet",
       }
@@ -52,12 +52,12 @@ export default function Projects() {
         system: "system:",
         waiting: "waiting for authentication...",
         meta: "Cybersecurity / Linux / SSH",
-        description: "A cybersecurity journal documenting my progress through OverTheWire Bandit, including the commands, concepts and reasoning behind each challenge.",
+        description: "My field journal for OverTheWire Bandit. I use it to keep the commands, mistakes, breakthroughs and, more importantly, the reasoning behind each level so every roadblock turns into something I actually understand.",
         concepts: "Technologies and concepts",
         view: "View project",
         cashlessMeta: "Landing page / Fintech",
         cashlessDescription:
-          "A landing page built for Cashless Africa to present the offer clearly, guide visitors toward action, and deliver a modern responsive experience.",
+          "A landing page built to introduce the Cashless app clearly and quickly. The goal was to make the product easy to understand within seconds, with a clean, modern interface that gives people a reason to keep exploring.",
         cashlessConcepts: "Technologies and focus",
         cashlessVisit: "Visit project",
       };
