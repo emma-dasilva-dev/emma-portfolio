@@ -90,9 +90,13 @@ function SocialIcon({ type }: { type: (typeof links)[number][2] }) {
   );
 }
 
-export default function PortfolioHeroWithPaperShaders() {
+export default function PortfolioHeroWithPaperShaders({
+  initialDarkMode = true,
+}: {
+  initialDarkMode?: boolean;
+}) {
   const { language, toggleLanguage } = useLanguage();
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(initialDarkMode);
 
   const copy = language === "fr"
     ? {
@@ -170,6 +174,32 @@ export default function PortfolioHeroWithPaperShaders() {
         >
           {language === "en" ? "FR" : "EN"}
         </button>
+
+        <a
+          className="paper-mobile-language-link"
+          href={`/?lang=${language === "en" ? "fr" : "en"}&theme=${isDarkMode ? "dark" : "light"}`}
+          aria-label={copy.language}
+          title={copy.language}
+        >
+          {language === "en" ? "FR" : "EN"}
+        </a>
+
+        <a
+          className="paper-mobile-theme-link"
+          href={`/?lang=${language}&theme=${isDarkMode ? "light" : "dark"}`}
+          aria-label={copy.theme}
+          title={copy.theme}
+        >
+          {isDarkMode ? (
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+              <path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.64 5.64l1.55 1.55M16.81 16.81l1.55 1.55M18.36 5.64l-1.55 1.55M7.19 16.81l-1.55 1.55M9 12h6M12 9v6" />
+            </svg>
+          ) : (
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+              <path d="M20.2 14.4A8.2 8.2 0 0 1 9.6 3.8 8.4 8.4 0 1 0 20.2 14.4Z" />
+            </svg>
+          )}
+        </a>
 
         <div className="paper-hero-header">
           <a className="paper-hero-brand" href="#home" aria-label="Emma logo">
