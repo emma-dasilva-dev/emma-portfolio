@@ -5170,3 +5170,59 @@ html.portfolio-light .project-cashless-meta {
     border-color: var(--portfolio-accent);
   }
 }
+
+
+/* Reliable mobile stack marquee */
+@keyframes stackMobileMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-50% - (var(--slider-gap, 56px) / 2)), 0, 0);
+  }
+}
+
+@keyframes stackMobileMarqueeReverse {
+  from {
+    transform: translate3d(calc(-50% - (var(--slider-gap, 56px) / 2)), 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 700px) {
+  .stack-slider-wrap {
+    overflow: hidden !important;
+  }
+
+  .stack-slider {
+    overflow: hidden !important;
+  }
+
+  .infinite-slider-track-mobile {
+    display: flex !important;
+    width: max-content !important;
+    min-width: max-content !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    animation: stackMobileMarquee 14s linear infinite !important;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .infinite-slider-track-mobile-reverse {
+    animation-name: stackMobileMarqueeReverse !important;
+  }
+
+  .infinite-slider-track-mobile .stack-slider-item {
+    flex: 0 0 auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 700px) {
+  .infinite-slider-track-mobile {
+    animation-duration: 24s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
