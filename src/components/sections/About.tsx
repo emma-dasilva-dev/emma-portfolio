@@ -15,10 +15,6 @@ export default function About() {
           "J’ai appris qu’être bloquée fait souvent partie du processus. J’aime essayer par moi-même, comprendre ce qui n’a pas fonctionné et rester sur un problème jusqu’à ce qu’il devienne clair, plutôt que de chercher uniquement une solution rapide.",
           "C’est cette même curiosité qui m’a attirée vers la cybersécurité. J’aime toujours construire des logiciels, mais je veux aussi comprendre comment les systèmes peuvent échouer, comment les protéger et comment progresser comme ingénieure des deux côtés.",
         ],
-        mobileParagraphs: [
-          "Je suis une développeuse curieuse qui aime comprendre comment les choses fonctionnent.",
-          "J’apprends par moi-même et j’évolue entre développement logiciel et cybersécurité.",
-        ],
       }
     : {
         label: "About",
@@ -28,10 +24,6 @@ export default function About() {
           "Web development made everything feel more real. I could take an idea, build it, break parts of it, improve it and eventually end up with something I was genuinely proud to call mine.",
           "I have learned that being stuck is usually part of the process. I like trying things for myself, questioning what went wrong and staying with a problem until I understand it instead of only finding a quick fix.",
           "That same curiosity is what pulled me toward cybersecurity. I still love building software, but I also want to understand how systems can fail, how they can be protected and how I can keep becoming a stronger engineer on both sides.",
-        ],
-        mobileParagraphs: [
-          "I’m a curious developer who likes understanding how things work.",
-          "I learn independently and I’m growing between software development and cybersecurity.",
         ],
       };
 
@@ -49,7 +41,7 @@ export default function About() {
 
       <div className="about-content">
         <motion.div
-          className="about-story about-story-desktop"
+          className="about-story"
           initial={{ opacity: 0, y: 42 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
@@ -59,12 +51,6 @@ export default function About() {
             <p key={paragraph}>{paragraph}</p>
           ))}
         </motion.div>
-
-        <div className="about-story about-story-mobile">
-          {copy.mobileParagraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
       </div>
     </section>
   );
