@@ -5452,3 +5452,14 @@ html.portfolio-light .paper-hero-mobile-fallback::before {
     border-color: #000 !important;
   }
 }
+
+
+/* Mobile light-theme footer readability */
+@media (max-width: 700px) {
+  main[data-mobile-theme="light"] .contact-section .contact-location,
+  main[data-mobile-theme="light"] .contact-section .contact-socials,
+  main[data-mobile-theme="light"] .contact-section .contact-socials a,
+  main[data-mobile-theme="light"] .contact-section .contact-credit {
+    color: #000 !important;
+  }
+}
