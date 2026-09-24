@@ -3997,3 +3997,12 @@ html.portfolio-light .contact-email-button {
     min-width: 2.9rem;
   }
 }
+
+
+/* Light theme secondary accents */
+html.portfolio-light .stack-counter,
+html.portfolio-light .project-bandit-meta,
+html.portfolio-light .paper-experience-row > span:nth-child(3),
+html.portfolio-light .paper-experience-row > span:last-child {
+  color: var(--portfolio-accent) !important;
+}
