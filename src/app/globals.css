@@ -4589,27 +4589,51 @@ html.portfolio-light .projects-section .section-kicker {
 .project-cashless-card {
   position: relative;
   display: flex;
-  min-height: clamp(24rem, 39vw, 31rem);
+  width: min(100%, 27rem);
+  aspect-ratio: 1.586 / 1;
+  min-height: 0;
+  justify-self: center;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  padding: clamp(1.35rem, 2.8vw, 2rem);
+  padding: clamp(1.1rem, 2vw, 1.45rem);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 22px;
+  border-radius: 20px;
   background:
     radial-gradient(circle at 86% 12%, rgba(255, 255, 255, 0.12), transparent 28%),
-    linear-gradient(145deg, #151515 0%, #080808 58%, #050505 100%);
-  color: #f5f5f5;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    linear-gradient(145deg, #171717 0%, #090909 58%, #050505 100%);
+  color: #f5f5f5 !important;
+  box-shadow:
+    0 30px 55px rgba(0, 0, 0, 0.3),
+    14px 18px 30px rgba(0, 0, 0, 0.16);
   isolation: isolate;
+  transform: perspective(1000px) rotateX(5deg) rotateY(-9deg) rotateZ(-1deg);
+  transform-origin: center;
   transition:
-    transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 220ms ease;
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms ease,
+    box-shadow 320ms ease;
+  backface-visibility: hidden;
+}
+
+.project-cashless-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 7% -10% 10%;
+  height: 18%;
+  z-index: -2;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.38);
+  filter: blur(18px);
+  transform: translateZ(-20px);
 }
 
 .project-cashless-card:hover {
-  transform: translateY(-4px);
+  transform: perspective(1000px) rotateX(2deg) rotateY(-4deg) rotateZ(0deg) translateY(-5px);
   border-color: var(--portfolio-accent);
+  box-shadow:
+    0 38px 68px rgba(0, 0, 0, 0.34),
+    10px 14px 26px rgba(0, 0, 0, 0.14);
 }
 
 .cashless-card-glow {
@@ -4752,6 +4776,20 @@ html.portfolio-light .project-cashless {
 
 html.portfolio-light .project-cashless-card {
   border-color: rgba(0, 0, 0, 0.14);
+  color: #f5f5f5 !important;
+}
+
+html.portfolio-light .project-cashless-card *,
+html.portfolio-light .cashless-card-head *,
+html.portfolio-light .cashless-card-foot *,
+html.portfolio-light .cashless-card-number,
+html.portfolio-light .cashless-card-number * {
+  color: #f5f5f5 !important;
+}
+
+html.portfolio-light .cashless-card-label,
+html.portfolio-light .cashless-card-kind {
+  color: rgba(255, 255, 255, 0.58) !important;
 }
 
 html.portfolio-light .project-cashless-meta,
@@ -4783,9 +4821,16 @@ html.portfolio-light .project-cashless-meta {
   }
 
   .project-cashless-card {
-    min-height: 20rem;
-    padding: 1.2rem;
+    width: min(100%, 22rem);
+    aspect-ratio: 1.586 / 1;
+    min-height: 0;
+    padding: 1rem;
     border-radius: 16px;
+    transform: perspective(900px) rotateX(4deg) rotateY(-6deg) rotateZ(-0.6deg);
+  }
+
+  .project-cashless-card:hover {
+    transform: perspective(900px) rotateX(1deg) rotateY(-2deg) rotateZ(0deg) translateY(-3px);
   }
 
   .cashless-card-number {
