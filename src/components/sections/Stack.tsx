@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { useLanguage } from "@/components/ui/LanguageProvider";
-import ScrollText from "@/components/ui/ScrollText";
 
 const technologies = [
   ["HTML5", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"],
@@ -69,13 +68,7 @@ export default function Stack() {
         viewport={{ once: true, amount: 0.65 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <ScrollText
-          className="section-kicker-scroll"
-          baseVelocity={1.5}
-          scrollDependent
-        >
-          {language === "fr" ? "Stack technologique" : "Technological stack"}
-        </ScrollText>
+        <p className="section-kicker">{language === "fr" ? "Stack technologique" : "Technological stack"}</p>
         <p className="stack-counter">{language === "fr" ? "14 outils" : "14 tools"}</p>
       </motion.div>
 
