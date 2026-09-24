@@ -7,6 +7,8 @@ import { useLanguage } from "@/components/ui/LanguageProvider";
 const projectUrl =
   "https://emma-dasilva-dev.github.io/bandit-redline-journal/";
 
+const cashlessUrl = "https://leads.cashless.africa/";
+
 const demoPassword = "cYb3rCur10sity_0v3rTh3W1r3_2026";
 
 const resultMessages = {
@@ -35,6 +37,11 @@ export default function Projects() {
         description: "Un journal de cybersécurité qui documente ma progression dans OverTheWire Bandit, avec les commandes, les concepts et le raisonnement derrière chaque défi.",
         concepts: "Technologies et concepts",
         view: "Voir le projet",
+        cashlessMeta: "Landing page / Fintech",
+        cashlessDescription:
+          "Une landing page conçue pour Cashless Africa afin de présenter clairement l’offre, guider les visiteurs vers l’action et offrir une expérience moderne et responsive.",
+        cashlessConcepts: "Technologies et focus",
+        cashlessVisit: "Visiter le site",
       }
     : {
         label: "Projects",
@@ -48,6 +55,11 @@ export default function Projects() {
         description: "A cybersecurity journal documenting my progress through OverTheWire Bandit, including the commands, concepts and reasoning behind each challenge.",
         concepts: "Technologies and concepts",
         view: "View project",
+        cashlessMeta: "Landing page / Fintech",
+        cashlessDescription:
+          "A landing page built for Cashless Africa to present the offer clearly, guide visitors toward action, and deliver a modern responsive experience.",
+        cashlessConcepts: "Technologies and focus",
+        cashlessVisit: "Visit website",
       };
 
   const [password, setPassword] = useState("");
@@ -204,6 +216,73 @@ export default function Projects() {
             rel="noreferrer"
           >
             {copy.view} <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </motion.article>
+
+      <motion.article
+        className="project-cashless"
+        initial={{ opacity: 0, y: 36 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.18 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <a
+          className="project-cashless-preview"
+          href={cashlessUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={copy.cashlessVisit}
+        >
+          <div className="project-cashless-preview-top">
+            <span>CASHLESS</span>
+            <span>AFRICA</span>
+          </div>
+
+          <div className="project-cashless-preview-body">
+            <div className="project-cashless-preview-copy">
+              <span className="project-cashless-preview-kicker">LEADS / CASHLESS</span>
+              <strong>Simple. Direct. Built to convert.</strong>
+              <span className="project-cashless-preview-line" />
+              <span className="project-cashless-preview-line project-cashless-preview-line-short" />
+            </div>
+
+            <div className="project-cashless-preview-action">
+              <span>→</span>
+            </div>
+          </div>
+        </a>
+
+        <div className="project-cashless-copy">
+          <div className="project-cashless-meta">
+            <span>{copy.cashlessMeta}</span>
+            <span>2026</span>
+          </div>
+
+          <h2>Cashless Africa Landing Page</h2>
+
+          <p className="project-cashless-description">
+            {copy.cashlessDescription}
+          </p>
+
+          <div
+            className="project-cashless-tags"
+            aria-label={copy.cashlessConcepts}
+          >
+            <span>Next.js</span>
+            <span>TypeScript</span>
+            <span>Tailwind CSS</span>
+            <span>Responsive UI</span>
+            <span>Conversion</span>
+          </div>
+
+          <a
+            className="project-cashless-link"
+            href={cashlessUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {copy.cashlessVisit} <span aria-hidden="true">↗</span>
           </a>
         </div>
       </motion.article>
