@@ -4006,3 +4006,10 @@ html.portfolio-light .paper-experience-row > span:nth-child(3),
 html.portfolio-light .paper-experience-row > span:last-child {
   color: var(--portfolio-accent) !important;
 }
+
+
+/* Light theme stack accents */
+html.portfolio-light .stack-section .section-kicker,
+html.portfolio-light .stack-section .stack-counter {
+  color: var(--portfolio-accent) !important;
+}
