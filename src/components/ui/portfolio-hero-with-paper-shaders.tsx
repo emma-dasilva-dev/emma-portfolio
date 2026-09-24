@@ -145,16 +145,7 @@ export default function PortfolioHeroWithPaperShaders() {
     >
       <div className="paper-hero-copy">
         <button
-          onPointerUp={(event) => {
-            if (event.pointerType === "touch") {
-              event.preventDefault();
-              setIsDarkMode((current) => !current);
-            }
-          }}
-          onClick={(event) => {
-            if ((event.nativeEvent as PointerEvent).pointerType === "touch") return;
-            setIsDarkMode((current) => !current);
-          }}
+          onClick={() => setIsDarkMode((current) => !current)}
           className="paper-theme-toggle"
           aria-label={copy.theme}
           type="button"
@@ -173,16 +164,7 @@ export default function PortfolioHeroWithPaperShaders() {
         <button
           className="paper-language-toggle"
           type="button"
-          onPointerUp={(event) => {
-            if (event.pointerType === "touch") {
-              event.preventDefault();
-              toggleLanguage();
-            }
-          }}
-          onClick={(event) => {
-            if ((event.nativeEvent as PointerEvent).pointerType === "touch") return;
-            toggleLanguage();
-          }}
+          onClick={toggleLanguage}
           aria-label={copy.language}
           title={copy.language}
         >
