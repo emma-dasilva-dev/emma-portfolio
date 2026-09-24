@@ -4020,3 +4020,94 @@ html.portfolio-light .about-section .section-kicker,
 html.portfolio-light .projects-section .section-kicker {
   color: var(--portfolio-accent) !important;
 }
+
+
+/* Cinematic scroll experience */
+.scroll-experience {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.scroll-experience-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform-origin: 0 50%;
+  background: var(--portfolio-accent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--portfolio-accent) 70%, transparent);
+}
+
+.scroll-experience-orb {
+  position: absolute;
+  right: 0.7rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  margin-top: -0.21rem;
+  border-radius: 999px;
+  background: var(--portfolio-accent);
+  box-shadow:
+    0 0 0 5px color-mix(in srgb, var(--portfolio-accent) 10%, transparent),
+    0 0 22px color-mix(in srgb, var(--portfolio-accent) 62%, transparent);
+}
+
+.section-transition-cinematic {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  will-change: transform, opacity, filter, clip-path;
+}
+
+.section-transition-sweep {
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  transform-origin: 0 50%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--portfolio-accent) 18%,
+    var(--portfolio-accent) 82%,
+    transparent 100%
+  );
+  box-shadow: 0 0 20px color-mix(in srgb, var(--portfolio-accent) 40%, transparent);
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .scroll-experience-progress {
+    height: 1px;
+  }
+
+  .scroll-experience-orb {
+    display: none;
+  }
+
+  .section-transition-cinematic,
+  .section-transition-cinematic * {
+    filter: none !important;
+  }
+
+  .section-transition-sweep {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-experience {
+    display: none;
+  }
+
+  .section-transition-cinematic {
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+  }
+}
