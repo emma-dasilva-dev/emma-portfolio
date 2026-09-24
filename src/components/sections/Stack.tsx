@@ -42,6 +42,7 @@ function StackRow({
       speed={52}
       speedOnHover={18}
       mobileSpeed={72}
+      cssMobile
       reverse={reverse}
     >
       {items.map(([name, src]) => (
