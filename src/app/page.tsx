@@ -25,7 +25,9 @@ export default async function Home({
           className={initialDarkMode ? undefined : "portfolio-light-page"}
           data-mobile-theme={initialDarkMode ? "dark" : "light"}
         >
-          <PortfolioHeroWithPaperShaders initialDarkMode={initialDarkMode} />
+          <div className="section-stack-card section-stack-card-hero">
+            <PortfolioHeroWithPaperShaders initialDarkMode={initialDarkMode} />
+          </div>
 
           <SectionTransition direction="left">
             <About />
@@ -39,7 +41,9 @@ export default async function Home({
             <Projects />
           </SectionTransition>
 
-          <Contact />
+          <div className="section-stack-card section-stack-card-contact">
+            <Contact />
+          </div>
         </main>
       </SmoothScroll>
     </LanguageProvider>
