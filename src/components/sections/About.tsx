@@ -60,17 +60,11 @@ export default function About() {
           ))}
         </motion.div>
 
-        <motion.div
-          className="about-story about-story-mobile"
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-        >
+        <div className="about-story about-story-mobile">
           {copy.mobileParagraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
