@@ -1,6 +1,7 @@
 "use client";
 
 import { animate, motion, useMotionValue } from "motion/react";
+import type { MotionStyle } from "motion/react";
 import { useEffect, useState } from "react";
 import useMeasure from "react-use-measure";
 
@@ -87,12 +88,18 @@ export function InfiniteSlider({
     return () => controls?.stop();
   }, [key, translation, currentSpeed, mobileSpeed, isMobile, width, gap, isTransitioning, reverse]);
 
+  const sliderStyle: MotionStyle & { "--slider-gap": string } = {
+    x: translation,
+    gap,
+    "--slider-gap": `${gap}px`,
+  };
+
   return (
     <div className={className}>
       <motion.div
         ref={ref}
         className={`infinite-slider-track${cssMobile ? " infinite-slider-track-css-mobile" : ""}${cssMobile && reverse ? " infinite-slider-track-css-mobile-reverse" : ""}`}
-        style={{ x: translation, gap, "--slider-gap": `${gap}px` } as React.CSSProperties}
+        style={sliderStyle}
         onHoverStart={() => {
           if (!canHover) return;
           setIsTransitioning(true);
