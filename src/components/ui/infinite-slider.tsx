@@ -85,6 +85,20 @@ export function InfiniteSlider({
     return () => controls?.stop();
   }, [key, translation, currentSpeed, mobileSpeed, isMobile, width, gap, isTransitioning, reverse]);
 
+  if (isMobile) {
+    return (
+      <div className={className}>
+        <div
+          className={`infinite-slider-track infinite-slider-track-mobile${reverse ? " infinite-slider-track-mobile-reverse" : ""}`}
+          style={{ gap, "--slider-gap": `${gap}px` } as React.CSSProperties}
+        >
+          {children}
+          {children}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={className}>
       <motion.div
