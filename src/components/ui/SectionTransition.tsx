@@ -8,9 +8,5 @@ type SectionTransitionProps = {
 export default function SectionTransition({
   children,
 }: SectionTransitionProps) {
-  return (
-    <div className="section-transition section-stack-card">
-      {children}
-    </div>
-  );
+  return <div className="section-transition">{children}</div>;
 }
