@@ -5463,3 +5463,55 @@ html.portfolio-light .paper-hero-mobile-fallback::before {
     color: #000 !important;
   }
 }
+
+
+/* Final mobile stack movement + remove hero circle below social links */
+.infinite-slider-track-css-mobile {
+  display: none;
+}
+
+@keyframes stackMobileSlideLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-50% - (var(--slider-gap, 56px) / 2)), 0, 0);
+  }
+}
+
+@keyframes stackMobileSlideRight {
+  from {
+    transform: translate3d(calc(-50% - (var(--slider-gap, 56px) / 2)), 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 700px) {
+  .stack-slider-mobile .infinite-slider-track-desktop-motion {
+    display: none !important;
+  }
+
+  .stack-slider-mobile .infinite-slider-track-css-mobile {
+    display: flex !important;
+    width: max-content !important;
+    min-width: max-content !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    animation: stackMobileSlideLeft 18s linear infinite !important;
+    will-change: transform;
+  }
+
+  .stack-slider-mobile .infinite-slider-track-css-mobile-reverse {
+    animation-name: stackMobileSlideRight !important;
+  }
+
+  .stack-slider-mobile .stack-slider-item {
+    flex: 0 0 auto !important;
+  }
+
+  .paper-hero-shader {
+    display: none !important;
+  }
+}
