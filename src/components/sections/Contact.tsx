@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import { useLanguage } from "@/components/ui/LanguageProvider";
-import ScrollText from "@/components/ui/ScrollText";
 
 const socials = [
   ["Instagram", "https://www.instagram.com/emmadev.bj"],
@@ -43,13 +42,7 @@ export default function Contact() {
         transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="contact-message">
-          <ScrollText
-            className="contact-scroll-text"
-            baseVelocity={-1.1}
-            scrollDependent
-          >
-            {copy.question}
-          </ScrollText>
+          <h2>{copy.question}</h2>
 
           <a
             className="contact-email-button"
