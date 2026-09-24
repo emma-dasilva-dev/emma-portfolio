@@ -5668,3 +5668,19 @@ html.portfolio-light .stack-logo-light img,
 
 
 
+
+
+/* Mobile About uses a shorter version while desktop keeps the full story */
+.about-story-mobile {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .about-story-desktop {
+    display: none !important;
+  }
+
+  .about-story-mobile {
+    display: block !important;
+  }
+}
