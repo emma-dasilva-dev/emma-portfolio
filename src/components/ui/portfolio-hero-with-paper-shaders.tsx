@@ -95,6 +95,7 @@ export default function PortfolioHeroWithPaperShaders() {
         social: "Social links",
       };
   const [isMobile, setIsMobile] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle("portfolio-light", !isDarkMode);
@@ -109,9 +110,17 @@ export default function PortfolioHeroWithPaperShaders() {
   useEffect(() => {
     const media = window.matchMedia("(max-width: 700px)");
     const updateMobile = () => setIsMobile(media.matches);
+
     updateMobile();
-    media.addEventListener("change", updateMobile);
-    return () => media.removeEventListener("change", updateMobile);
+    setIsMounted(true);
+
+    if (typeof media.addEventListener === "function") {
+      media.addEventListener("change", updateMobile);
+      return () => media.removeEventListener("change", updateMobile);
+    }
+
+    media.addListener(updateMobile);
+    return () => media.removeListener(updateMobile);
   }, []);
 
   return (
@@ -207,19 +216,23 @@ export default function PortfolioHeroWithPaperShaders() {
       </div>
 
       <div className="paper-hero-shader" aria-hidden="true">
-        <Dithering
-          style={{ height: "100%", width: "100%" }}
-          colorBack={isDarkMode ? "hsl(0, 0%, 0%)" : "hsl(0, 0%, 95%)"}
-          colorFront={isDarkMode ? "hsl(320, 100%, 70%)" : "hsl(220, 100%, 70%)"}
-          shape="sphere"
-          type="4x4"
-          pxSize={isMobile ? 2 : 3}
-          offsetX={0}
-          offsetY={0}
-          scale={isMobile ? 0.34 : 0.8}
-          rotation={0}
-          speed={0.1}
-        />
+        {isMounted && !isMobile ? (
+          <Dithering
+            style={{ height: "100%", width: "100%" }}
+            colorBack={isDarkMode ? "hsl(0, 0%, 0%)" : "hsl(0, 0%, 95%)"}
+            colorFront={isDarkMode ? "hsl(320, 100%, 70%)" : "hsl(220, 100%, 70%)"}
+            shape="sphere"
+            type="4x4"
+            pxSize={3}
+            offsetX={0}
+            offsetY={0}
+            scale={0.8}
+            rotation={0}
+            speed={0.1}
+          />
+        ) : (
+          <div className="paper-hero-mobile-fallback" />
+        )}
       </div>
     </section>
   );
