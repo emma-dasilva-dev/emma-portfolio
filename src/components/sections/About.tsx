@@ -16,9 +16,9 @@ export default function About() {
           "C’est cette même curiosité qui m’a attirée vers la cybersécurité. J’aime toujours construire des logiciels, mais je veux aussi comprendre comment les systèmes peuvent échouer, comment les protéger et comment progresser comme ingénieure des deux côtés.",
         ],
         mobileParagraphs: [
-          "Je construis principalement avec C, Linux, JavaScript, TypeScript, React, Next.js, Node.js et MySQL.",
-          "Mon intérêt se situe à l’intersection du développement logiciel et de la cybersécurité : comprendre comment les systèmes fonctionnent, où ils peuvent échouer et comment les rendre plus robustes.",
-          "J’apprends en construisant, en testant et en déboguant, avec un intérêt particulier pour Linux, le web et les réseaux.",
+          "Je développe avec C, Linux, JavaScript, TypeScript, React, Next.js, Node.js et MySQL.",
+          "Je m’intéresse au développement logiciel et à la cybersécurité, surtout à la façon dont les systèmes fonctionnent, échouent et peuvent être mieux protégés.",
+          "J’apprends en construisant, testant et déboguant, avec un intérêt particulier pour Linux, le web et les réseaux.",
         ],
       }
     : {
@@ -31,8 +31,8 @@ export default function About() {
           "That same curiosity is what pulled me toward cybersecurity. I still love building software, but I also want to understand how systems can fail, how they can be protected and how I can keep becoming a stronger engineer on both sides.",
         ],
         mobileParagraphs: [
-          "I build mainly with C, Linux, JavaScript, TypeScript, React, Next.js, Node.js and MySQL.",
-          "My focus sits between software development and cybersecurity: understanding how systems work, where they can fail and how to make them more resilient.",
+          "I build with C, Linux, JavaScript, TypeScript, React, Next.js, Node.js and MySQL.",
+          "I focus on software development and cybersecurity, especially how systems work, fail and can be better protected.",
           "I learn by building, testing and debugging, with a strong interest in Linux, web security and networking.",
         ],
       };
