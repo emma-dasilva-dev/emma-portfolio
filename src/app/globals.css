@@ -5533,3 +5533,21 @@ html.portfolio-light .paper-hero-mobile-fallback::before {
     background: #000 !important;
   }
 }
+
+
+/* Mobile stack: one animated track per row, exactly 3 visible rows */
+@media (max-width: 700px) {
+  .stack-slider-mobile .infinite-slider-track-css-mobile {
+    display: flex !important;
+    width: max-content !important;
+    min-width: max-content !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    animation: stackMobileSlideLeft 18s linear infinite !important;
+    will-change: transform;
+  }
+
+  .stack-slider-mobile .infinite-slider-track-css-mobile-reverse {
+    animation-name: stackMobileSlideRight !important;
+  }
+}
