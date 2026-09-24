@@ -9,6 +9,7 @@ type InfiniteSliderProps = {
   gap?: number;
   speed?: number;
   speedOnHover?: number;
+  mobileSpeed?: number;
   reverse?: boolean;
   className?: string;
 };
@@ -18,22 +19,35 @@ export function InfiniteSlider({
   gap = 24,
   speed = 48,
   speedOnHover = 18,
+  mobileSpeed,
   reverse = false,
   className,
 }: InfiniteSliderProps) {
   const [currentSpeed, setCurrentSpeed] = useState(speed);
   const [canHover, setCanHover] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const [ref, { width }] = useMeasure();
   const translation = useMotionValue(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [key, setKey] = useState(0);
 
   useEffect(() => {
-    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
-    const updateHover = () => setCanHover(media.matches);
-    updateHover();
-    media.addEventListener("change", updateHover);
-    return () => media.removeEventListener("change", updateHover);
+    const hoverMedia = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const mobileMedia = window.matchMedia("(max-width: 700px)");
+
+    const updateMedia = () => {
+      setCanHover(hoverMedia.matches);
+      setIsMobile(mobileMedia.matches);
+    };
+
+    updateMedia();
+    hoverMedia.addEventListener("change", updateMedia);
+    mobileMedia.addEventListener("change", updateMedia);
+
+    return () => {
+      hoverMedia.removeEventListener("change", updateMedia);
+      mobileMedia.removeEventListener("change", updateMedia);
+    };
   }, []);
 
   useEffect(() => {
@@ -44,13 +58,14 @@ export function InfiniteSlider({
     const to = reverse ? 0 : -contentSize / 2;
     const distance = Math.abs(to - from);
 
+    const activeSpeed = isMobile && mobileSpeed ? mobileSpeed : currentSpeed;
     let controls;
 
     if (isTransitioning) {
       const remaining = Math.abs(translation.get() - to);
       controls = animate(translation, [translation.get(), to], {
         ease: "linear",
-        duration: Math.max(remaining / currentSpeed, 0.01),
+        duration: Math.max(remaining / activeSpeed, 0.01),
         onComplete: () => {
           setIsTransitioning(false);
           setKey((value) => value + 1);
@@ -59,7 +74,7 @@ export function InfiniteSlider({
     } else {
       controls = animate(translation, [from, to], {
         ease: "linear",
-        duration: distance / currentSpeed,
+        duration: distance / activeSpeed,
         repeat: Infinity,
         repeatType: "loop",
         repeatDelay: 0,
@@ -68,7 +83,7 @@ export function InfiniteSlider({
     }
 
     return () => controls?.stop();
-  }, [key, translation, currentSpeed, width, gap, isTransitioning, reverse]);
+  }, [key, translation, currentSpeed, mobileSpeed, isMobile, width, gap, isTransitioning, reverse]);
 
   return (
     <div className={className}>
