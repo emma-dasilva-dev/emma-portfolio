@@ -2,59 +2,6 @@
 
 import { motion } from "motion/react";
 
-const story = [
-  "I am a developer driven by curiosity, the kind that makes me want to know what is happening behind the screen instead of just accepting that it works.",
-  "I started by learning C, Linux and computer fundamentals. They taught me how to slow down, read errors properly and stay with a problem long enough to understand it.",
-  "Then web development gave me a way to turn ideas into something real. I like building things, breaking them, improving them and watching an idea slowly become something people can actually use.",
-  "I do not mind getting stuck. Most of the time, that is where I learn the most. I test things, question what went wrong and keep digging until the problem finally makes sense.",
-  "That same curiosity is what pulled me toward cybersecurity. I want to understand not only how software is built, but how systems fail, how they are protected and how both sides make me a stronger engineer.",
-];
-
-function StoryParagraph({
-  text,
-  index,
-}: {
-  text: string;
-  index: number;
-}) {
-  const words = text.split(" ");
-
-  return (
-    <motion.p
-      className="about-story-line"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.55 }}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: {
-            staggerChildren: 0.028,
-            delayChildren: index * 0.04,
-          },
-        },
-      }}
-    >
-      {words.map((word, wordIndex) => (
-        <motion.span
-          key={`${word}-${wordIndex}`}
-          variants={{
-            hidden: { opacity: 0.12, y: 7 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.42, ease: [0.16, 1, 0.3, 1] },
-            },
-          }}
-        >
-          {word}
-          {wordIndex < words.length - 1 ? " " : ""}
-        </motion.span>
-      ))}
-    </motion.p>
-  );
-}
-
 export default function About() {
   return (
     <section className="about-section" id="about">
@@ -69,11 +16,47 @@ export default function About() {
       </motion.p>
 
       <div className="about-content">
-        <div className="about-story">
-          {story.map((paragraph, index) => (
-            <StoryParagraph key={paragraph} text={paragraph} index={index} />
-          ))}
-        </div>
+        <motion.div
+          className="about-story"
+          initial={{ opacity: 0, y: 42 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <p>
+            I got into tech because I was curious about what was happening
+            behind the screen. I did not have a perfect plan, I just kept
+            following the questions that interested me and learning a little
+            more every time.
+          </p>
+
+          <p>
+            C, Linux and computer fundamentals gave me my first real sense of
+            progress. They taught me to slow down, read errors properly and
+            work through a problem instead of giving up the moment it became
+            frustrating.
+          </p>
+
+          <p>
+            Web development made everything feel more real. I could take an
+            idea, build it, break parts of it, improve it and eventually end up
+            with something I was genuinely proud to call mine.
+          </p>
+
+          <p>
+            I have learned that being stuck is usually part of the process.
+            I like trying things for myself, questioning what went wrong and
+            staying with a problem until I understand it instead of only
+            finding a quick fix.
+          </p>
+
+          <p>
+            That same curiosity is what pulled me toward cybersecurity. I still
+            love building software, but I also want to understand how systems
+            can fail, how they can be protected and how I can keep becoming a
+            stronger engineer on both sides.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
