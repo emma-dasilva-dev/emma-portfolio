@@ -41,7 +41,7 @@ export default function Projects() {
         cashlessDescription:
           "Une landing page conçue pour Cashless Africa afin de présenter clairement l’offre, guider les visiteurs vers l’action et offrir une expérience moderne et responsive.",
         cashlessConcepts: "Technologies et focus",
-        cashlessVisit: "Visiter le site",
+        cashlessVisit: "Voir le projet",
       }
     : {
         label: "Projects",
@@ -59,7 +59,7 @@ export default function Projects() {
         cashlessDescription:
           "A landing page built for Cashless Africa to present the offer clearly, guide visitors toward action, and deliver a modern responsive experience.",
         cashlessConcepts: "Technologies and focus",
-        cashlessVisit: "Visit website",
+        cashlessVisit: "Visit project",
       };
 
   const [password, setPassword] = useState("");
