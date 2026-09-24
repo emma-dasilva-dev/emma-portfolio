@@ -5093,62 +5093,6 @@ html.portfolio-light .project-cashless-meta {
   }
 }
 
-/* Reliable mobile stack marquee */
-@keyframes stackMobileMarquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(calc(-50% - (var(--slider-gap, 56px) / 2)), 0, 0);
-  }
-}
-
-@keyframes stackMobileMarqueeReverse {
-  from {
-    transform: translate3d(calc(-50% - (var(--slider-gap, 56px) / 2)), 0, 0);
-  }
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@media (max-width: 700px) {
-  .stack-slider-wrap {
-    overflow: hidden !important;
-  }
-
-  .stack-slider {
-    overflow: hidden !important;
-  }
-
-  .infinite-slider-track-mobile {
-    display: flex !important;
-    width: max-content !important;
-    min-width: max-content !important;
-    flex-wrap: nowrap !important;
-    align-items: center;
-    animation: stackMobileMarquee 14s linear infinite !important;
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-  }
-
-  .infinite-slider-track-mobile-reverse {
-    animation-name: stackMobileMarqueeReverse !important;
-  }
-
-  .infinite-slider-track-mobile .stack-slider-item {
-    flex: 0 0 auto !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) and (max-width: 700px) {
-  .infinite-slider-track-mobile {
-    animation-duration: 24s !important;
-    animation-iteration-count: infinite !important;
-  }
-}
-
-
 /* Restore original mobile control placement */
 @media (max-width: 700px) {
   .paper-language-toggle {
@@ -5183,5 +5127,53 @@ html.portfolio-light .project-cashless-meta {
 @media (max-width: 420px) {
   .paper-language-toggle {
     right: 3.7rem !important;
+  }
+}
+
+
+/* Stack row count: desktop stays at 2, mobile uses 3 with the same Motion marquee */
+.stack-slider-mobile {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .stack-slider-desktop {
+    display: none !important;
+  }
+
+  .stack-slider-mobile {
+    display: block !important;
+    width: calc(100% + 2rem) !important;
+    margin-left: -1rem !important;
+    padding: 1.5rem 0 !important;
+    overflow: hidden !important;
+  }
+
+  .stack-slider-mobile .stack-slider {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .stack-slider-mobile .infinite-slider-track {
+    display: flex;
+    width: max-content;
+    flex-wrap: nowrap;
+    align-items: center;
+    will-change: transform;
+  }
+
+  .stack-slider-mobile .stack-slider + .stack-slider {
+    margin-top: 0.7rem;
+  }
+
+  .stack-slider-mobile .stack-slider-item {
+    flex: 0 0 auto !important;
+    width: 4.5rem !important;
+    height: 4.5rem !important;
+  }
+
+  .stack-slider-mobile .stack-slider-item img {
+    width: 2.65rem !important;
+    height: 2.65rem !important;
   }
 }
