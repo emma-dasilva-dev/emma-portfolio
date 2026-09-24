@@ -59,7 +59,7 @@ export default function Projects() {
         cashlessDescription:
           "A landing page built to introduce the Cashless app clearly and quickly. The goal was to make the product easy to understand within seconds, with a clean, modern interface that gives people a reason to keep exploring.",
         cashlessConcepts: "Technologies and focus",
-        cashlessVisit: "Visit project",
+        cashlessVisit: "View project",
       };
 
   const [password, setPassword] = useState("");
