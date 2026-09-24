@@ -3,31 +3,22 @@
 import { Dithering } from "@paper-design/shaders-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/components/ui/LanguageProvider";
 
-const experience = [
-  {
-    company: "Independent",
-    role: "Self-taught developer",
-    date: "2025 → 2026",
-  },
-  {
-    company: "CJEPE",
-    role: "Professional training",
-    date: "2026",
-    href: "https://cjepebenin.site/",
-  },
-  {
-    company: "Cashless Africa",
-    role: "Software dev intern",
-    date: "2026",
-    href: "https://cashless.africa/",
-  },
-  {
-    company: "University",
-    role: "Cybersecurity student",
-    date: "2026 → Present",
-  },
-] as const;
+const experience = {
+  en: [
+    { company: "Independent", role: "Self-taught developer", date: "2025 → 2026" },
+    { company: "CJEPE", role: "Professional training", date: "2026", href: "https://cjepebenin.site/" },
+    { company: "Cashless Africa", role: "Software dev intern", date: "2026", href: "https://cashless.africa/" },
+    { company: "University", role: "Cybersecurity student", date: "2026 → Present" },
+  ],
+  fr: [
+    { company: "Indépendante", role: "Développeuse autodidacte", date: "2025 → 2026" },
+    { company: "CJEPE", role: "Formation professionnelle", date: "2026", href: "https://cjepebenin.site/" },
+    { company: "Cashless Africa", role: "Stage en développement logiciel", date: "2026", href: "https://cashless.africa/" },
+    { company: "Université", role: "Étudiante en cybersécurité", date: "2026 → Aujourd’hui" },
+  ],
+} as const;
 
 const links = [
   ["GitHub", "https://github.com/emma-dasilva-dev", "github"],
@@ -85,7 +76,24 @@ function SocialIcon({ type }: { type: (typeof links)[number][2] }) {
 }
 
 export default function PortfolioHeroWithPaperShaders() {
+  const { language, toggleLanguage } = useLanguage();
   const [isDarkMode, setIsDarkMode] = useState(true);
+
+  const copy = language === "fr"
+    ? {
+        subtitle: "DÉVELOPPEMENT LOGICIEL × CYBERSÉCURITÉ",
+        experience: "Expérience",
+        theme: "Changer le thème du portfolio",
+        language: "Passer le portfolio en anglais",
+        social: "Liens sociaux",
+      }
+    : {
+        subtitle: "SOFTWARE ENGINEERING × CYBERSECURITY",
+        experience: "Experience",
+        theme: "Toggle portfolio theme",
+        language: "Switch portfolio to French",
+        social: "Social links",
+      };
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -114,14 +122,8 @@ export default function PortfolioHeroWithPaperShaders() {
       <div className="paper-hero-copy">
         <button
           onClick={() => setIsDarkMode((current) => !current)}
-          onPointerUp={(event) => {
-            if (event.pointerType === "touch") {
-              event.preventDefault();
-              setIsDarkMode((current) => !current);
-            }
-          }}
           className="paper-theme-toggle"
-          aria-label="Toggle portfolio theme"
+          aria-label={copy.theme}
           type="button"
         >
           {isDarkMode ? (
@@ -133,6 +135,16 @@ export default function PortfolioHeroWithPaperShaders() {
               <path d="M20.2 14.4A8.2 8.2 0 0 1 9.6 3.8 8.4 8.4 0 1 0 20.2 14.4Z" />
             </svg>
           )}
+        </button>
+
+        <button
+          className="paper-language-toggle"
+          type="button"
+          onClick={toggleLanguage}
+          aria-label={copy.language}
+          title={copy.language}
+        >
+          {language === "en" ? "FR" : "EN"}
         </button>
 
         <div className="paper-hero-header">
@@ -149,13 +161,13 @@ export default function PortfolioHeroWithPaperShaders() {
 
           <div className="paper-hero-title">
             <h1>EMMA DA SILVA</h1>
-            <p>SOFTWARE ENGINEERING × CYBERSECURITY</p>
+            <p>{copy.subtitle}</p>
           </div>
         </div>
 
-        <div className="paper-hero-experience" aria-label="Experience timeline">
-          <p className="paper-experience-label">Experience</p>
-          {experience.map((item) => (
+        <div className="paper-hero-experience" aria-label={copy.experience}>
+          <p className="paper-experience-label">{copy.experience}</p>
+          {experience[language].map((item) => (
             <div className="paper-experience-row" key={item.company}>
               <span className="paper-experience-marker" aria-hidden="true" />
 
@@ -176,7 +188,7 @@ export default function PortfolioHeroWithPaperShaders() {
         </div>
 
         <div className="paper-hero-bottom">
-          <nav className="paper-hero-links" aria-label="Social links">
+          <nav className="paper-hero-links" aria-label={copy.social}>
             {links.map(([label, href, type]) => (
               <a
                 key={label}
