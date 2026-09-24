@@ -15,6 +15,11 @@ export default function About() {
           "J’ai appris qu’être bloquée fait souvent partie du processus. J’aime essayer par moi-même, comprendre ce qui n’a pas fonctionné et rester sur un problème jusqu’à ce qu’il devienne clair, plutôt que de chercher uniquement une solution rapide.",
           "C’est cette même curiosité qui m’a attirée vers la cybersécurité. J’aime toujours construire des logiciels, mais je veux aussi comprendre comment les systèmes peuvent échouer, comment les protéger et comment progresser comme ingénieure des deux côtés.",
         ],
+        mobileParagraphs: [
+          "Je construis principalement avec C, Linux, JavaScript, TypeScript, React, Next.js, Node.js et MySQL.",
+          "Mon intérêt se situe à l’intersection du développement logiciel et de la cybersécurité : comprendre comment les systèmes fonctionnent, où ils peuvent échouer et comment les rendre plus robustes.",
+          "J’apprends en construisant, en testant et en déboguant, avec un intérêt particulier pour Linux, le web et les réseaux.",
+        ],
       }
     : {
         label: "About",
@@ -24,6 +29,11 @@ export default function About() {
           "Web development made everything feel more real. I could take an idea, build it, break parts of it, improve it and eventually end up with something I was genuinely proud to call mine.",
           "I have learned that being stuck is usually part of the process. I like trying things for myself, questioning what went wrong and staying with a problem until I understand it instead of only finding a quick fix.",
           "That same curiosity is what pulled me toward cybersecurity. I still love building software, but I also want to understand how systems can fail, how they can be protected and how I can keep becoming a stronger engineer on both sides.",
+        ],
+        mobileParagraphs: [
+          "I build mainly with C, Linux, JavaScript, TypeScript, React, Next.js, Node.js and MySQL.",
+          "My focus sits between software development and cybersecurity: understanding how systems work, where they can fail and how to make them more resilient.",
+          "I learn by building, testing and debugging, with a strong interest in Linux, web security and networking.",
         ],
       };
 
@@ -41,13 +51,25 @@ export default function About() {
 
       <div className="about-content">
         <motion.div
-          className="about-story"
+          className="about-story about-story-desktop"
           initial={{ opacity: 0, y: 42 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
           {copy.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="about-story about-story-mobile"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {copy.mobileParagraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
         </motion.div>
