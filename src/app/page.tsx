@@ -4,7 +4,6 @@ import Projects from "@/components/sections/Projects";
 import Stack from "@/components/sections/Stack";
 import PortfolioHeroWithPaperShaders from "@/components/ui/portfolio-hero-with-paper-shaders";
 import SectionTransition from "@/components/ui/SectionTransition";
-import SmoothScroll from "@/components/ui/SmoothScroll";
 import { LanguageProvider } from "@/components/ui/LanguageProvider";
 import ScrollExperience from "@/components/ui/ScrollExperience";
 
@@ -19,15 +18,12 @@ export default async function Home({
 
   return (
     <LanguageProvider initialLanguage={initialLanguage}>
-      <SmoothScroll>
-        <ScrollExperience />
-        <main
+      <ScrollExperience />
+      <main
           className={initialDarkMode ? undefined : "portfolio-light-page"}
           data-mobile-theme={initialDarkMode ? "dark" : "light"}
         >
-          <div className="section-stack-card section-stack-card-hero">
-            <PortfolioHeroWithPaperShaders initialDarkMode={initialDarkMode} />
-          </div>
+          <PortfolioHeroWithPaperShaders initialDarkMode={initialDarkMode} />
 
           <SectionTransition direction="left">
             <About />
@@ -41,11 +37,8 @@ export default async function Home({
             <Projects />
           </SectionTransition>
 
-          <div className="section-stack-card section-stack-card-contact">
-            <Contact />
-          </div>
-        </main>
-      </SmoothScroll>
+          <Contact />
+      </main>
     </LanguageProvider>
   );
 }
