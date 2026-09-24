@@ -22,6 +22,11 @@ const technologies = [
 ] as const;
 
 const rows = [technologies.slice(0, 7), technologies.slice(7)];
+const mobileRows = [
+  technologies.slice(0, 5),
+  technologies.slice(5, 10),
+  technologies.slice(10),
+];
 
 function StackRow({
   items,
@@ -67,7 +72,7 @@ export default function Stack() {
       </motion.div>
 
       <motion.div
-        className="stack-slider-wrap"
+        className="stack-slider-wrap stack-slider-desktop"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.25 }}
@@ -76,6 +81,12 @@ export default function Stack() {
         <StackRow items={rows[0]} />
         <StackRow items={rows[1]} reverse />
       </motion.div>
+
+      <div className="stack-slider-wrap stack-slider-mobile">
+        <StackRow items={mobileRows[0]} />
+        <StackRow items={mobileRows[1]} reverse />
+        <StackRow items={mobileRows[2]} />
+      </div>
     </section>
   );
 }
