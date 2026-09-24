@@ -21,7 +21,7 @@ export default async function Home({
     <LanguageProvider initialLanguage={initialLanguage}>
       <SmoothScroll>
         <ScrollExperience />
-        <main>
+        <main className={initialDarkMode ? undefined : "portfolio-light-page"}>
           <PortfolioHeroWithPaperShaders initialDarkMode={initialDarkMode} />
 
           <SectionTransition direction="left">
