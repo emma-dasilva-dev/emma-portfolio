@@ -2,7 +2,7 @@
 
 import { Dithering } from "@paper-design/shaders-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { Component, ReactNode, useEffect, useState } from "react";
 import { useLanguage } from "@/components/ui/LanguageProvider";
 
 const experience = {
@@ -26,6 +26,21 @@ const links = [
   ["Instagram", "https://www.instagram.com/emmadev.bj", "instagram"],
   ["Email", "https://mail.google.com/mail/?view=cm&fs=1&to=emma.dasilva.dev@gmail.com", "email"],
 ] as const;
+
+class ShaderBoundary extends Component<
+  { children: ReactNode; fallback: ReactNode },
+  { failed: boolean }
+> {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  render() {
+    return this.state.failed ? this.props.fallback : this.props.children;
+  }
+}
 
 function SocialIcon({ type }: { type: (typeof links)[number][2] }) {
   if (type === "github") {
@@ -130,7 +145,16 @@ export default function PortfolioHeroWithPaperShaders() {
     >
       <div className="paper-hero-copy">
         <button
-          onClick={() => setIsDarkMode((current) => !current)}
+          onPointerUp={(event) => {
+            if (event.pointerType === "touch") {
+              event.preventDefault();
+              setIsDarkMode((current) => !current);
+            }
+          }}
+          onClick={(event) => {
+            if ((event.nativeEvent as PointerEvent).pointerType === "touch") return;
+            setIsDarkMode((current) => !current);
+          }}
           className="paper-theme-toggle"
           aria-label={copy.theme}
           type="button"
@@ -149,7 +173,16 @@ export default function PortfolioHeroWithPaperShaders() {
         <button
           className="paper-language-toggle"
           type="button"
-          onClick={toggleLanguage}
+          onPointerUp={(event) => {
+            if (event.pointerType === "touch") {
+              event.preventDefault();
+              toggleLanguage();
+            }
+          }}
+          onClick={(event) => {
+            if ((event.nativeEvent as PointerEvent).pointerType === "touch") return;
+            toggleLanguage();
+          }}
           aria-label={copy.language}
           title={copy.language}
         >
@@ -217,19 +250,21 @@ export default function PortfolioHeroWithPaperShaders() {
 
       <div className="paper-hero-shader" aria-hidden="true">
         {isMounted ? (
-          <Dithering
-            style={{ height: "100%", width: "100%", pointerEvents: "none" }}
-            colorBack={isDarkMode ? "hsl(0, 0%, 0%)" : "hsl(0, 0%, 95%)"}
-            colorFront={isDarkMode ? "hsl(320, 100%, 70%)" : "hsl(220, 100%, 70%)"}
-            shape="sphere"
-            type="4x4"
-            pxSize={isMobile ? 2 : 3}
-            offsetX={0}
-            offsetY={0}
-            scale={isMobile ? 0.42 : 0.8}
-            rotation={0}
-            speed={0.1}
-          />
+          <ShaderBoundary fallback={<div className="paper-hero-mobile-fallback" />}>
+            <Dithering
+              style={{ height: "100%", width: "100%", pointerEvents: "none" }}
+              colorBack={isDarkMode ? "hsl(0, 0%, 0%)" : "hsl(0, 0%, 95%)"}
+              colorFront={isDarkMode ? "hsl(320, 100%, 70%)" : "hsl(220, 100%, 70%)"}
+              shape="sphere"
+              type="4x4"
+              pxSize={isMobile ? 2 : 3}
+              offsetX={0}
+              offsetY={0}
+              scale={isMobile ? 0.42 : 0.8}
+              rotation={0}
+              speed={0.1}
+            />
+          </ShaderBoundary>
         ) : (
           <div className="paper-hero-mobile-fallback" />
         )}
