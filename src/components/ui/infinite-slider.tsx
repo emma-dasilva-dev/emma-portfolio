@@ -10,6 +10,7 @@ type InfiniteSliderProps = {
   speed?: number;
   speedOnHover?: number;
   mobileSpeed?: number;
+  cssMobile?: boolean;
   reverse?: boolean;
   className?: string;
 };
@@ -20,6 +21,7 @@ export function InfiniteSlider({
   speed = 48,
   speedOnHover = 18,
   mobileSpeed,
+  cssMobile = false,
   reverse = false,
   className,
 }: InfiniteSliderProps) {
@@ -89,7 +91,7 @@ export function InfiniteSlider({
     <div className={className}>
       <motion.div
         ref={ref}
-        className="infinite-slider-track"
+        className={`infinite-slider-track${cssMobile ? " infinite-slider-track-desktop-motion" : ""}`}
         style={{ x: translation, gap }}
         onHoverStart={() => {
           if (!canHover) return;
@@ -105,6 +107,16 @@ export function InfiniteSlider({
         {children}
         {children}
       </motion.div>
+
+      {cssMobile ? (
+        <div
+          className={`infinite-slider-track infinite-slider-track-css-mobile${reverse ? " infinite-slider-track-css-mobile-reverse" : ""}`}
+          style={{ gap, "--slider-gap": `${gap}px` } as React.CSSProperties}
+        >
+          {children}
+          {children}
+        </div>
+      ) : null}
     </div>
   );
 }
