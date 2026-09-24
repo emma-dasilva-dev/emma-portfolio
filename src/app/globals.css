@@ -5181,20 +5181,38 @@ html.portfolio-light .project-cashless-meta {
 
 /* Mobile shader fallback keeps the hero interactive on phones */
 .paper-hero-mobile-fallback {
+  position: relative;
   width: 100%;
   height: 100%;
   min-height: inherit;
+  overflow: hidden;
+  background: #000;
+}
+
+.paper-hero-mobile-fallback::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(32vw, 7.5rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
   background:
-    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--portfolio-accent) 82%, transparent) 0 18%, transparent 47%),
-    repeating-radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--portfolio-accent) 78%, transparent) 0 2px, transparent 2px 6px),
-    #000;
+    repeating-radial-gradient(
+      circle,
+      var(--portfolio-accent) 0 2px,
+      color-mix(in srgb, var(--portfolio-accent) 62%, transparent) 2px 4px
+    );
+  box-shadow: 0 0 2.5rem color-mix(in srgb, var(--portfolio-accent) 24%, transparent);
 }
 
 html.portfolio-light .paper-hero-mobile-fallback {
-  background:
-    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--portfolio-accent) 74%, white) 0 18%, transparent 47%),
-    repeating-radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--portfolio-accent) 64%, transparent) 0 2px, transparent 2px 6px),
-    #f2f2f2;
+  background: #f2f2f2;
+}
+
+html.portfolio-light .paper-hero-mobile-fallback::before {
+  box-shadow: 0 0 2rem color-mix(in srgb, var(--portfolio-accent) 18%, transparent);
 }
 
 @media (max-width: 700px) {
