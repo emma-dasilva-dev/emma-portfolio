@@ -5223,3 +5223,69 @@ html.portfolio-light .paper-hero-mobile-fallback::before {
     cursor: pointer !important;
   }
 }
+
+
+/* Mobile controls: plain links work even if React hydration fails */
+.paper-mobile-language-link,
+.paper-mobile-theme-link {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .paper-language-toggle,
+  .paper-theme-toggle {
+    display: none !important;
+  }
+
+  .paper-mobile-language-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: max(0.8rem, env(safe-area-inset-top));
+    right: 3.95rem;
+    z-index: 1001;
+    min-width: 2.8rem;
+    height: 2.7rem;
+    padding: 0 0.6rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    color: inherit;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .paper-mobile-theme-link {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: max(0.8rem, env(safe-area-inset-top));
+    right: max(0.75rem, env(safe-area-inset-right));
+    z-index: 1001;
+    width: 2.8rem;
+    height: 2.8rem;
+    color: var(--portfolio-accent);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .paper-mobile-theme-link svg {
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .paper-mobile-language-link {
+    right: 3.7rem;
+    min-width: 2.55rem;
+    height: 2.55rem;
+  }
+
+  .paper-mobile-theme-link {
+    width: 2.55rem;
+    height: 2.55rem;
+  }
+}
