@@ -91,8 +91,8 @@ export function InfiniteSlider({
     <div className={className}>
       <motion.div
         ref={ref}
-        className={`infinite-slider-track${cssMobile ? " infinite-slider-track-desktop-motion" : ""}`}
-        style={{ x: translation, gap }}
+        className={`infinite-slider-track${cssMobile ? " infinite-slider-track-css-mobile" : ""}${cssMobile && reverse ? " infinite-slider-track-css-mobile-reverse" : ""}`}
+        style={{ x: translation, gap, "--slider-gap": `${gap}px` } as React.CSSProperties}
         onHoverStart={() => {
           if (!canHover) return;
           setIsTransitioning(true);
@@ -107,16 +107,6 @@ export function InfiniteSlider({
         {children}
         {children}
       </motion.div>
-
-      {cssMobile ? (
-        <div
-          className={`infinite-slider-track infinite-slider-track-css-mobile${reverse ? " infinite-slider-track-css-mobile-reverse" : ""}`}
-          style={{ gap, "--slider-gap": `${gap}px` } as React.CSSProperties}
-        >
-          {children}
-          {children}
-        </div>
-      ) : null}
     </div>
   );
 }
