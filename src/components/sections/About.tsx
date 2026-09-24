@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { useLanguage } from "@/components/ui/LanguageProvider";
+import ScrollText from "@/components/ui/ScrollText";
 
 export default function About() {
   const { language } = useLanguage();
@@ -29,15 +30,13 @@ export default function About() {
 
   return (
     <section className="about-section" id="about">
-      <motion.p
-        className="section-kicker"
-        initial={{ opacity: 0, y: 18 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.7 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      <ScrollText
+        className="section-kicker-scroll"
+        baseVelocity={-1.5}
+        scrollDependent
       >
         {copy.label}
-      </motion.p>
+      </ScrollText>
 
       <div className="about-content">
         <motion.div
