@@ -3951,3 +3951,49 @@ html.portfolio-light .contact-email-button {
   mix-blend-mode: multiply;
 }
 
+
+
+/* Language toggle */
+.paper-language-toggle {
+  position: absolute;
+  top: clamp(1.5rem, 3vw, 2rem);
+  right: clamp(4.9rem, 7vw, 5.4rem);
+  z-index: 5;
+  min-width: 2.7rem;
+  height: 2.5rem;
+  padding: 0 0.7rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.paper-language-toggle:hover,
+.paper-language-toggle:focus-visible {
+  background: var(--portfolio-accent);
+  border-color: var(--portfolio-accent);
+  color: var(--portfolio-accent-contrast);
+  transform: translateY(-1px);
+}
+
+.paper-language-toggle:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 700px) {
+  .paper-language-toggle {
+    top: 0.9rem;
+    right: 4.1rem;
+    z-index: 999;
+    height: 2.7rem;
+    min-width: 2.9rem;
+  }
+}
