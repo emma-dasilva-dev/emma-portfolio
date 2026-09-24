@@ -6,11 +6,13 @@ import PortfolioHeroWithPaperShaders from "@/components/ui/portfolio-hero-with-p
 import SectionTransition from "@/components/ui/SectionTransition";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import { LanguageProvider } from "@/components/ui/LanguageProvider";
+import ScrollExperience from "@/components/ui/ScrollExperience";
 
 export default function Home() {
   return (
     <LanguageProvider>
       <SmoothScroll>
+        <ScrollExperience />
         <main>
           <PortfolioHeroWithPaperShaders />
 
