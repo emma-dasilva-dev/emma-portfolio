@@ -16,13 +16,22 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("en");
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("portfolio-language");
-    if (saved === "en" || saved === "fr") setLanguageState(saved);
+    try {
+      const saved = window.localStorage.getItem("portfolio-language");
+      if (saved === "en" || saved === "fr") setLanguageState(saved);
+    } catch {
+      // Some mobile/private browsing modes can block storage.
+    }
   }, []);
 
   useEffect(() => {
     document.documentElement.lang = language;
-    window.localStorage.setItem("portfolio-language", language);
+
+    try {
+      window.localStorage.setItem("portfolio-language", language);
+    } catch {
+      // Language switching should still work even when storage is unavailable.
+    }
   }, [language]);
 
   const value = useMemo(
