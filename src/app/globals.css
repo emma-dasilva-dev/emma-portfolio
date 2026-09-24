@@ -5558,3 +5558,109 @@ html.portfolio-light .stack-logo-light img,
 .portfolio-light-page .stack-logo-light img {
   filter: none !important;
 }
+
+
+/* Scroll-text marquee, used on desktop and mobile */
+.scroll-text {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.scroll-text-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  will-change: transform;
+}
+
+.scroll-text-copy {
+  flex: 0 0 auto;
+  padding-right: clamp(3rem, 7vw, 7rem);
+}
+
+.section-kicker-scroll {
+  margin: 0;
+  color: var(--portfolio-accent);
+  font-size: clamp(0.72rem, 1vw, 0.86rem);
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.contact-scroll-text {
+  width: min(100vw, 100%);
+  font-size: clamp(2.5rem, 7vw, 7rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+/* Lenis stacking-card page transition */
+.section-stack-card {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  min-height: 100svh;
+  overflow: clip;
+  border-radius: 1.25rem 1.25rem 0 0;
+  transform: translateZ(0);
+  isolation: isolate;
+}
+
+.section-stack-card + .section-stack-card,
+.section-stack-card + .section-transition,
+.section-transition + .section-transition,
+.section-transition + .section-stack-card {
+  margin-top: -1.25rem;
+}
+
+.section-transition.section-stack-card {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  clip-path: none !important;
+}
+
+.section-stack-card-hero {
+  border-radius: 0;
+}
+
+.section-stack-card-contact {
+  min-height: auto;
+}
+
+@media (max-width: 700px) {
+  .section-stack-card {
+    top: 0;
+    min-height: 100svh;
+    border-radius: 0.9rem 0.9rem 0 0;
+  }
+
+  .section-stack-card + .section-stack-card,
+  .section-stack-card + .section-transition,
+  .section-transition + .section-transition,
+  .section-transition + .section-stack-card {
+    margin-top: -0.9rem;
+  }
+
+  .section-kicker-scroll {
+    font-size: 0.68rem;
+  }
+
+  .contact-scroll-text {
+    font-size: clamp(2rem, 10vw, 3.2rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-text-track {
+    transform: none !important;
+  }
+
+  .section-stack-card {
+    position: relative;
+    top: auto;
+  }
+}
