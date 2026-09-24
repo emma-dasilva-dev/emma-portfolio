@@ -21,7 +21,10 @@ export default async function Home({
     <LanguageProvider initialLanguage={initialLanguage}>
       <SmoothScroll>
         <ScrollExperience />
-        <main className={initialDarkMode ? undefined : "portfolio-light-page"}>
+        <main
+          className={initialDarkMode ? undefined : "portfolio-light-page"}
+          data-mobile-theme={initialDarkMode ? "dark" : "light"}
+        >
           <PortfolioHeroWithPaperShaders initialDarkMode={initialDarkMode} />
 
           <SectionTransition direction="left">
