@@ -4111,3 +4111,458 @@ html.portfolio-light .projects-section .section-kicker {
     opacity: 1 !important;
   }
 }
+
+
+/* Final mobile production pass */
+@media (max-width: 700px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  main,
+  .paper-hero,
+  .paper-hero-copy,
+  .paper-hero-shader,
+  .section-transition,
+  .about-section,
+  .stack-section,
+  .projects-section,
+  .contact-section {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* Hero: compact, readable, and safe around phone notches */
+  .paper-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .paper-hero-copy {
+    width: 100% !important;
+    min-height: auto !important;
+    padding:
+      max(1rem, env(safe-area-inset-top))
+      max(1rem, env(safe-area-inset-right))
+      2.25rem
+      max(1rem, env(safe-area-inset-left)) !important;
+  }
+
+  .paper-hero-header {
+    min-height: 2.9rem;
+    padding-right: 7.6rem !important;
+  }
+
+  .paper-hero-brand {
+    width: 2.7rem !important;
+    height: 2.7rem !important;
+    margin-bottom: 2.2rem !important;
+  }
+
+  .paper-hero-brand-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+  }
+
+  .paper-language-toggle {
+    top: max(0.8rem, env(safe-area-inset-top)) !important;
+    right: 3.95rem !important;
+    min-width: 2.8rem !important;
+    height: 2.7rem !important;
+    padding-inline: 0.6rem !important;
+    font-size: 0.68rem !important;
+  }
+
+  .paper-theme-toggle,
+  .paper-hero-dark .paper-theme-toggle,
+  .paper-hero-light .paper-theme-toggle {
+    top: max(0.8rem, env(safe-area-inset-top)) !important;
+    right: max(0.75rem, env(safe-area-inset-right)) !important;
+    width: 2.8rem !important;
+    height: 2.8rem !important;
+  }
+
+  .paper-hero-title {
+    max-width: 26rem;
+  }
+
+  .paper-hero-title h1,
+  .paper-hero-title p {
+    font-size: clamp(0.92rem, 4vw, 1.05rem) !important;
+    line-height: 1.35 !important;
+  }
+
+  .paper-hero-experience {
+    width: 100%;
+    max-width: 30rem !important;
+    margin-top: 2.35rem !important;
+    padding-left: 0.85rem !important;
+    gap: 0.8rem !important;
+  }
+
+  .paper-experience-label {
+    margin-bottom: 0.35rem;
+  }
+
+  .paper-experience-row {
+    grid-template-columns: 1fr !important;
+    gap: 0.16rem !important;
+    padding-bottom: 0.8rem !important;
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .paper-experience-row span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .paper-experience-row span:last-child {
+    text-align: left !important;
+    white-space: normal !important;
+  }
+
+  .paper-hero-bottom {
+    margin-top: 2.5rem !important;
+    padding-top: 0 !important;
+    gap: 0.9rem !important;
+  }
+
+  .paper-hero-links {
+    gap: 1rem 1.3rem !important;
+  }
+
+  .paper-hero-links a {
+    min-width: 2rem;
+    min-height: 2rem;
+    display: inline-grid;
+    place-items: center;
+  }
+
+  .paper-hero-shader {
+    display: block !important;
+    width: 100% !important;
+    height: 24svh !important;
+    min-height: 10rem !important;
+    max-height: 14rem;
+    overflow: hidden !important;
+  }
+
+  .paper-hero-shader > div,
+  .paper-hero-shader canvas {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+  }
+
+  /* Sections */
+  .about-section,
+  .stack-section,
+  .projects-section,
+  .contact-section {
+    padding-left: max(1rem, env(safe-area-inset-left)) !important;
+    padding-right: max(1rem, env(safe-area-inset-right)) !important;
+  }
+
+  .about-section {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1.65rem !important;
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+
+  .about-story {
+    max-width: 100% !important;
+    font-size: 0.98rem !important;
+    line-height: 1.62 !important;
+  }
+
+  .about-story p + p {
+    margin-top: 1.1rem;
+  }
+
+  .stack-section {
+    padding-top: 3.75rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+
+  .stack-heading {
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+
+  .stack-counter {
+    flex: 0 0 auto;
+    text-align: right;
+  }
+
+  .stack-slider-wrap {
+    width: calc(100% + 2rem) !important;
+    margin-left: -1rem !important;
+    padding: 1.5rem 0 !important;
+    overflow: hidden !important;
+  }
+
+  .stack-slider-item {
+    width: 4.8rem !important;
+    height: 4.8rem !important;
+  }
+
+  .stack-slider-item img {
+    width: 2.8rem !important;
+    height: 2.8rem !important;
+  }
+
+  .projects-section {
+    padding-top: 3.75rem !important;
+    padding-bottom: 5rem !important;
+  }
+
+  .projects-heading {
+    margin-bottom: 1.75rem !important;
+  }
+
+  .project-bandit {
+    grid-template-columns: 1fr !important;
+    gap: 2.25rem !important;
+  }
+
+  .project-bandit-terminal-v2 {
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 0 !important;
+    border-radius: 10px;
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.2);
+  }
+
+  .project-bandit-terminal-bar {
+    min-height: 2.6rem;
+    padding-inline: 0.75rem;
+  }
+
+  .project-bandit-terminal-title {
+    max-width: 10.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .project-bandit-terminal-body {
+    min-height: auto !important;
+    padding: 0.95rem !important;
+    font-size: 0.76rem !important;
+    overflow: hidden;
+  }
+
+  .project-bandit-shell-line {
+    overflow-wrap: anywhere !important;
+    word-break: break-word;
+  }
+
+  .project-bandit-terminal-key {
+    padding: 0.8rem !important;
+  }
+
+  .project-bandit-terminal-key code {
+    word-break: break-all !important;
+  }
+
+  .project-bandit-terminal-inputline {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+  .project-bandit-terminal-inputline input {
+    width: 100%;
+    min-width: 0;
+    font-size: 16px !important;
+  }
+
+  .project-bandit-terminal-inputline button {
+    grid-column: 2 !important;
+    justify-self: start;
+    min-height: 2.5rem;
+    padding: 0.45rem 0.25rem 0 !important;
+    touch-action: manipulation;
+  }
+
+  .project-bandit-terminal-result {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.55rem !important;
+  }
+
+  .project-bandit-copy {
+    position: static !important;
+    min-width: 0;
+  }
+
+  .project-bandit-meta {
+    gap: 0.75rem !important;
+    margin-bottom: 1.4rem !important;
+    font-size: 0.76rem !important;
+  }
+
+  .project-bandit-copy h2 {
+    overflow-wrap: anywhere;
+    line-height: 1.2 !important;
+  }
+
+  .project-bandit-description {
+    line-height: 1.6 !important;
+  }
+
+  .project-bandit-tags {
+    gap: 0.55rem 0.8rem !important;
+  }
+
+  .project-bandit-link {
+    min-height: 2.75rem;
+    margin-top: 1.75rem !important;
+    align-items: center;
+  }
+
+  /* Footer */
+  .contact-section {
+    min-height: 100svh !important;
+    padding-top: 2rem !important;
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom)) !important;
+  }
+
+  .contact-top {
+    min-height: 58svh !important;
+    padding: 3.5rem 0 !important;
+  }
+
+  .contact-message {
+    width: 100% !important;
+    gap: 1.5rem !important;
+  }
+
+  .contact-message h2 {
+    max-width: 11ch !important;
+    font-size: clamp(2rem, 10vw, 3.25rem) !important;
+    line-height: 0.98 !important;
+    overflow-wrap: normal;
+  }
+
+  .contact-email-button {
+    min-width: 0 !important;
+    min-height: 3.1rem !important;
+    max-width: 100%;
+    padding: 0.8rem 1.2rem !important;
+  }
+
+  .contact-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.3rem !important;
+    padding-top: 1.5rem !important;
+  }
+
+  .contact-location,
+  .contact-socials,
+  .contact-credit {
+    justify-self: start !important;
+  }
+
+  .contact-socials {
+    justify-content: flex-start !important;
+    gap: 0.8rem 1.1rem !important;
+  }
+
+  .contact-socials a {
+    min-height: 2rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .contact-credit {
+    align-items: flex-start !important;
+    text-align: left !important;
+    line-height: 1.5;
+  }
+
+  /* Keep the desktop cinematic idea, without expensive mobile blur/3D work */
+  .section-transition,
+  .section-transition-cinematic {
+    width: 100%;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+  }
+
+  .section-transition-sweep {
+    display: none !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .paper-hero-copy {
+    padding-left: max(0.85rem, env(safe-area-inset-left)) !important;
+    padding-right: max(0.85rem, env(safe-area-inset-right)) !important;
+  }
+
+  .paper-hero-header {
+    padding-right: 7rem !important;
+  }
+
+  .paper-language-toggle {
+    right: 3.7rem !important;
+    min-width: 2.55rem !important;
+    height: 2.55rem !important;
+  }
+
+  .paper-theme-toggle,
+  .paper-hero-dark .paper-theme-toggle,
+  .paper-hero-light .paper-theme-toggle {
+    width: 2.55rem !important;
+    height: 2.55rem !important;
+  }
+
+  .paper-hero-shader {
+    height: 22svh !important;
+    min-height: 8.5rem !important;
+  }
+
+  .stack-heading {
+    flex-direction: column;
+  }
+
+  .stack-counter {
+    text-align: left;
+  }
+
+  .project-bandit-terminal-dots {
+    gap: 0.32rem;
+  }
+
+  .project-bandit-terminal-dots span {
+    width: 0.48rem;
+    height: 0.48rem;
+  }
+
+  .project-bandit-terminal-title {
+    max-width: 8rem;
+    font-size: 0.68rem !important;
+  }
+
+  .project-bandit-terminal-mode {
+    font-size: 0.64rem !important;
+  }
+
+  .contact-message h2 {
+    max-width: 10ch !important;
+  }
+}
