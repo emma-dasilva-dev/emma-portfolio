@@ -5466,10 +5466,6 @@ html.portfolio-light .paper-hero-mobile-fallback::before {
 
 
 /* Final mobile stack movement + remove hero circle below social links */
-.infinite-slider-track-css-mobile {
-  display: none;
-}
-
 @keyframes stackMobileSlideLeft {
   from {
     transform: translate3d(0, 0, 0);
