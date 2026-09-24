@@ -216,17 +216,17 @@ export default function PortfolioHeroWithPaperShaders() {
       </div>
 
       <div className="paper-hero-shader" aria-hidden="true">
-        {isMounted && !isMobile ? (
+        {isMounted ? (
           <Dithering
-            style={{ height: "100%", width: "100%" }}
+            style={{ height: "100%", width: "100%", pointerEvents: "none" }}
             colorBack={isDarkMode ? "hsl(0, 0%, 0%)" : "hsl(0, 0%, 95%)"}
             colorFront={isDarkMode ? "hsl(320, 100%, 70%)" : "hsl(220, 100%, 70%)"}
             shape="sphere"
             type="4x4"
-            pxSize={3}
+            pxSize={isMobile ? 2 : 3}
             offsetX={0}
             offsetY={0}
-            scale={0.8}
+            scale={isMobile ? 0.42 : 0.8}
             rotation={0}
             speed={0.1}
           />
