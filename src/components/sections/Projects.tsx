@@ -3,7 +3,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { useLanguage } from "@/components/ui/LanguageProvider";
-import ScrollText from "@/components/ui/ScrollText";
 
 const projectUrl =
   "https://emma-dasilva-dev.github.io/bandit-redline-journal/";
@@ -103,13 +102,7 @@ export default function Projects() {
         viewport={{ once: true, amount: 0.65 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <ScrollText
-          className="section-kicker-scroll"
-          baseVelocity={-1.5}
-          scrollDependent
-        >
-          {copy.label}
-        </ScrollText>
+        <p className="section-kicker">{copy.label}</p>
       </motion.div>
 
       <article className="project-bandit">
