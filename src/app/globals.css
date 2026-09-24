@@ -5515,3 +5515,21 @@ html.portfolio-light .paper-hero-mobile-fallback::before {
     display: none !important;
   }
 }
+
+
+/* Definitive mobile light-theme footer text colors */
+@media (max-width: 700px) {
+  main[data-mobile-theme="light"] .contact-section .contact-footer-grid,
+  main[data-mobile-theme="light"] .contact-section .contact-location,
+  main[data-mobile-theme="light"] .contact-section .contact-location *,
+  main[data-mobile-theme="light"] .contact-section .contact-socials,
+  main[data-mobile-theme="light"] .contact-section .contact-socials *,
+  main[data-mobile-theme="light"] .contact-section .contact-credit,
+  main[data-mobile-theme="light"] .contact-section .contact-credit * {
+    color: #000 !important;
+  }
+
+  main[data-mobile-theme="light"] .contact-section .contact-socials a::after {
+    background: #000 !important;
+  }
+}
