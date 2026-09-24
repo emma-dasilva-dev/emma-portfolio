@@ -23,9 +23,9 @@ const technologies = [
 
 const rows = [technologies.slice(0, 7), technologies.slice(7)];
 const mobileRows = [
-  technologies.slice(0, 5),
-  technologies.slice(5, 10),
-  technologies.slice(10),
+  technologies,
+  [...technologies.slice(5), ...technologies.slice(0, 5)],
+  [...technologies.slice(10), ...technologies.slice(0, 10)],
 ];
 
 function StackRow({
