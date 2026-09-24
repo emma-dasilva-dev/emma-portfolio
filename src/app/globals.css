@@ -5380,3 +5380,75 @@ html.portfolio-light .paper-hero-mobile-fallback::before {
     color: #6699ff !important;
   }
 }
+
+
+/* Final mobile-only control + theme correction */
+.paper-desktop-controls {
+  display: contents;
+}
+
+.paper-mobile-controls-top {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .paper-desktop-controls {
+    display: none !important;
+  }
+
+  .paper-mobile-controls-top {
+    display: contents !important;
+  }
+
+  .paper-desktop-controls .paper-theme-toggle,
+  .paper-desktop-controls .paper-language-toggle {
+    display: none !important;
+  }
+
+  main[data-mobile-theme="light"] {
+    --portfolio-accent: #6699ff;
+    --portfolio-accent-contrast: #fff;
+    min-height: 100svh;
+    background: #f2f2f2 !important;
+    color: #000 !important;
+  }
+
+  main[data-mobile-theme="light"] .paper-hero,
+  main[data-mobile-theme="light"] .paper-hero-copy,
+  main[data-mobile-theme="light"] .about-section,
+  main[data-mobile-theme="light"] .stack-section,
+  main[data-mobile-theme="light"] .projects-section,
+  main[data-mobile-theme="light"] .contact-section,
+  main[data-mobile-theme="light"] .section-transition,
+  main[data-mobile-theme="light"] .section-transition-cinematic {
+    background: #f2f2f2 !important;
+    color: #000 !important;
+  }
+
+  body:has(main[data-mobile-theme="light"]),
+  html:has(main[data-mobile-theme="light"]) {
+    background: #f2f2f2 !important;
+    color: #000 !important;
+  }
+
+  main[data-mobile-theme="light"] .paper-mobile-theme-link,
+  main[data-mobile-theme="light"] .paper-hero-links a,
+  main[data-mobile-theme="light"] .section-kicker,
+  main[data-mobile-theme="light"] .paper-experience-label,
+  main[data-mobile-theme="light"] .paper-hero-title p,
+  main[data-mobile-theme="light"] .stack-counter,
+  main[data-mobile-theme="light"] .project-bandit-link,
+  main[data-mobile-theme="light"] .project-cashless-link {
+    color: #6699ff !important;
+  }
+
+  main[data-mobile-theme="light"] .paper-experience-marker,
+  main[data-mobile-theme="light"] .paper-experience-row:not(:last-child)::after {
+    background: #6699ff !important;
+  }
+
+  main[data-mobile-theme="light"] .paper-mobile-language-link {
+    color: #000 !important;
+    border-color: #000 !important;
+  }
+}
