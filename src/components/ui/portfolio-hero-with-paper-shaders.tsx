@@ -10,13 +10,13 @@ const experience = {
     { company: "Independent", role: "Self-taught developer", date: "2025 → 2026" },
     { company: "CJEPE", role: "Professional training", date: "2026", href: "https://cjepebenin.site/" },
     { company: "Cashless Africa", role: "Software dev intern", date: "2026", href: "https://cashless.africa/" },
-    { company: "University", role: "Cybersecurity student", date: "2026 → Present" },
+    { company: "University", role: "Cybersecurity student", date: "2026 → Present", href: "https://eiggroupe.com/" },
   ],
   fr: [
     { company: "Indépendante", role: "Développeuse autodidacte", date: "2025 → 2026" },
     { company: "CJEPE", role: "Formation professionnelle", date: "2026", href: "https://cjepebenin.site/" },
     { company: "Cashless Africa", role: "Stage en développement logiciel", date: "2026", href: "https://cashless.africa/" },
-    { company: "Université", role: "Étudiante en cybersécurité", date: "2026 → Aujourd’hui" },
+    { company: "Université", role: "Étudiante en cybersécurité", date: "2026 → Aujourd’hui", href: "https://eiggroupe.com/" },
   ],
 } as const;
 
