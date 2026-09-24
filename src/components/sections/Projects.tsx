@@ -105,13 +105,7 @@ export default function Projects() {
         <p className="section-kicker">{copy.label}</p>
       </motion.div>
 
-      <motion.article
-        className="project-bandit"
-        initial={{ opacity: 0, y: 36 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <article className="project-bandit">
         <div className="project-bandit-terminal-v2">
           <div className="project-bandit-terminal-bar">
             <div className="project-bandit-terminal-dots" aria-hidden="true">
@@ -218,41 +212,9 @@ export default function Projects() {
             {copy.view} <span aria-hidden="true">↗</span>
           </a>
         </div>
-      </motion.article>
+      </article>
 
-      <motion.article
-        className="project-cashless"
-        initial={{ opacity: 0, y: 36 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.18 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <a
-          className="project-cashless-preview"
-          href={cashlessUrl}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={copy.cashlessVisit}
-        >
-          <div className="project-cashless-preview-top">
-            <span>CASHLESS</span>
-            <span>AFRICA</span>
-          </div>
-
-          <div className="project-cashless-preview-body">
-            <div className="project-cashless-preview-copy">
-              <span className="project-cashless-preview-kicker">LEADS / CASHLESS</span>
-              <strong>Simple. Direct. Built to convert.</strong>
-              <span className="project-cashless-preview-line" />
-              <span className="project-cashless-preview-line project-cashless-preview-line-short" />
-            </div>
-
-            <div className="project-cashless-preview-action">
-              <span>→</span>
-            </div>
-          </div>
-        </a>
-
+      <article className="project-cashless">
         <div className="project-cashless-copy">
           <div className="project-cashless-meta">
             <span>{copy.cashlessMeta}</span>
@@ -285,7 +247,7 @@ export default function Projects() {
             {copy.cashlessVisit} <span aria-hidden="true">↗</span>
           </a>
         </div>
-      </motion.article>
+      </article>
     </section>
   );
 }
