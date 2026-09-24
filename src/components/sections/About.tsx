@@ -16,8 +16,8 @@ export default function About() {
           "C’est cette même curiosité qui m’a attirée vers la cybersécurité. J’aime toujours construire des logiciels, mais je veux aussi comprendre comment les systèmes peuvent échouer, comment les protéger et comment progresser comme ingénieure des deux côtés.",
         ],
         mobileParagraphs: [
-          "Je suis une développeuse curieuse, attirée par la façon dont les choses fonctionnent et par le plaisir de transformer une idée en quelque chose de concret.",
-          "J’aime apprendre par moi-même, comprendre en profondeur ce que je construis et continuer à progresser à la croisée du développement et de la cybersécurité.",
+          "Je suis une développeuse curieuse qui aime comprendre comment les choses fonctionnent.",
+          "J’apprends par moi-même et j’évolue entre développement logiciel et cybersécurité.",
         ],
       }
     : {
@@ -30,8 +30,8 @@ export default function About() {
           "That same curiosity is what pulled me toward cybersecurity. I still love building software, but I also want to understand how systems can fail, how they can be protected and how I can keep becoming a stronger engineer on both sides.",
         ],
         mobileParagraphs: [
-          "I’m a curious developer who is drawn to understanding how things work and turning ideas into something real.",
-          "I like learning independently, understanding what I build at a deeper level, and growing at the intersection of software development and cybersecurity.",
+          "I’m a curious developer who likes understanding how things work.",
+          "I learn independently and I’m growing between software development and cybersecurity.",
         ],
       };
 
