@@ -186,6 +186,7 @@ export default function Projects() {
         </div>
 
         <div className="project-bandit-copy">
+          <span className="project-number">01</span>
           <div className="project-bandit-meta">
             <span>{copy.meta}</span>
             <span>2026</span>
@@ -215,7 +216,46 @@ export default function Projects() {
       </article>
 
       <article className="project-cashless">
+        <a
+          className="project-cashless-card"
+          href={cashlessUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={copy.cashlessVisit}
+        >
+          <div className="cashless-card-glow" aria-hidden="true" />
+          <div className="cashless-card-head">
+            <span className="cashless-card-brand">cashless</span>
+            <span className="cashless-card-kind">VIRTUAL</span>
+          </div>
+
+          <div className="cashless-card-chip" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+
+          <div className="cashless-card-number" aria-label="Virtual card ending in 2026">
+            <span>••••</span>
+            <span>••••</span>
+            <span>••••</span>
+            <span>2026</span>
+          </div>
+
+          <div className="cashless-card-foot">
+            <div>
+              <span className="cashless-card-label">CARD HOLDER</span>
+              <strong>EMMA DA SILVA</strong>
+            </div>
+            <div className="cashless-card-currency">
+              <span className="cashless-card-label">CURRENCY</span>
+              <strong>USD</strong>
+            </div>
+          </div>
+        </a>
+
         <div className="project-cashless-copy">
+          <span className="project-number">02</span>
           <div className="project-cashless-meta">
             <span>{copy.cashlessMeta}</span>
             <span>2026</span>
