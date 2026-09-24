@@ -5666,47 +5666,5 @@ html.portfolio-light .stack-logo-light img,
 }
 
 
-/* Mobile About: exactly two paragraphs, never the desktop story */
-.about-story-mobile {
-  display: none;
-}
-
-@media (max-width: 900px), (pointer: coarse) {
-  .about-story-desktop {
-    display: none !important;
-  }
-
-  .about-story-mobile {
-    display: block !important;
-  }
-}
 
 
-/* Definitive About visibility: mobile gets only the two-line summary */
-@media screen and (max-width: 1024px) {
-  .about-section .about-story-desktop {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    margin: 0 !important;
-  }
-
-  .about-section .about-story-mobile {
-    display: block !important;
-    visibility: visible !important;
-    height: auto !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
-@media screen and (min-width: 1025px) {
-  .about-section .about-story-mobile {
-    display: none !important;
-  }
-
-  .about-section .about-story-desktop {
-    display: block !important;
-  }
-}
