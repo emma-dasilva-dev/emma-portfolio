@@ -5,28 +5,30 @@ import Stack from "@/components/sections/Stack";
 import PortfolioHeroWithPaperShaders from "@/components/ui/portfolio-hero-with-paper-shaders";
 import SectionTransition from "@/components/ui/SectionTransition";
 import SmoothScroll from "@/components/ui/SmoothScroll";
+import { LanguageProvider } from "@/components/ui/LanguageProvider";
 
 export default function Home() {
   return (
-    <SmoothScroll>
-      <main>
-        <PortfolioHeroWithPaperShaders />
+    <LanguageProvider>
+      <SmoothScroll>
+        <main>
+          <PortfolioHeroWithPaperShaders />
 
-        <SectionTransition direction="left">
-          <About />
-        </SectionTransition>
+          <SectionTransition direction="left">
+            <About />
+          </SectionTransition>
 
-        <SectionTransition direction="left">
-          <Stack />
-        </SectionTransition>
+          <SectionTransition direction="left">
+            <Stack />
+          </SectionTransition>
 
-        <SectionTransition direction="right">
-          <Projects />
-        </SectionTransition>
+          <SectionTransition direction="right">
+            <Projects />
+          </SectionTransition>
 
-
-        <Contact />
-      </main>
-    </SmoothScroll>
+          <Contact />
+        </main>
+      </SmoothScroll>
+    </LanguageProvider>
   );
 }
