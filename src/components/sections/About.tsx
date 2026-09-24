@@ -15,6 +15,11 @@ export default function About() {
           "J’ai appris qu’être bloquée fait souvent partie du processus. J’aime essayer par moi-même, comprendre ce qui n’a pas fonctionné et rester sur un problème jusqu’à ce qu’il devienne clair, plutôt que de chercher uniquement une solution rapide.",
           "C’est cette même curiosité qui m’a attirée vers la cybersécurité. J’aime toujours construire des logiciels, mais je veux aussi comprendre comment les systèmes peuvent échouer, comment les protéger et comment progresser comme ingénieure des deux côtés.",
         ],
+        mobileParagraphs: [
+          "Je me suis intéressée à la tech par curiosité, avec l’envie de comprendre ce qui se passe derrière l’écran. En apprenant par moi-même, j’ai découvert que j’aimais autant construire que résoudre les problèmes qui apparaissent en chemin.",
+          "Le développement m’a appris à transformer des idées en quelque chose de concret, tandis que la cybersécurité m’attire pour une autre raison : comprendre comment les systèmes fonctionnent, où ils peuvent échouer et comment mieux les protéger.",
+          "Je suis encore en train d’apprendre, mais j’aime avancer en expérimentant, en corrigeant mes erreurs et en allant jusqu’au bout d’un problème pour vraiment le comprendre.",
+        ],
       }
     : {
         label: "About",
@@ -24,6 +29,11 @@ export default function About() {
           "Web development made everything feel more real. I could take an idea, build it, break parts of it, improve it and eventually end up with something I was genuinely proud to call mine.",
           "I have learned that being stuck is usually part of the process. I like trying things for myself, questioning what went wrong and staying with a problem until I understand it instead of only finding a quick fix.",
           "That same curiosity is what pulled me toward cybersecurity. I still love building software, but I also want to understand how systems can fail, how they can be protected and how I can keep becoming a stronger engineer on both sides.",
+        ],
+        mobileParagraphs: [
+          "I got into tech out of curiosity and a need to understand what was happening behind the screen. Learning on my own showed me that I enjoy both building things and solving the problems that come with them.",
+          "Development taught me how to turn ideas into something real, while cybersecurity pulled me in for a different reason: understanding how systems work, where they can fail and how they can be better protected.",
+          "I’m still learning, but I like progressing by experimenting, fixing my mistakes and staying with a problem until I genuinely understand it.",
         ],
       };
 
@@ -41,7 +51,7 @@ export default function About() {
 
       <div className="about-content">
         <motion.div
-          className="about-story"
+          className="about-story about-story-desktop"
           initial={{ opacity: 0, y: 42 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
@@ -51,6 +61,12 @@ export default function About() {
             <p key={paragraph}>{paragraph}</p>
           ))}
         </motion.div>
+
+        <div className="about-story about-story-mobile">
+          {copy.mobileParagraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
       </div>
     </section>
   );
