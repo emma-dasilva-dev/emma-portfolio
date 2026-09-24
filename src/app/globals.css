@@ -5289,3 +5289,94 @@ html.portfolio-light .paper-hero-mobile-fallback::before {
     height: 2.55rem;
   }
 }
+
+
+/* Server-rendered light theme used by mobile URL controls */
+.portfolio-light-page {
+  --portfolio-accent: #6699ff;
+  --portfolio-accent-contrast: #fff;
+  background: #f2f2f2 !important;
+  color: #000 !important;
+}
+
+.portfolio-light-page .paper-hero-copy,
+.portfolio-light-page .about-section,
+.portfolio-light-page .stack-section,
+.portfolio-light-page .projects-section,
+.portfolio-light-page .contact-section,
+.portfolio-light-page .section-transition {
+  background: #f2f2f2 !important;
+  color: #000 !important;
+}
+
+.portfolio-light-page .section-kicker,
+.portfolio-light-page .paper-experience-label,
+.portfolio-light-page .paper-hero-title p,
+.portfolio-light-page .paper-mobile-theme-link,
+.portfolio-light-page .project-bandit-link,
+.portfolio-light-page .project-cashless-link,
+.portfolio-light-page .stack-counter {
+  color: var(--portfolio-accent) !important;
+}
+
+.portfolio-light-page .paper-experience-marker,
+.portfolio-light-page .paper-experience-row:not(:last-child)::after {
+  background: var(--portfolio-accent) !important;
+}
+
+.portfolio-light-page .paper-hero-links a,
+.portfolio-light-page .contact-socials a {
+  color: var(--portfolio-accent) !important;
+}
+
+.portfolio-light-page .paper-language-toggle,
+.portfolio-light-page .paper-mobile-language-link {
+  color: #000 !important;
+}
+
+.portfolio-light-page .stack-logo-light img {
+  filter: none !important;
+}
+
+.portfolio-light-page .project-bandit-meta,
+.portfolio-light-page .project-bandit-description,
+.portfolio-light-page .project-bandit-tags,
+.portfolio-light-page .project-cashless-meta,
+.portfolio-light-page .project-cashless-description,
+.portfolio-light-page .project-cashless-tags {
+  color: rgba(0, 0, 0, 0.58) !important;
+}
+
+.portfolio-light-page .project-cashless-meta {
+  color: var(--portfolio-accent) !important;
+}
+
+.portfolio-light-page .project-bandit-terminal-v2 {
+  color: #f5f5f5 !important;
+}
+
+@media (max-width: 700px) {
+  /* Hide the React copies with enough specificity so only one mobile control is visible. */
+  .paper-hero .paper-language-toggle,
+  .paper-hero .paper-theme-toggle,
+  .paper-hero-dark .paper-theme-toggle,
+  .paper-hero-light .paper-theme-toggle {
+    display: none !important;
+  }
+
+  .portfolio-light-page,
+  .portfolio-light-page .paper-hero,
+  .portfolio-light-page .paper-hero-copy,
+  .portfolio-light-page .about-section,
+  .portfolio-light-page .stack-section,
+  .portfolio-light-page .projects-section,
+  .portfolio-light-page .contact-section,
+  .portfolio-light-page .section-transition {
+    background: #f2f2f2 !important;
+  }
+
+  .portfolio-light-page .paper-mobile-theme-link,
+  .portfolio-light-page .paper-hero-links a {
+    color: #6699ff !important;
+  }
+}
