@@ -8,13 +8,21 @@ import SmoothScroll from "@/components/ui/SmoothScroll";
 import { LanguageProvider } from "@/components/ui/LanguageProvider";
 import ScrollExperience from "@/components/ui/ScrollExperience";
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ lang?: string; theme?: string }>;
+}) {
+  const params = await searchParams;
+  const initialLanguage = params.lang === "fr" ? "fr" : "en";
+  const initialDarkMode = params.theme !== "light";
+
   return (
-    <LanguageProvider>
+    <LanguageProvider initialLanguage={initialLanguage}>
       <SmoothScroll>
         <ScrollExperience />
         <main>
-          <PortfolioHeroWithPaperShaders />
+          <PortfolioHeroWithPaperShaders initialDarkMode={initialDarkMode} />
 
           <SectionTransition direction="left">
             <About />
