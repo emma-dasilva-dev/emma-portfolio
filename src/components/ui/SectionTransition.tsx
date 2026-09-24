@@ -13,10 +13,10 @@ export default function SectionTransition({
 }: SectionTransitionProps) {
   const offset =
     direction === "left"
-      ? { x: -34, y: 18 }
+      ? { x: -120, y: 28 }
       : direction === "right"
-        ? { x: 34, y: 18 }
-        : { x: 0, y: 34 };
+        ? { x: 120, y: 28 }
+        : { x: 0, y: 90 };
 
   return (
     <motion.div
@@ -25,20 +25,23 @@ export default function SectionTransition({
         opacity: 0,
         x: offset.x,
         y: offset.y,
-        scale: 0.985,
+        scale: 0.94,
+        filter: "blur(8px)",
       }}
       whileInView={{
         opacity: 1,
         x: 0,
         y: 0,
         scale: 1,
+        filter: "blur(0px)",
       }}
       viewport={{
         once: true,
-        amount: 0.12,
+        amount: 0.5,
+        margin: "0px",
       }}
       transition={{
-        duration: 0.72,
+        duration: 0.95,
         ease: [0.16, 1, 0.3, 1],
       }}
     >
