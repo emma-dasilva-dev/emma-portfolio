@@ -5666,12 +5666,12 @@ html.portfolio-light .stack-logo-light img,
 }
 
 
-/* Shorter technical About copy on mobile only */
+/* Mobile About: exactly two paragraphs, never the desktop story */
 .about-story-mobile {
   display: none;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px), (pointer: coarse) {
   .about-story-desktop {
     display: none !important;
   }
