@@ -4013,3 +4013,10 @@ html.portfolio-light .stack-section .section-kicker,
 html.portfolio-light .stack-section .stack-counter {
   color: var(--portfolio-accent) !important;
 }
+
+
+/* Light theme section label accents */
+html.portfolio-light .about-section .section-kicker,
+html.portfolio-light .projects-section .section-kicker {
+  color: var(--portfolio-accent) !important;
+}
