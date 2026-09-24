@@ -16,9 +16,8 @@ export default function About() {
           "C’est cette même curiosité qui m’a attirée vers la cybersécurité. J’aime toujours construire des logiciels, mais je veux aussi comprendre comment les systèmes peuvent échouer, comment les protéger et comment progresser comme ingénieure des deux côtés.",
         ],
         mobileParagraphs: [
-          "Je développe avec C, Linux, JavaScript, TypeScript, React, Next.js, Node.js et MySQL.",
-          "Je m’intéresse au développement logiciel et à la cybersécurité, surtout à la façon dont les systèmes fonctionnent, échouent et peuvent être mieux protégés.",
-          "J’apprends en construisant, testant et déboguant, avec un intérêt particulier pour Linux, le web et les réseaux.",
+          "Je suis une développeuse curieuse, attirée par la façon dont les choses fonctionnent et par le plaisir de transformer une idée en quelque chose de concret.",
+          "J’aime apprendre par moi-même, comprendre en profondeur ce que je construis et continuer à progresser à la croisée du développement et de la cybersécurité.",
         ],
       }
     : {
@@ -31,9 +30,8 @@ export default function About() {
           "That same curiosity is what pulled me toward cybersecurity. I still love building software, but I also want to understand how systems can fail, how they can be protected and how I can keep becoming a stronger engineer on both sides.",
         ],
         mobileParagraphs: [
-          "I build with C, Linux, JavaScript, TypeScript, React, Next.js, Node.js and MySQL.",
-          "I focus on software development and cybersecurity, especially how systems work, fail and can be better protected.",
-          "I learn by building, testing and debugging, with a strong interest in Linux, web security and networking.",
+          "I’m a curious developer who is drawn to understanding how things work and turning ideas into something real.",
+          "I like learning independently, understanding what I build at a deeper level, and growing at the intersection of software development and cybersecurity.",
         ],
       };
 
