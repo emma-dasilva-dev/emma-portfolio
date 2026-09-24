@@ -5092,3 +5092,81 @@ html.portfolio-light .project-cashless-meta {
     max-width: 6.6rem !important;
   }
 }
+
+
+/* Mobile language + theme controls */
+.paper-mobile-controls {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  /* Use dedicated in-flow controls on phones so taps are reliable. */
+  .paper-language-toggle,
+  .paper-theme-toggle {
+    display: none !important;
+  }
+
+  .paper-hero-bottom {
+    width: 100%;
+  }
+
+  .paper-mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 0.85rem;
+  }
+
+  .paper-mobile-language,
+  .paper-mobile-theme {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .paper-mobile-language {
+    min-width: 3rem;
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    background: transparent;
+    color: inherit;
+    font-size: 0.7rem !important;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .paper-mobile-theme {
+    width: 2.65rem;
+    height: 2.65rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--portfolio-accent);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--portfolio-accent);
+  }
+
+  .paper-mobile-theme svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    pointer-events: none;
+  }
+
+  .paper-mobile-language:active,
+  .paper-mobile-theme:active {
+    transform: scale(0.96);
+  }
+
+  html.portfolio-light .paper-mobile-language {
+    color: #000;
+  }
+
+  html.portfolio-light .paper-mobile-theme {
+    color: var(--portfolio-accent);
+    border-color: var(--portfolio-accent);
+  }
+}
