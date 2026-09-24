@@ -4567,130 +4567,39 @@ html.portfolio-light .projects-section .section-kicker {
   }
 }
 
-
 /* Cashless Africa project */
 .project-cashless {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.8fr);
-  gap: clamp(1.75rem, 4vw, 4rem);
-  align-items: start;
-  margin-top: clamp(6rem, 11vw, 10rem);
-}
-
-.project-cashless-preview {
-  display: flex;
-  min-height: clamp(24rem, 39vw, 31rem);
-  flex-direction: column;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 12px;
-  background: #0a0a0a;
-  color: #f5f5f5;
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.24);
-  transition:
-    transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 220ms ease;
-}
-
-.project-cashless-preview:hover {
-  transform: translateY(-4px);
-  border-color: var(--portfolio-accent);
-}
-
-.project-cashless-preview-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 2.75rem;
-  padding: 0 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.72rem !important;
-  letter-spacing: 0.12em;
-}
-
-.project-cashless-preview-body {
-  flex: 1;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: clamp(1.5rem, 3.5vw, 2.6rem);
-  background:
-    radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--portfolio-accent) 24%, transparent), transparent 31%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.025), transparent 50%),
-    #0a0a0a;
-}
-
-.project-cashless-preview-copy {
-  display: grid;
-  gap: 1rem;
-  width: min(100%, 31rem);
-}
-
-.project-cashless-preview-kicker {
-  color: var(--portfolio-accent);
-  font-size: 0.7rem !important;
-  letter-spacing: 0.12em;
-}
-
-.project-cashless-preview-copy strong {
-  max-width: 12ch;
-  font-size: clamp(2rem, 5vw, 4.5rem) !important;
-  font-weight: 500;
-  line-height: 0.94;
-  letter-spacing: -0.055em;
-}
-
-.project-cashless-preview-line {
-  display: block;
-  width: min(100%, 22rem);
-  height: 1px;
-  margin-top: 0.5rem;
-  background: rgba(255, 255, 255, 0.24);
-}
-
-.project-cashless-preview-line-short {
-  width: min(68%, 15rem);
-  margin-top: -0.3rem;
-}
-
-.project-cashless-preview-action {
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  border: 1px solid var(--portfolio-accent);
-  border-radius: 50%;
-  color: var(--portfolio-accent);
-  font-size: 1.2rem !important;
+  margin-top: clamp(5rem, 9vw, 8rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid rgba(245, 245, 241, 0.14);
 }
 
 .project-cashless-copy {
-  position: sticky;
-  top: 2rem;
+  width: min(100%, 48rem);
+  margin-left: auto;
 }
 
 .project-cashless-meta {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: clamp(2rem, 5vw, 4rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   color: rgba(245, 245, 241, 0.55);
 }
 
 .project-cashless-copy h2 {
   margin: 0 0 1.15rem;
   font: inherit;
-  line-height: 1.25;
+  font-size: clamp(1.4rem, 2.4vw, 2.2rem) !important;
+  line-height: 1.15;
   letter-spacing: -0.035em;
 }
 
 .project-cashless-description {
-  max-width: 34rem;
+  max-width: 38rem;
   margin: 0;
   color: rgba(245, 245, 241, 0.68);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .project-cashless-tags {
@@ -4705,15 +4614,14 @@ html.portfolio-light .projects-section .section-kicker {
   display: inline-flex;
   gap: 0.45rem;
   align-items: center;
-  margin-top: 2.25rem;
+  min-height: 2.75rem;
+  margin-top: 1.75rem;
   color: var(--portfolio-accent) !important;
   text-decoration: none;
-  transition: opacity 180ms ease, transform 180ms ease;
 }
 
-.project-cashless-link:hover {
-  opacity: 0.62;
-  transform: translateX(2px);
+html.portfolio-light .project-cashless {
+  border-top-color: rgba(0, 0, 0, 0.14);
 }
 
 html.portfolio-light .project-cashless-meta,
@@ -4726,72 +4634,28 @@ html.portfolio-light .project-cashless-meta {
   color: var(--portfolio-accent);
 }
 
-@media (max-width: 860px) {
-  .project-cashless {
-    grid-template-columns: 1fr;
-  }
-
-  .project-cashless-copy {
-    position: static;
-  }
-
-  .project-cashless-meta {
-    margin-bottom: 1.5rem;
-  }
-}
-
 @media (max-width: 700px) {
   .project-cashless {
-    grid-template-columns: 1fr !important;
-    gap: 2.25rem !important;
-    margin-top: 5rem !important;
-  }
-
-  .project-cashless-preview {
-    min-height: 20rem;
-    border-radius: 10px;
-  }
-
-  .project-cashless-preview-body {
-    padding: 1.25rem;
-  }
-
-  .project-cashless-preview-copy strong {
-    font-size: clamp(2rem, 11vw, 3.4rem) !important;
-  }
-
-  .project-cashless-preview-action {
-    width: 3rem;
-    height: 3rem;
+    margin-top: 4.5rem;
+    padding-top: 2.5rem;
   }
 
   .project-cashless-copy {
-    position: static !important;
-    min-width: 0;
+    width: 100%;
+    margin-left: 0;
   }
 
   .project-cashless-meta {
-    gap: 0.75rem !important;
-    margin-bottom: 1.4rem !important;
+    margin-bottom: 1.25rem;
     font-size: 0.76rem !important;
   }
 
   .project-cashless-copy h2 {
     overflow-wrap: anywhere;
-    line-height: 1.2 !important;
-  }
-
-  .project-cashless-description {
-    line-height: 1.6 !important;
+    font-size: 1.35rem !important;
   }
 
   .project-cashless-tags {
-    gap: 0.55rem 0.8rem !important;
-  }
-
-  .project-cashless-link {
-    min-height: 2.75rem;
-    margin-top: 1.75rem !important;
-    align-items: center;
+    gap: 0.55rem 0.8rem;
   }
 }
