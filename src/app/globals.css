@@ -5177,3 +5177,31 @@ html.portfolio-light .project-cashless-meta {
     height: 2.65rem !important;
   }
 }
+
+
+/* Mobile shader fallback keeps the hero interactive on phones */
+.paper-hero-mobile-fallback {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  background:
+    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--portfolio-accent) 82%, transparent) 0 18%, transparent 47%),
+    repeating-radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--portfolio-accent) 78%, transparent) 0 2px, transparent 2px 6px),
+    #000;
+}
+
+html.portfolio-light .paper-hero-mobile-fallback {
+  background:
+    radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--portfolio-accent) 74%, white) 0 18%, transparent 47%),
+    repeating-radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--portfolio-accent) 64%, transparent) 0 2px, transparent 2px 6px),
+    #f2f2f2;
+}
+
+@media (max-width: 700px) {
+  .paper-language-toggle,
+  .paper-theme-toggle {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer !important;
+  }
+}
