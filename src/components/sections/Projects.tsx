@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { motion } from "motion/react";
+import { useLanguage } from "@/components/ui/LanguageProvider";
 
 const projectUrl =
   "https://emma-dasilva-dev.github.io/bandit-redline-journal/";
@@ -9,13 +10,46 @@ const projectUrl =
 const demoPassword = "cYb3rCur10sity_0v3rTh3W1r3_2026";
 
 const resultMessages = {
-  success:
-    "AUTHENTICATION ACCEPTED // IDENTITY VERIFIED // ACCESS NODE UNLOCKED // PROCEED, OPERATOR.",
-  error:
-    "AUTHENTICATION FAILED // INPUT MISMATCH DETECTED // VERIFY CREDENTIAL STRING.",
+  en: {
+    success: "AUTHENTICATION ACCEPTED // IDENTITY VERIFIED // ACCESS NODE UNLOCKED // PROCEED, OPERATOR.",
+    error: "AUTHENTICATION FAILED // INPUT MISMATCH DETECTED // VERIFY CREDENTIAL STRING.",
+  },
+  fr: {
+    success: "AUTHENTIFICATION ACCEPTÉE // IDENTITÉ VÉRIFIÉE // NŒUD D’ACCÈS DÉVERROUILLÉ // CONTINUEZ, OPÉRATRICE.",
+    error: "ÉCHEC DE L’AUTHENTIFICATION // SAISIE INCORRECTE // VÉRIFIEZ LES IDENTIFIANTS.",
+  },
 } as const;
 
 export default function Projects() {
+  const { language } = useLanguage();
+  const copy = language === "fr"
+    ? {
+        label: "Projets",
+        recovered: "Identifiant du niveau précédent récupéré.",
+        password: "mot de passe :",
+        placeholder: "saisir le mot de passe",
+        enter: "ENTRER",
+        system: "système :",
+        waiting: "en attente d’authentification...",
+        meta: "Cybersécurité / Linux / SSH",
+        description: "Un journal de cybersécurité qui documente ma progression dans OverTheWire Bandit, avec les commandes, les concepts et le raisonnement derrière chaque défi.",
+        concepts: "Technologies et concepts",
+        view: "Voir le projet",
+      }
+    : {
+        label: "Projects",
+        recovered: "{copy.recovered}",
+        password: "password:",
+        placeholder: "type password",
+        enter: "ENTER",
+        system: "system:",
+        waiting: "waiting for authentication...",
+        meta: "Cybersecurity / Linux / SSH",
+        description: "A cybersecurity journal documenting my progress through OverTheWire Bandit, including the commands, concepts and reasoning behind each challenge.",
+        concepts: "Technologies and concepts",
+        view: "View project",
+      };
+
   const [password, setPassword] = useState("");
   const [result, setResult] = useState<"idle" | "success" | "error">("idle");
   const [typedResult, setTypedResult] = useState("");
@@ -26,7 +60,7 @@ export default function Projects() {
       return;
     }
 
-    const message = resultMessages[result];
+    const message = resultMessages[language][result];
     let index = 0;
     setTypedResult("");
 
@@ -40,7 +74,7 @@ export default function Projects() {
     }, 28);
 
     return () => window.clearInterval(timer);
-  }, [result]);
+  }, [result, language]);
 
   function checkPassword(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -56,7 +90,7 @@ export default function Projects() {
         viewport={{ once: true, amount: 0.65 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="section-kicker">Projects</p>
+        <p className="section-kicker">{copy.label}</p>
       </motion.div>
 
       <motion.article
@@ -100,7 +134,7 @@ export default function Projects() {
 
             <form className="project-bandit-terminal-form" onSubmit={checkPassword}>
               <label htmlFor="bandit-password-v2">
-                bandit1@bandit.labs.overthewire.org&apos;s password:
+                bandit1@bandit.labs.overthewire.org&apos;s {copy.password}
               </label>
 
               <div className="project-bandit-terminal-inputline">
@@ -116,9 +150,9 @@ export default function Projects() {
                   autoComplete="off"
                   spellCheck={false}
                   aria-describedby="bandit-result-v2"
-                  placeholder="type password"
+                  placeholder={copy.placeholder}
                 />
-                <button type="submit">ENTER</button>
+                <button type="submit">{copy.enter}</button>
               </div>
             </form>
 
@@ -133,11 +167,11 @@ export default function Projects() {
               }`}
               aria-live="polite"
             >
-              <span className="project-bandit-terminal-result-prefix">system:</span>
+              <span className="project-bandit-terminal-result-prefix">{copy.system}</span>
               <span>
-                {typedResult || "waiting for authentication..."}
+                {typedResult || copy.waiting}
                 {result !== "idle" &&
-                  typedResult.length < resultMessages[result].length && (
+                  typedResult.length < resultMessages[language][result].length && (
                     <span className="project-bandit-caret" aria-hidden="true" />
                   )}
               </span>
@@ -147,19 +181,15 @@ export default function Projects() {
 
         <div className="project-bandit-copy">
           <div className="project-bandit-meta">
-            <span>Cybersecurity / Linux / SSH</span>
+            <span>{copy.meta}</span>
             <span>2026</span>
           </div>
 
           <h2>Bandit Redline Journal</h2>
 
-          <p className="project-bandit-description">
-            A cybersecurity journal documenting my progress through OverTheWire
-            Bandit, including the commands, concepts and reasoning behind each
-            challenge.
-          </p>
+          <p className="project-bandit-description">{copy.description}</p>
 
-          <div className="project-bandit-tags" aria-label="Technologies and concepts">
+          <div className="project-bandit-tags" aria-label={copy.concepts}>
             <span>Linux</span>
             <span>SSH</span>
             <span>Bash</span>
@@ -173,7 +203,7 @@ export default function Projects() {
             target="_blank"
             rel="noreferrer"
           >
-            View project <span aria-hidden="true">↗</span>
+            {copy.view} <span aria-hidden="true">↗</span>
           </a>
         </div>
       </motion.article>
