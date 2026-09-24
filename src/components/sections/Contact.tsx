@@ -18,7 +18,7 @@ export default function Contact() {
         email: "Envoyez-moi un e-mail !",
         social: "Liens sociaux",
         emailLabel: "E-mail",
-        credit: "Conçu et développé par moi",
+        credit: "Conçu et développé par Emma Da Silva",
         rights: "©2026 – Tous droits réservés",
         subject: "Bonjour%20Emma",
       }
@@ -27,7 +27,7 @@ export default function Contact() {
         email: "Drop me an email!",
         social: "Social links",
         emailLabel: "Email",
-        credit: "Designed and developed by me",
+        credit: "Designed and developed by Emma Da Silva",
         rights: "©2026 – All Rights Reserved",
         subject: "Hello%20Emma",
       };
