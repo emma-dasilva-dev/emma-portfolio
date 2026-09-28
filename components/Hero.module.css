@@ -1,6 +1,8 @@
 .hero {
   --margin: clamp(16px, 2.2vw, 40px);
 
+  display: flex;
+  flex-direction: column;
   min-height: 100svh;
   padding: var(--margin);
   color: #f4f4f2;
@@ -31,6 +33,20 @@
   text-wrap: pretty;
 }
 
+.statement {
+  /* Pushed to the bottom of the hero, with a guaranteed gap below the intro. */
+  margin: auto 0 0;
+  padding-top: clamp(96px, 16svh, 200px);
+  font-size: clamp(64px, 10vw, 160px);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+
+.statement span {
+  display: block;
+}
+
 @media (max-width: 1024px) {
   .intro {
     max-width: min(30rem, 62vw);
@@ -41,5 +57,11 @@
   .intro {
     margin-top: clamp(72px, 14svh, 120px);
     max-width: 92%;
+  }
+
+  .statement {
+    padding-top: clamp(72px, 12svh, 120px);
+    font-size: clamp(48px, 15vw, 84px);
+    line-height: 0.95;
   }
 }

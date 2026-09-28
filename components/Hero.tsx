@@ -12,6 +12,9 @@ export default function Hero() {
         digital products, explore how systems work, and study how they can be made smarter and more
         secure.
       </p>
+      <h1 className={styles.statement}>
+        <span>I build</span> <span>with intention.</span>
+      </h1>
     </header>
   );
 }
