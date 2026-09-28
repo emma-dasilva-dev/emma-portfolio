@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <ShaderBackground />
         <FollowCursor />
-        {children}
+        <div className="site-content">{children}</div>
       </body>
     </html>
   );

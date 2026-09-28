@@ -13,15 +13,26 @@ body {
   background: #212121;
 }
 
+/* Root stacking context: background (0) < content (10) < cursor (100). */
+body {
+  position: relative;
+  isolation: isolate;
+}
+
 .shader-background {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: 0;
   overflow: hidden;
   pointer-events: none;
   background: #212121;
+}
+
+.site-content {
+  position: relative;
+  z-index: 10;
 }
 
 .follow-cursor {
@@ -29,6 +40,6 @@ body {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 9999;
+  z-index: 100;
   pointer-events: none;
 }
