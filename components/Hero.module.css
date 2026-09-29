@@ -1,11 +1,20 @@
 .hero {
   --margin: clamp(16px, 2.2vw, 40px);
 
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100svh;
   padding: var(--margin);
+  overflow: hidden;
   color: #f4f4f2;
+}
+
+.meta,
+.intro,
+.statement {
+  position: relative;
+  z-index: 2;
 }
 
 .meta {
@@ -34,7 +43,6 @@
 }
 
 .statement {
-  /* Pushed to the bottom of the hero, with a guaranteed gap below the intro. */
   margin: auto 0 0;
   padding-top: clamp(96px, 16svh, 200px);
   font-size: clamp(72px, 8.5vw, 132px);
