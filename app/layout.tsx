@@ -1,20 +1,19 @@
 import type { Metadata } from 'next';
-import ShaderBackground from '@/components/ShaderBackground';
-import FollowCursor from '@/components/FollowCursor';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Emma da Silva',
+  title: 'Emma Da Silva',
+  description: 'Personal portfolio of Emma Da Silva.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body>
-        <ShaderBackground />
-        <FollowCursor />
-        <div className="site-content">{children}</div>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
