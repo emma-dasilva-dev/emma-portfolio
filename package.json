@@ -8,20 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
-    "@react-three/fiber": "^9.8.1",
-    "@shadergradient/react": "^2.4.20",
-    "camera-controls": "^3.1.2",
     "next": "16.3.5",
     "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "three": "^0.180.0",
-    "three-stdlib": "^2.36.1"
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@types/node": "^26.6.3",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "@types/three": "^0.180.0",
     "typescript": "^5.9.3"
   }
 }
