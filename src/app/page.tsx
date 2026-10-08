@@ -1,44 +1,14 @@
-import About from "@/components/sections/About";
-import Contact from "@/components/sections/Contact";
-import Projects from "@/components/sections/Projects";
-import Stack from "@/components/sections/Stack";
-import PortfolioHeroWithPaperShaders from "@/components/ui/portfolio-hero-with-paper-shaders";
-import SectionTransition from "@/components/ui/SectionTransition";
-import { LanguageProvider } from "@/components/ui/LanguageProvider";
-import ScrollExperience from "@/components/ui/ScrollExperience";
-
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ lang?: string; theme?: string }>;
-}) {
-  const params = await searchParams;
-  const initialLanguage = params.lang === "fr" ? "fr" : "en";
-  const initialDarkMode = params.theme !== "light";
-
+export default function Home() {
   return (
-    <LanguageProvider initialLanguage={initialLanguage}>
-      <ScrollExperience />
-      <main
-          className={initialDarkMode ? undefined : "portfolio-light-page"}
-          data-mobile-theme={initialDarkMode ? "dark" : "light"}
-        >
-          <PortfolioHeroWithPaperShaders initialDarkMode={initialDarkMode} />
-
-          <SectionTransition direction="left">
-            <About />
-          </SectionTransition>
-
-          <SectionTransition direction="left">
-            <Stack />
-          </SectionTransition>
-
-          <SectionTransition direction="right">
-            <Projects />
-          </SectionTransition>
-
-          <Contact />
-      </main>
-    </LanguageProvider>
+    <main className="shell">
+      <header className="header"><a className="brand" href="#accueil">Emma DaSilva<span>.</span></a><span className="stage">Portfolio · En construction</span></header>
+      <section id="accueil" className="hero" aria-labelledby="hero-title">
+        <p className="eyebrow">CYBERSÉCURITÉ · DÉVELOPPEMENT WEB</p>
+        <h1 id="hero-title">Bonjour, moi c&apos;est <em>Emma DaSilva.</em></h1>
+        <p className="intro">Un nouvel espace personnel prend forme. Une approche centrée sur la cybersécurité, la programmation et la curiosité technique.</p>
+        <div className="links"><a href="mailto:emma.dasilva.dev@gmail.com">Me contacter ↗</a><a href="https://github.com/emma-dasilva-dev" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+      </section>
+      <footer>© 2026 Emma DaSilva · Cotonou, Bénin</footer>
+    </main>
   );
 }
