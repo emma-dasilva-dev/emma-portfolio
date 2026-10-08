@@ -1,27 +1,91 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Suspense, useEffect, useMemo, useRef } from "react";
-import { Box3, Group, MathUtils, Object3D, Vector3 } from "three";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Box3, Group, MathUtils, Vector3 } from "three";
+import type { Object3D } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-function Model() {
- const root = useRef<Group>(null);
- const { pointer } = useThree();
- const [scene,setScene] = useRefState();
- useEffect(()=>{let alive=true; const loader=new GLTFLoader(); loader.load("/models/headphones.glb",data=>{if(alive)setScene(data.scene)},undefined,()=>{});return()=>{alive=false}},[setScene]);
- const prepared=useMemo(()=>{if(!scene)return null;const copy=scene.clone(true);const bounds=new Box3().setFromObject(copy);const size=new Vector3();const center=new Vector3();bounds.getSize(size);bounds.getCenter(center);copy.position.sub(center);const max=Math.max(size.x,size.y,size.z)||1;const wrapper=new Group();wrapper.add(copy);wrapper.scale.setScalar(2.6/max);return wrapper},[scene]);
- useFrame(({clock},delta)=>{if(!root.current)return;const time=clock.elapsedTime;root.current.position.y=Math.sin(time*.72)*.085;root.current.rotation.y=MathUtils.damp(root.current.rotation.y,-.3+pointer.x*.35+Math.sin(time*.19)*.12,2,delta);root.current.rotation.x=MathUtils.damp(root.current.rotation.x,pointer.y*-.13,2,delta);});
- if(!prepared)return null;
- return <group ref={root}><primitive object={prepared}/></group>;
+const MODEL_URL = "/models/headphones.glb";
+
+function Model({ reducedMotion }: { reducedMotion: boolean }) {
+  const group = useRef<Group>(null);
+  const { pointer } = useThree();
+  const [scene, setScene] = useState<Object3D | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    const loader = new GLTFLoader();
+    loader.load(
+      MODEL_URL,
+      (gltf) => { if (active) setScene(gltf.scene); },
+      undefined,
+      (error) => { console.error("Unable to load headphone model", error); }
+    );
+    return () => { active = false; };
+  }, []);
+
+  const normalized = useMemo(() => {
+    if (!scene) return null;
+    const model = scene.clone(true);
+    const bounds = new Box3().setFromObject(model);
+    const size = bounds.getSize(new Vector3());
+    const center = bounds.getCenter(new Vector3());
+    const maxDimension = Math.max(size.x, size.y, size.z);
+    if (!Number.isFinite(maxDimension) || maxDimension <= 0) return null;
+    model.position.sub(center);
+    const pivot = new Group();
+    pivot.add(model);
+    pivot.scale.setScalar(2.7 / maxDimension);
+    return pivot;
+  }, [scene]);
+
+  useFrame(({ clock }, delta) => {
+    if (!group.current || reducedMotion) return;
+    const seconds = clock.elapsedTime;
+    group.current.position.y = Math.sin(seconds * 0.65) * 0.07;
+    group.current.rotation.y = MathUtils.damp(
+      group.current.rotation.y,
+      -0.3 + pointer.x * 0.32 + Math.sin(seconds * 0.22) * 0.1,
+      2.2,
+      delta
+    );
+    group.current.rotation.x = MathUtils.damp(
+      group.current.rotation.x,
+      -pointer.y * 0.12,
+      2.2,
+      delta
+    );
+  });
+
+  return normalized ? <group ref={group}><primitive object={normalized} /></group> : null;
 }
-function useRefState(): [Object3D|null,(value:Object3D)=>void] {
- const [value,setValue]=requireState<Object3D|null>(null);return [value,setValue];
-}
-import { useState as requireState } from "react";
-export default function Headphones(){
- return <Canvas dpr={[1,1.5]} camera={{position:[0,0,4.3],fov:40}} gl={{alpha:true,antialias:true,powerPreference:"high-performance"}} style={{width:"100%",height:"100%"}} fallback={null}>
-  <ambientLight intensity={1.45}/><hemisphereLight intensity={1.1} color="#d6eaf2" groundColor="#1f3f4d"/><directionalLight position={[3,5,4]} intensity={2.8} color="#d6eaf2"/><pointLight position={[-4,1,2]} intensity={45} color="#5d8fa6" distance={12}/>
-  <Suspense fallback={null}><Model/></Suspense>
- </Canvas>;
+
+export default function Headphones() {
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  return (
+    <Canvas
+      aria-label="Modèle interactif de casque audio en trois dimensions"
+      role="img"
+      dpr={[1, 1.5]}
+      camera={{ position: [0, 0, 4.5], fov: 42 }}
+      gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
+      fallback={null}
+    >
+      <ambientLight intensity={1.4} />
+      <hemisphereLight intensity={1} color="#d6eaf2" groundColor="#1f3f4d" />
+      <directionalLight position={[3, 5, 4]} intensity={2.8} color="#d6eaf2" />
+      <pointLight position={[-4, 1, 2]} intensity={35} color="#5d8fa6" distance={12} />
+      <Model reducedMotion={reducedMotion} />
+    </Canvas>
+  );
 }
