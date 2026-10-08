@@ -36,7 +36,7 @@ function Model({ reducedMotion }: { reducedMotion: boolean }) {
     model.position.sub(center);
     const pivot = new Group();
     pivot.add(model);
-    pivot.scale.setScalar(2.7 / maxDimension);
+    pivot.scale.setScalar(3.45 / maxDimension);
     return pivot;
   }, [scene]);
 
@@ -77,7 +77,7 @@ export default function Headphones() {
       aria-label="Modèle interactif de casque audio en trois dimensions"
       role="img"
       dpr={[1, 1.5]}
-      camera={{ position: [0, 0, 4.5], fov: 42 }}
+      camera={{ position: [0, 0, 4.2], fov: 42 }}
       gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
       fallback={null}
     >
