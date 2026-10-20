@@ -323,6 +323,28 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
           .halftone-footer__fallback {
             bottom: 22%; font-size: clamp(66px, 21vw, 128px); letter-spacing: -.065em;
           }
+          /* Safari-safe animated halftone when Canvas has not successfully painted.
+             Unlike a solid wordmark, this remains visibly animated without JS. */
+          @supports (-webkit-background-clip: text) {
+            .halftone-footer:not([data-dots-ready="true"]) .halftone-footer__fallback {
+              color: transparent;
+              -webkit-text-fill-color: transparent;
+              background-image: radial-gradient(circle, #d6eaf2 1.8px, transparent 2.1px);
+              background-size: 7px 7px;
+              background-position: 0 0;
+              -webkit-background-clip: text;
+              background-clip: text;
+              animation: halftone-mobile-flow 3.2s linear infinite;
+              will-change: background-position;
+            }
+          }
+        }
+        @keyframes halftone-mobile-flow {
+          from { background-position: 0 0; }
+          to { background-position: 28px -21px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .halftone-footer__fallback { animation: none !important; }
         }
         @media (max-width: 360px) {
           .halftone-footer__top { font-size: 9px; }
