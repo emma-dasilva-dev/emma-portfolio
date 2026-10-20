@@ -45,56 +45,6 @@
   mask-image: radial-gradient(55% 60% at 68% 46%, #000, transparent 75%);
 }
 
-.stage {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.stage canvas {
-  display: block;
-}
-
-.site[data-motion="reduced"] .stage,
-.stage[data-state="error"] {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 100svh;
-}
-
-.modelFallback {
-  position: absolute;
-  inset: 0 0 0 46%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.orbit {
-  width: min(60%, 420px);
-  aspect-ratio: 1;
-  border: 1px solid #28424e;
-  border-radius: 50%;
-  transform: rotate(-26deg) scaleY(0.78);
-  box-shadow: 0 0 0 50px #101e261a;
-}
-
-.fallbackLabel {
-  position: absolute;
-  bottom: 22%;
-  font-family: var(--font-mono), monospace;
-  letter-spacing: 0.16em;
-  font-size: 10px;
-  color: #83a6b5;
-  text-transform: uppercase;
-}
-
-.site main {
-  position: relative;
-  z-index: 2;
-}
-
 /* ───── Header ───── */
 
 .header {
@@ -282,7 +232,7 @@
 }
 
 .heroCopy {
-  width: min(46%, 640px);
+  width: min(100%, 760px);
   padding: 40px 0 120px;
 }
 
@@ -460,7 +410,7 @@
 
 /* About: the object holds the left of the screen, the copy takes the right. */
 .about .sectionInner {
-  padding-left: calc(var(--gutter) + 46%);
+  padding-left: var(--gutter);
 }
 
 .aboutGrid h2 {
@@ -478,7 +428,7 @@
 /* Skills and contact: copy left, object right. */
 .skills .sectionInner > *,
 .contact .sectionInner > * {
-  max-width: 58%;
+  max-width: 760px;
 }
 
 .skillsHead {
@@ -714,29 +664,16 @@
 @media (max-width: 719px) {
   .site {
     --header-h: 64px;
-    --stage-h: clamp(300px, 50svh, 460px);
   }
 
   .backdrop {
     position: absolute;
-    height: calc(var(--header-h) + var(--stage-h) + 80px);
+    height: min(100svh, 850px);
     background: radial-gradient(80% 60% at 50% 55%, rgba(31, 63, 77, 0.6), transparent 72%);
   }
 
   .backdrop::after {
     mask-image: radial-gradient(70% 55% at 50% 55%, #000, transparent 75%);
-  }
-
-  .stage,
-  .site[data-motion="reduced"] .stage,
-  .stage[data-state="error"] {
-    position: absolute;
-    inset: var(--header-h) 0 auto;
-    height: var(--stage-h);
-  }
-
-  .modelFallback {
-    inset: 0;
   }
 
   .menu {
@@ -774,7 +711,7 @@
 
   .hero {
     min-height: auto;
-    padding-top: calc(var(--header-h) + var(--stage-h));
+    padding-top: calc(var(--header-h) + 60px);
   }
 
   .heroCopy {
