@@ -1,5 +1,6 @@
 node_modules/
 .next/
+.next-wsl/
 out/
 .env*
 !.env.example
