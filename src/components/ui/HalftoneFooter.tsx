@@ -59,6 +59,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       const measured = maskCtx.measureText(word);
       const ascent = measured.actualBoundingBoxAscent || fitted * 0.72;
       maskCtx.fillStyle = "#000";
+      maskCtx.clearRect(0, 0, width, height);
       maskCtx.textBaseline = "alphabetic";
       // Desktop intentionally crops the signature; on phones keep the dots fully in view.
       const baseline = width < 600
@@ -88,6 +89,8 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
         }
       }
       dots = next;
+      // Keep readable text as a fallback if Safari fails to produce a glyph mask.
+      root!.dataset.dotsReady = next.length > 0 ? "true" : "false";
       pointer = null;
       shock = null;
       wake();
@@ -250,6 +253,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
 
   return (
     <div ref={rootRef} className="halftone-footer" aria-label={language === "fr" ? "Signature visuelle" : "Visual wordmark"}>
+      <span className="halftone-footer__fallback" aria-hidden="true">emma.</span>
       <div className="halftone-footer__top">
         <span>Emma Da Silva <span aria-hidden="true">/</span> {language === "fr" ? "Portfolio" : "Portfolio"}</span>
         <button type="button" onClick={toTop}>
@@ -265,6 +269,13 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
           border-top: 1px solid var(--edge, #22404d);
         }
         .halftone-footer canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+        .halftone-footer__fallback {
+          position: absolute; left: 3%; right: 3%; bottom: 12%;
+          font: 900 clamp(75px, 21vw, 320px)/.85 Arial, Helvetica, sans-serif;
+          text-align: center; letter-spacing: -.07em; color: var(--glacier, #d6eaf2);
+          pointer-events: none;
+        }
+        .halftone-footer[data-dots-ready="true"] .halftone-footer__fallback { visibility: hidden; }
         .halftone-footer__top {
           position: relative; z-index: 2; display: flex; justify-content: space-between;
           gap: 1.25rem; align-items: center; padding: clamp(1.25rem, 3vw, 3rem);
@@ -291,6 +302,9 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
             min-height: 44px; text-align: right; padding: 6px 0;
           }
           .halftone-footer canvas { touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+          .halftone-footer__fallback {
+            bottom: 22%; font-size: clamp(66px, 21vw, 128px); letter-spacing: -.065em;
+          }
         }
         @media (max-width: 360px) {
           .halftone-footer__top { font-size: 9px; }
