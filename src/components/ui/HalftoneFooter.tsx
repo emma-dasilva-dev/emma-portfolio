@@ -383,6 +383,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
             --touch-x: 50%; --touch-y: 50%;
             background: radial-gradient(circle 85px at var(--touch-x) var(--touch-y), #ffffff 0%, #9fc8d9 46%, #d6eaf2 100%);
             -webkit-background-clip: text; background-clip: text;
+            color: transparent; -webkit-text-fill-color: transparent;
             transition: filter .25s ease;
           }
           .halftone-footer__mobile-word[data-touching="true"] {
