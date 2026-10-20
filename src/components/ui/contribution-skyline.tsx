@@ -499,11 +499,12 @@ export default function ContributionSkyline({
   const dfy = React.useMemo(() => new Intl.DateTimeFormat(locale, { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }), [locale])
   const dfl = React.useMemo(() => new Intl.DateTimeFormat(locale, { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }), [locale])
   const noun = (n: number) => (n === 1 ? unit : plural)
-  const describe = (i: number) => {
+  const describe = React.useCallback((i: number) => {
     const c = model.cells[i]
     if (!c) return ""
-    return (c.count ? nf.format(c.count) + " " + noun(c.count) : "No " + plural) + " on " + dfl.format(dayMs(c.date))
-  }
+    const unitName = c.count === 1 ? unit : plural
+    return (c.count ? nf.format(c.count) + " " + unitName : "No " + plural) + " on " + dfl.format(dayMs(c.date))
+  }, [model.cells, nf, unit, plural, dfl])
 
   // Everything the render loop reads, refreshed every render so the loop never closes over stale props.
   const cfg = React.useRef({ model, duration, heightScale, orbit, palette, legendLevel, onCellClick, target: view === "3d" ? 1 : 0, setActive, setWidth, setTheme, setAnnounce, describe })
