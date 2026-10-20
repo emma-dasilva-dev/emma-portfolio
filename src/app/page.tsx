@@ -1,11 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useState, useSyncExternalStore, type CSSProperties } from "react";
+import { useEffect, useState, useSyncExternalStore, type CSSProperties } from "react";
 import dynamic from "next/dynamic";
 import styles from "./page.module.css";
 import ScrambleText from "@/components/ScrambleText";
 import HalftoneFooter from "@/components/ui/HalftoneFooter";
-import { usePointerParallax, useReducedMotion, useScrollChoreography } from "@/lib/useScrollChoreography";
+import { useReducedMotion, useScrollChoreography } from "@/lib/useScrollChoreography";
 
 const Headphones = dynamic(() => import("@/components/Headphones"), { ssr: false });
 type Lang = "fr" | "en";
@@ -15,21 +15,21 @@ const copy = {
   nav:["Accueil","À propos","Compétences","Contact"], eyebrow:"CYBERSÉCURITÉ  /  DÉVELOPPEMENT WEB",
   hello:"Bonjour, moi c’est", title:"Emma DaSilva.", tag:"Curieuse de nature. Technique par conviction.",
   intro:"Je m'intéresse à la cybersécurité et à la programmation. J'aime comprendre les problèmes, explorer leur logique et construire des solutions fiables.",
-  discover:"Découvrir mon profil", reach:"Me contacter", location:"Cotonou, Bénin", drag:"Déplacez votre curseur pour explorer",
+  discover:"Découvrir mon profil", reach:"Me contacter", location:"Cotonou, Bénin",
   about:"À propos", aboutLead:"Comprendre avant d’agir.", aboutBody:"Je suis Emma DaSilva, développeuse web junior avec un intérêt croissant pour la cybersécurité. Le développement m’a appris à construire des applications. Aujourd’hui, je m’intéresse aussi à la manière dont elles fonctionnent, communiquent et se protègent.", aboutBody2:"J’apprends par la pratique, avec une attention particulière à Linux, aux réseaux et à l’analyse technique. Mon objectif est de continuer à progresser et de construire une carrière dans la cybersécurité.",
   skills:"Compétences", skillsIntro:"Un socle technique que je développe et approfondis.", categories:["Programmation","Développement web","Sécurité & outils"],
-  contact:"Contact", contactLead:"Parlons technique.", contactBody:"Je suis ouverte aux opportunités de stage, aux collaborations techniques et aux échanges autour de la cybersécurité et du développement.", mail:"M’envoyer un e-mail", footer:"Tous droits réservés.", loading:"Modèle 3D en préparation",
-  model:"Modèle interactif de casque audio en trois dimensions", credit:"Modèle 3D « Headphones » par re1monsen", menuOpen:"Ouvrir le menu", menuClose:"Fermer le menu"
+  contact:"Contact", contactLead:"Parlons technique.", contactBody:"Je suis ouverte aux opportunités de stage, aux collaborations techniques et aux échanges autour de la cybersécurité et du développement.", mail:"M’envoyer un e-mail", footer:"Tous droits réservés.",
+  menuOpen:"Ouvrir le menu", menuClose:"Fermer le menu"
  },
  en: {
   nav:["Home","About","Skills","Contact"], eyebrow:"CYBERSECURITY  /  WEB DEVELOPMENT",
   hello:"Hi, I’m", title:"Emma DaSilva.", tag:"Curiosity first. Engineering always.",
   intro:"I'm interested in cybersecurity and programming. I enjoy understanding problems, exploring the logic behind them, and building reliable solutions.",
-  discover:"About me", reach:"Get in touch", location:"Cotonou, Benin", drag:"Move your cursor to explore",
+  discover:"About me", reach:"Get in touch", location:"Cotonou, Benin",
   about:"About", aboutLead:"Understand before you act.", aboutBody:"I'm Emma DaSilva, a junior web developer with a growing interest in cybersecurity. Development taught me how to build applications. Today, I'm also interested in how they work, communicate, and stay protected.", aboutBody2:"I learn through hands-on practice, with a particular focus on Linux, networking, and technical analysis. My goal is to keep developing my skills and build a career in cybersecurity.",
   skills:"Skills", skillsIntro:"A technical foundation I'm building on.", categories:["Programming","Web development","Security & tools"],
-  contact:"Contact", contactLead:"Let's talk technology.", contactBody:"I'm open to internships, technical collaborations, and conversations about cybersecurity and development.", mail:"Send an email", footer:"All rights reserved.", loading:"3D model coming soon",
-  model:"Interactive three-dimensional headphone model", credit:"3D model “Headphones” by re1monsen", menuOpen:"Open menu", menuClose:"Close menu"
+  contact:"Contact", contactLead:"Let's talk technology.", contactBody:"I'm open to internships, technical collaborations, and conversations about cybersecurity and development.", mail:"Send an email", footer:"All rights reserved.",
+  menuOpen:"Open menu", menuClose:"Close menu"
  }
 };
 const groups = [["Python","JavaScript","C"],["HTML","CSS","React","Node.js"],["Linux","Kali Linux","Bash","Git","GitHub"]];
