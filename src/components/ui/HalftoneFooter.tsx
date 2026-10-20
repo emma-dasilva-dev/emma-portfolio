@@ -1,12 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type Dot = { x: number; y: number; homeX: number; homeY: number; vx: number; vy: number; radius: number };
 
 export default function HalftoneFooter({ language }: { language: "fr" | "en" }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [mobileReplay, setMobileReplay] = useState(0);
   const toTop = useCallback(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: 0, behavior: reduced ? "instant" : "smooth" });
@@ -17,6 +18,8 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d", { alpha: false });
     if (!root || !canvas || !ctx) return;
+    // Mobile uses a lightweight touch-first wordmark instead of the hover canvas.
+    if (window.matchMedia("(max-width: 600px)").matches) return;
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const pointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -279,6 +282,21 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
         </button>
       </div>
       <canvas ref={canvasRef} aria-hidden="true" />
+      <div className="halftone-footer__mobile">
+        <button
+          type="button"
+          className="halftone-footer__mobile-action"
+          aria-label={language === "fr" ? "Animer la signature Emma" : "Animate the Emma signature"}
+          onClick={() => setMobileReplay((value) => value + 1)}
+        >
+          <span className="halftone-footer__mobile-word" key={mobileReplay} aria-hidden="true">
+            {Array.from("emma.").map((letter, index) => (
+              <span key={index} className="halftone-footer__mobile-letter" style={{ animationDelay: `${index * 90}ms` }}>{letter}</span>
+            ))}
+          </span>
+        </button>
+        <span className="halftone-footer__mobile-hint">{language === "fr" ? "Touchez pour animer ↗" : "Tap to animate ↗"}</span>
+      </div>
       <span className="halftone-footer__sr">Emma Da Silva</span>
       <style>{`
         .halftone-footer {
@@ -287,6 +305,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
           border-top: 1px solid var(--edge, #22404d);
         }
         .halftone-footer canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+        .halftone-footer__mobile { display: none; }
         .halftone-footer__fallback {
           position: absolute; z-index: 1; left: 3%; right: 3%; bottom: 12%;
           font: 900 clamp(75px, 21vw, 320px)/.85 Arial, Helvetica, sans-serif;
@@ -319,7 +338,32 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
           .halftone-footer__top button {
             min-height: 44px; text-align: right; padding: 6px 0;
           }
-          .halftone-footer canvas { touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+          .halftone-footer canvas, .halftone-footer__fallback { display: none; }
+          .halftone-footer__mobile {
+            position: absolute; inset: 76px 0 8px; display: flex;
+            flex-direction: column; align-items: center; justify-content: center;
+            gap: 18px; padding: 0 12px;
+          }
+          .halftone-footer__mobile-action {
+            display: block; width: 100%; min-height: 128px; padding: 0;
+            border: 0; background: none; color: var(--glacier, #d6eaf2);
+            touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+          }
+          .halftone-footer__mobile-word {
+            display: flex; justify-content: center; align-items: baseline;
+            width: 100%; font: 900 clamp(64px, 21vw, 136px)/1 Arial, Helvetica, sans-serif;
+            letter-spacing: -.08em;
+          }
+          .halftone-footer__mobile-letter {
+            display: inline-block; transform-origin: 50% 85%;
+            animation: mobile-signature-bounce 850ms cubic-bezier(.16,1,.3,1) both;
+          }
+          .halftone-footer__mobile-letter:last-child { color: var(--ice, #5d8fa6); }
+          .halftone-footer__mobile-hint {
+            font: 500 10px/1.5 var(--font-geist-mono), monospace;
+            letter-spacing: .14em; text-transform: uppercase;
+            color: var(--frost, #9fc8d9); pointer-events: none;
+          }
           .halftone-footer__fallback {
             bottom: 22%; font-size: clamp(66px, 21vw, 128px); letter-spacing: -.065em;
           }
@@ -339,12 +383,18 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
             }
           }
         }
+        @keyframes mobile-signature-bounce {
+          0% { opacity: .2; transform: translateY(30px) rotate(-7deg) scale(.83); filter: blur(4px); }
+          55% { opacity: 1; transform: translateY(-12px) rotate(2deg) scale(1.08); filter: blur(0); }
+          100% { opacity: 1; transform: translateY(0) rotate(0) scale(1); filter: blur(0); }
+        }
         @keyframes halftone-mobile-flow {
           from { background-position: 0 0; }
           to { background-position: 28px -21px; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .halftone-footer__fallback { animation: none !important; }
+          .halftone-footer__fallback, .halftone-footer__mobile-letter { animation: none !important; }
+          .halftone-footer__mobile-letter { opacity: 1; transform: none; filter: none; }
         }
         @media (max-width: 360px) {
           .halftone-footer__top { font-size: 9px; }
