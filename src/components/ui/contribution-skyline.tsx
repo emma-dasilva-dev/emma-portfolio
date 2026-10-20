@@ -507,7 +507,9 @@ export default function ContributionSkyline({
 
   // Everything the render loop reads, refreshed every render so the loop never closes over stale props.
   const cfg = React.useRef({ model, duration, heightScale, orbit, palette, legendLevel, onCellClick, target: view === "3d" ? 1 : 0, setActive, setWidth, setTheme, setAnnounce, describe })
-  cfg.current = { model, duration, heightScale, orbit, palette, legendLevel, onCellClick, target: view === "3d" ? 1 : 0, setActive, setWidth, setTheme, setAnnounce, describe }
+  React.useEffect(() => {
+    cfg.current = { model, duration, heightScale, orbit, palette, legendLevel, onCellClick, target: view === "3d" ? 1 : 0, setActive, setWidth, setTheme, setAnnounce, describe }
+  })
 
   React.useEffect(() => {
     const root = rootRef.current
@@ -1134,7 +1136,6 @@ export default function ContributionSkyline({
       engine.current = null
     }
     // The loop reads everything else through cfg; it is built once per mount.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
 
   React.useEffect(() => {
