@@ -6,6 +6,7 @@ import PortfolioHeroWithPaperShaders from "@/components/ui/portfolio-hero-with-p
 import SectionTransition from "@/components/ui/SectionTransition";
 import { LanguageProvider } from "@/components/ui/LanguageProvider";
 import ScrollExperience from "@/components/ui/ScrollExperience";
+import HalftoneFooter from "@/components/ui/HalftoneFooter";
 
 export default async function Home({
   searchParams,
@@ -38,6 +39,7 @@ export default async function Home({
           </SectionTransition>
 
           <Contact />
+          <HalftoneFooter />
       </main>
     </LanguageProvider>
   );
