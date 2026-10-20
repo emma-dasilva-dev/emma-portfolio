@@ -270,7 +270,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
         }
         .halftone-footer canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
         .halftone-footer__fallback {
-          position: absolute; left: 3%; right: 3%; bottom: 12%;
+          position: absolute; z-index: 1; left: 3%; right: 3%; bottom: 12%;
           font: 900 clamp(75px, 21vw, 320px)/.85 Arial, Helvetica, sans-serif;
           text-align: center; letter-spacing: -.07em; color: var(--glacier, #d6eaf2);
           pointer-events: none;
