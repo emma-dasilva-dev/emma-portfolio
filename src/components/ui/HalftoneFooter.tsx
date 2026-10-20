@@ -94,7 +94,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.fillStyle = background;
       ctx.fillRect(0, 0, width, height);
-      // Touch devices animate on deliberate taps; hover physics remain desktop-only.
+      // React to direct finger contact on mobile and hover on fine-pointer devices.
       const interactive = !reduced;
       const age = shock ? now - shock.start : Infinity;
       let moving = false;
@@ -102,14 +102,14 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       for (const dot of dots) {
         let displaced = false;
         if (interactive) {
-          if (finePointer && pointer) {
+          if (pointer) {
             const dx = dot.x - pointer.x;
             const dy = dot.y - pointer.y;
             const distanceSquared = dx * dx + dy * dy;
-            const reach = 95;
+            const reach = finePointer ? 95 : 115;
             if (distanceSquared < reach * reach) {
               const dist = Math.sqrt(distanceSquared) + 0.001;
-              const force = (1 - dist / reach) * 3.3;
+              const force = (1 - dist / reach) * (finePointer ? 3.3 : 5.2);
               dot.vx += dx / dist * force;
               dot.vy += dy / dist * force;
             }
@@ -157,12 +157,32 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
     }
 
     function onMove(event: PointerEvent) {
-      if (reduced || !finePointer) return;
-      const rect = canvas!.getBoundingClientRect();
-      pointer = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+      if (reduced) return;
+      if (event.pointerType === "touch") {
+        if (!touchStart || touchStart.id !== event.pointerId) return;
+        const rect = canvas!.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        // If the gesture becomes a vertical scroll, give the page priority.
+        if (Math.abs(y - touchStart.y) > Math.abs(x - touchStart.x) + 8) {
+          touchStart = null;
+          pointer = null;
+          wake();
+          return;
+        }
+        pointer = { x, y };
+      } else {
+        if (!finePointer) return;
+        const rect = canvas!.getBoundingClientRect();
+        pointer = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+      }
       wake();
     }
-    function onLeave() { pointer = null; wake(); }
+    function onLeave(event: PointerEvent) {
+      if (event.pointerType === "touch") return;
+      pointer = null;
+      wake();
+    }
     function onDown(event: PointerEvent) {
       if (reduced || (event.target as HTMLElement).closest("a, button")) return;
       const rect = canvas!.getBoundingClientRect();
@@ -170,6 +190,8 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       const y = event.clientY - rect.top;
       if (event.pointerType === "touch") {
         touchStart = { x, y, time: performance.now(), id: event.pointerId };
+        pointer = { x, y };
+        wake();
         return;
       }
       shock = { x, y, start: performance.now() };
@@ -179,15 +201,16 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       if (!touchStart || event.pointerId !== touchStart.id) return;
       const start = touchStart;
       touchStart = null;
+      pointer = null;
       const rect = canvas!.getBoundingClientRect();
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
       // Do not fire a ripple during a vertical page scroll.
-      if (reduced || performance.now() - start.time > 350 || Math.hypot(x - start.x, y - start.y) > 12) return;
+      if (reduced || performance.now() - start.time > 500 || Math.hypot(x - start.x, y - start.y) > 18) { wake(); return; }
       shock = { x, y, start: performance.now() };
       wake();
     }
-    function onCancel() { touchStart = null; }
+    function onCancel() { touchStart = null; pointer = null; wake(); }
     function onMotionChange() { reduced = motionQuery.matches; pointer = null; shock = null; wake(); }
     function onPointerChange() { finePointer = pointerQuery.matches; pointer = null; shock = null; wake(); }
 
@@ -263,7 +286,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
           .halftone-footer__top button {
             min-height: 44px; text-align: right; padding: 6px 0;
           }
-          .halftone-footer canvas { touch-action: pan-y; }
+          .halftone-footer canvas { touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
         }
         @media (max-width: 360px) {
           .halftone-footer__top { font-size: 9px; }
