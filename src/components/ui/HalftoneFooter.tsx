@@ -1,12 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
-import { useLanguage } from "@/components/ui/LanguageProvider";
 
 type Dot = { x: number; y: number; homeX: number; homeY: number; vx: number; vy: number; radius: number };
 
-export default function HalftoneFooter() {
-  const { language } = useLanguage();
+export default function HalftoneFooter({ language }: { language: "fr" | "en" }) {
   const rootRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const toTop = useCallback(() => {
@@ -32,9 +30,9 @@ export default function HalftoneFooter() {
     let dots: Dot[] = [];
     let pointer: { x: number; y: number } | null = null;
     let shock: { x: number; y: number; start: number } | null = null;
-    const background = "#050505";
-    const foreground = [245, 245, 241];
-    const accent = [160, 160, 160]; // Neutral interaction; no new brand palette.
+    const background = "#0a121a";
+    const foreground = [214, 234, 242];
+    const accent = [93, 143, 166]; // Existing portfolio ice blue.
 
     function layout() {
       const rect = root!.getBoundingClientRect();
@@ -190,7 +188,7 @@ export default function HalftoneFooter() {
   }, []);
 
   return (
-    <footer ref={rootRef} className="halftone-footer" aria-label={language === "fr" ? "Pied de page" : "Site footer"}>
+    <div ref={rootRef} className="halftone-footer" aria-label={language === "fr" ? "Signature visuelle" : "Visual wordmark"}>
       <div className="halftone-footer__top">
         <span>Emma Da Silva <span aria-hidden="true">/</span> {language === "fr" ? "Portfolio" : "Portfolio"}</span>
         <button type="button" onClick={toTop}>
@@ -202,8 +200,8 @@ export default function HalftoneFooter() {
       <style>{`
         .halftone-footer {
           position: relative; isolation: isolate; overflow: hidden; width: 100%;
-          height: clamp(265px, 39vw, 590px); background: #050505; color: #f5f5f1;
-          border-top: 1px solid rgba(245,245,241,.17);
+          height: clamp(265px, 39vw, 590px); background: var(--abyss, #0a121a); color: var(--glacier, #d6eaf2);
+          border-top: 1px solid var(--edge, #22404d);
         }
         .halftone-footer canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
         .halftone-footer__top {
@@ -224,6 +222,6 @@ export default function HalftoneFooter() {
           .halftone-footer__top { padding: 1.25rem; }
         }
       `}</style>
-    </footer>
+    </div>
   );
 }
