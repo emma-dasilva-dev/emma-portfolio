@@ -24,6 +24,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
     let finePointer = pointerQuery.matches;
     let visible = true;
     let frame = 0;
+    let lastMobileFrame = 0;
     let width = 0;
     let height = 0;
     let dpr = 1;
@@ -89,8 +90,9 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
         }
       }
       dots = next;
+      lastMobileFrame = 0;
       // Keep readable text as a fallback if Safari fails to produce a glyph mask.
-      root!.dataset.dotsReady = next.length > 0 ? "true" : "false";
+      root!.dataset.dotsReady = "false";
       pointer = null;
       shock = null;
       wake();
@@ -98,6 +100,14 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
 
     function render(now: number) {
       if (!ctx) return;
+      const mobile = width < 600 && !finePointer;
+      // Cap continuous mobile animation at 30fps to reduce Safari GPU/CPU load.
+      if (mobile && !reduced && now - lastMobileFrame < 32) {
+        frame = 0;
+        wake();
+        return;
+      }
+      if (mobile) lastMobileFrame = now;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.fillStyle = background;
       ctx.fillRect(0, 0, width, height);
@@ -150,13 +160,21 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
         } else {
           ctx.fillStyle = restingInk;
         }
+        // On touch screens, a gentle traveling wave makes the effect visible even
+        // before the user discovers that the letters respond to touch.
+        const wave = mobile && !reduced
+          ? Math.sin(dot.homeX * 0.027 - now * 0.0017 + dot.homeY * 0.012)
+          : 0;
+        const drawY = dot.y + wave * (pointer ? 1.4 : 2.6);
         ctx.beginPath();
-        ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+        ctx.arc(dot.x, drawY, dot.radius, 0, Math.PI * 2);
         ctx.fill();
       }
       if (shock && age >= 850) shock = null;
+      // Only hide the accessible fallback after the canvas has actually painted.
+      root!.dataset.dotsReady = dots.length > 0 ? "true" : "false";
       frame = 0;
-      if (visible && (moving || Boolean(shock))) wake();
+      if (visible && (moving || Boolean(shock) || (mobile && !reduced))) wake();
     }
 
     function wake() {
