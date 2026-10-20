@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState, useSyncExternalStore, type CSSPropert
 import dynamic from "next/dynamic";
 import styles from "./page.module.css";
 import ScrambleText from "@/components/ScrambleText";
+import HalftoneFooter from "@/components/ui/HalftoneFooter";
 import { usePointerParallax, useReducedMotion, useScrollChoreography } from "@/lib/useScrollChoreography";
 
 const Headphones = dynamic(() => import("@/components/Headphones"), { ssr: false });
@@ -122,6 +123,7 @@ export default function Page() {
     <div className={`${styles.socials} ${styles.reveal}`} style={delay(0.36)}><a href="https://github.com/emma-dasilva-dev" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/emmadasilvadev" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
    </div></section>
   </main>
+  <HalftoneFooter language={lang} />
   <footer className={styles.footer}>
    <span>© 2026 Emma DaSilva. {t.footer}</span>
    <span className={styles.credit}><a href="https://sketchfab.com/3d-models/headphones-b12a7fb702804cc19537047a033fe0d9" target="_blank" rel="noopener noreferrer">{t.credit}</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer license">CC BY 4.0</a></span>
