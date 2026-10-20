@@ -126,7 +126,6 @@ export default function Page() {
   <HalftoneFooter language={lang} />
   <footer className={styles.footer}>
    <span>© 2026 Emma DaSilva. {t.footer}</span>
-   <span className={styles.credit}><a href="https://sketchfab.com/3d-models/headphones-b12a7fb702804cc19537047a033fe0d9" target="_blank" rel="noopener noreferrer">{t.credit}</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer license">CC BY 4.0</a></span>
    <a href="#accueil">↑ Back to top</a>
   </footer>
  </div>;
