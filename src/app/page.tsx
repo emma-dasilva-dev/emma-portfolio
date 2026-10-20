@@ -1,15 +1,12 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore, type CSSProperties } from "react";
-import dynamic from "next/dynamic";
 import styles from "./page.module.css";
 import ScrambleText from "@/components/ScrambleText";
 import HalftoneFooter from "@/components/ui/HalftoneFooter";
 import { useReducedMotion, useScrollChoreography } from "@/lib/useScrollChoreography";
 
-const Headphones = dynamic(() => import("@/components/Headphones"), { ssr: false });
 type Lang = "fr" | "en";
-type ModelState = "loading" | "ready" | "error";
 const copy = {
  fr: {
   nav:["Accueil","À propos","Compétences","Contact"], eyebrow:"CYBERSÉCURITÉ  /  DÉVELOPPEMENT WEB",
@@ -41,11 +38,8 @@ const delay = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
 export default function Page() {
  const [lang,setLang] = useState<Lang>("fr");
  const [menu,setMenu] = useState(false);
- const [model,setModel] = useState<ModelState>("loading");
- const [loaded,setLoaded] = useState<number | null>(null);
  const reducedMotion = useReducedMotion();
  const { active, revealed, scrolled } = useScrollChoreography(ids);
- usePointerParallax();
  const t=copy[lang];
 
  useEffect(()=>{document.documentElement.lang=lang;document.title=lang==="fr"?"Emma DaSilva | Cybersécurité & Développement Web":"Emma DaSilva | Cybersecurity & Web Development";},[lang]);
@@ -58,20 +52,11 @@ export default function Page() {
   return()=>window.removeEventListener("keydown",close);
  },[menu]);
 
- const onProgress=useCallback((fraction:number|null)=>setLoaded(fraction===null?null:Math.round(fraction*100)),[]);
- const onReady=useCallback(()=>setModel("ready"),[]);
- const onError=useCallback(()=>setModel("error"),[]);
  const shown=(i:number)=>i<revealed;
  const label=(i:number,text:string)=><span className={styles.smallLabel}><span className={styles.index}>{index(i)}</span><ScrambleText text={text} active={shown(i)} reducedMotion={reducedMotion}/></span>;
 
  return <div className={styles.site} data-ready={ready||undefined} data-motion={reducedMotion?"reduced":"full"}>
   <div className={styles.backdrop} aria-hidden="true"/>
-  <div className={styles.stage} data-state={model}>
-   {model==="error"
-    ?<div className={styles.modelFallback}><span className={styles.orbit} aria-hidden="true"/><span className={styles.fallbackLabel}>3D / 01</span></div>
-    :<Headphones label={t.model} reducedMotion={reducedMotion} onProgress={onProgress} onReady={onReady} onError={onError}/>}
-  </div>
-
   <header className={styles.header} data-scrolled={scrolled||menu||undefined}><div className={styles.headerInner}>
     <a className={styles.brand} href="#accueil" aria-label="Emma DaSilva — home">ED<span>.</span></a>
     <nav aria-label={lang==="fr"?"Navigation principale":"Main navigation"} className={menu?styles.navOpen:styles.nav}>
@@ -94,9 +79,6 @@ export default function Page() {
     </div>
     <div className={`${styles.heroFoot} ${styles.enter}`} style={delay(0.9)}>
      <span>{t.location}</span>
-     <span className={styles.modelStatus} aria-hidden="true">
-      {model==="loading"?<>{t.loading}{loaded!==null&&<> · {loaded}%</>}<span className={styles.loadBar} style={{"--p":(loaded??35)/100} as CSSProperties}/></>:model==="ready"?<span className={styles.dragHint}>{t.drag}</span>:"3D / 01"}
-     </span>
      <span>SCROLL ↓</span>
     </div>
    </section>
