@@ -32,6 +32,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
     let shock: { x: number; y: number; start: number } | null = null;
     const background = "#0a121a";
     const foreground = [214, 234, 242];
+    const restingInk = "rgb(214,234,242)";
     const accent = [93, 143, 166]; // Existing portfolio ice blue.
 
     function layout() {
@@ -61,7 +62,8 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       maskCtx.fillText(word, Math.max(0, (width - measured.width) / 2), height + ascent * 0.17);
 
       const pixels = maskCtx.getImageData(0, 0, width, height).data;
-      const gap = width < 600 ? 5 : 6;
+      // A slightly wider grid dramatically reduces Canvas 2D draw calls on large screens.
+      const gap = width < 600 ? 6 : 8;
       const next: Dot[] = [];
       for (let y = 0; y < height; y += gap) {
         for (let x = 0; x < width; x += gap) {
@@ -96,14 +98,16 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       let moving = false;
 
       for (const dot of dots) {
+        let displaced = false;
         if (interactive) {
           if (pointer) {
             const dx = dot.x - pointer.x;
             const dy = dot.y - pointer.y;
-            const dist = Math.hypot(dx, dy) + 0.001;
-            const reach = 85;
-            if (dist < reach) {
-              const force = (1 - dist / reach) * 2.6;
+            const distanceSquared = dx * dx + dy * dy;
+            const reach = 95;
+            if (distanceSquared < reach * reach) {
+              const dist = Math.sqrt(distanceSquared) + 0.001;
+              const force = (1 - dist / reach) * 3.3;
               dot.vx += dx / dist * force;
               dot.vy += dy / dist * force;
             }
@@ -121,17 +125,22 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
           dot.vy = (dot.vy + (dot.homeY - dot.y) * 0.05) * 0.84;
           dot.x += dot.vx;
           dot.y += dot.vy;
-          if (Math.abs(dot.vx) + Math.abs(dot.vy) + Math.abs(dot.x - dot.homeX) + Math.abs(dot.y - dot.homeY) > 0.08) moving = true;
+          displaced = Math.abs(dot.x - dot.homeX) + Math.abs(dot.y - dot.homeY) > 0.1;
+          if (displaced || Math.abs(dot.vx) + Math.abs(dot.vy) > 0.08) moving = true;
         } else {
           dot.x = dot.homeX;
           dot.y = dot.homeY;
         }
 
-        const warmth = Math.min(1, Math.hypot(dot.x - dot.homeX, dot.y - dot.homeY) / 28);
-        const r = Math.round(foreground[0] + (accent[0] - foreground[0]) * warmth);
-        const g = Math.round(foreground[1] + (accent[1] - foreground[1]) * warmth);
-        const b = Math.round(foreground[2] + (accent[2] - foreground[2]) * warmth);
-        ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+        if (displaced) {
+          const warmth = Math.min(1, Math.hypot(dot.x - dot.homeX, dot.y - dot.homeY) / 28);
+          const r = Math.round(foreground[0] + (accent[0] - foreground[0]) * warmth);
+          const g = Math.round(foreground[1] + (accent[1] - foreground[1]) * warmth);
+          const b = Math.round(foreground[2] + (accent[2] - foreground[2]) * warmth);
+          ctx.fillStyle = `rgb(${r},${g},${b})`;
+        } else {
+          ctx.fillStyle = restingInk;
+        }
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
         ctx.fill();
