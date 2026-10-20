@@ -140,7 +140,7 @@ export default function HalftoneFooter() {
       }
       if (shock && age >= 850) shock = null;
       frame = 0;
-      if (visible && (moving || Boolean(pointer) || Boolean(shock))) wake();
+      if (visible && (moving || Boolean(shock))) wake();
     }
 
     function wake() {
