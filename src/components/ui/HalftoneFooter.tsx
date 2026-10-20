@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef } from "react";
 type Dot = { x: number; y: number; homeX: number; homeY: number; vx: number; vy: number; radius: number };
 
 export default function HalftoneFooter({ language }: { language: "fr" | "en" }) {
-  const rootRef = useRef<HTMLElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const toTop = useCallback(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
