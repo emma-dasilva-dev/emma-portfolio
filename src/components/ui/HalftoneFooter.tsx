@@ -30,6 +30,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
     let dots: Dot[] = [];
     let pointer: { x: number; y: number } | null = null;
     let shock: { x: number; y: number; start: number } | null = null;
+    let touchStart: { x: number; y: number; time: number; id: number } | null = null;
     const background = "#0a121a";
     const foreground = [214, 234, 242];
     const restingInk = "rgb(214,234,242)";
@@ -39,7 +40,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       const rect = root!.getBoundingClientRect();
       width = Math.max(1, Math.round(rect.width));
       height = Math.max(1, Math.round(rect.height));
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, width < 600 ? 1.5 : 2);
       canvas!.width = Math.round(width * dpr);
       canvas!.height = Math.round(height * dpr);
 
@@ -53,7 +54,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       const family = 'Arial, Helvetica, sans-serif';
       maskCtx.font = '900 100px ' + family;
       const initialWidth = maskCtx.measureText(word).width;
-      const fitted = (width * 0.99 / Math.max(initialWidth, 1)) * 100;
+      const fitted = (width * (width < 600 ? 0.94 : 0.99) / Math.max(initialWidth, 1)) * 100;
       maskCtx.font = '900 ' + fitted + 'px ' + family;
       const measured = maskCtx.measureText(word);
       const ascent = measured.actualBoundingBoxAscent || fitted * 0.72;
@@ -63,7 +64,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
 
       const pixels = maskCtx.getImageData(0, 0, width, height).data;
       // A slightly wider grid dramatically reduces Canvas 2D draw calls on large screens.
-      const gap = width < 600 ? 6 : 8;
+      const gap = width < 600 ? 5.5 : 8;
       const next: Dot[] = [];
       for (let y = 0; y < height; y += gap) {
         for (let x = 0; x < width; x += gap) {
@@ -93,14 +94,15 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.fillStyle = background;
       ctx.fillRect(0, 0, width, height);
-      const interactive = !reduced && finePointer;
+      // Touch devices animate on deliberate taps; hover physics remain desktop-only.
+      const interactive = !reduced;
       const age = shock ? now - shock.start : Infinity;
       let moving = false;
 
       for (const dot of dots) {
         let displaced = false;
         if (interactive) {
-          if (pointer) {
+          if (finePointer && pointer) {
             const dx = dot.x - pointer.x;
             const dy = dot.y - pointer.y;
             const distanceSquared = dx * dx + dy * dy;
@@ -162,11 +164,30 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
     }
     function onLeave() { pointer = null; wake(); }
     function onDown(event: PointerEvent) {
-      if (reduced || !finePointer || (event.target as HTMLElement).closest("a, button")) return;
+      if (reduced || (event.target as HTMLElement).closest("a, button")) return;
       const rect = canvas!.getBoundingClientRect();
-      shock = { x: event.clientX - rect.left, y: event.clientY - rect.top, start: performance.now() };
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      if (event.pointerType === "touch") {
+        touchStart = { x, y, time: performance.now(), id: event.pointerId };
+        return;
+      }
+      shock = { x, y, start: performance.now() };
       wake();
     }
+    function onUp(event: PointerEvent) {
+      if (!touchStart || event.pointerId !== touchStart.id) return;
+      const start = touchStart;
+      touchStart = null;
+      const rect = canvas!.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      // Do not fire a ripple during a vertical page scroll.
+      if (reduced || performance.now() - start.time > 350 || Math.hypot(x - start.x, y - start.y) > 12) return;
+      shock = { x, y, start: performance.now() };
+      wake();
+    }
+    function onCancel() { touchStart = null; }
     function onMotionChange() { reduced = motionQuery.matches; pointer = null; shock = null; wake(); }
     function onPointerChange() { finePointer = pointerQuery.matches; pointer = null; shock = null; wake(); }
 
@@ -179,6 +200,8 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
     root.addEventListener("pointermove", onMove);
     root.addEventListener("pointerleave", onLeave);
     root.addEventListener("pointerdown", onDown);
+    root.addEventListener("pointerup", onUp);
+    root.addEventListener("pointercancel", onCancel);
     motionQuery.addEventListener("change", onMotionChange);
     pointerQuery.addEventListener("change", onPointerChange);
     resize.observe(root);
@@ -191,6 +214,8 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       root.removeEventListener("pointermove", onMove);
       root.removeEventListener("pointerleave", onLeave);
       root.removeEventListener("pointerdown", onDown);
+      root.removeEventListener("pointerup", onUp);
+      root.removeEventListener("pointercancel", onCancel);
       motionQuery.removeEventListener("change", onMotionChange);
       pointerQuery.removeEventListener("change", onPointerChange);
     };
@@ -227,8 +252,22 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
         .halftone-footer__top button:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
         .halftone-footer__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
         @media (max-width: 600px) {
-          .halftone-footer { height: clamp(235px, 70vw, 355px); }
-          .halftone-footer__top { padding: 1.25rem; }
+          .halftone-footer { height: clamp(240px, 76vw, 390px); }
+          .halftone-footer__top {
+            padding: 1.25rem max(18px, env(safe-area-inset-right)) 0 max(18px, env(safe-area-inset-left));
+            gap: 12px;
+            font-size: 10px;
+            align-items: flex-start;
+          }
+          .halftone-footer__top > span { max-width: 50%; line-height: 1.6; }
+          .halftone-footer__top button {
+            min-height: 44px; text-align: right; padding: 6px 0;
+          }
+          .halftone-footer canvas { touch-action: pan-y; }
+        }
+        @media (max-width: 360px) {
+          .halftone-footer__top { font-size: 9px; }
+          .halftone-footer { height: 245px; }
         }
       `}</style>
     </div>
