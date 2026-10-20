@@ -7,6 +7,15 @@ type Dot = { x: number; y: number; homeX: number; homeY: number; vx: number; vy:
 export default function HalftoneFooter({ language }: { language: "fr" | "en" }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mobileWordRef = useRef<HTMLSpanElement>(null);
+  const mobileTouchActive = useRef(false);
+  const updateMobileSpotlight = useCallback((clientX: number, clientY: number) => {
+    const word = mobileWordRef.current;
+    if (!word) return;
+    const rect = word.getBoundingClientRect();
+    word.style.setProperty("--touch-x", `${clientX - rect.left}px`);
+    word.style.setProperty("--touch-y", `${clientY - rect.top}px`);
+  }, []);
   const [mobileReplay, setMobileReplay] = useState(0);
   const toTop = useCallback(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -288,8 +297,26 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
           className="halftone-footer__mobile-action"
           aria-label={language === "fr" ? "Animer la signature Emma" : "Animate the Emma signature"}
           onClick={() => setMobileReplay((value) => value + 1)}
+          onPointerDown={(event) => {
+            if (event.pointerType === "touch" || event.pointerType === "pen") {
+              mobileTouchActive.current = true;
+              updateMobileSpotlight(event.clientX, event.clientY);
+              mobileWordRef.current?.setAttribute("data-touching", "true");
+            }
+          }}
+          onPointerMove={(event) => {
+            if (mobileTouchActive.current) updateMobileSpotlight(event.clientX, event.clientY);
+          }}
+          onPointerUp={() => {
+            mobileTouchActive.current = false;
+            mobileWordRef.current?.removeAttribute("data-touching");
+          }}
+          onPointerCancel={() => {
+            mobileTouchActive.current = false;
+            mobileWordRef.current?.removeAttribute("data-touching");
+          }}
         >
-          <span className="halftone-footer__mobile-word" key={mobileReplay} aria-hidden="true">
+          <span ref={mobileWordRef} className="halftone-footer__mobile-word" key={mobileReplay} aria-hidden="true">
             {Array.from("emma.").map((letter, index) => (
               <span key={index} className="halftone-footer__mobile-letter" style={{ animationDelay: `${index * 90}ms` }}>{letter}</span>
             ))}
@@ -353,12 +380,22 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
             display: flex; justify-content: center; align-items: baseline;
             width: 100%; font: 900 clamp(64px, 21vw, 136px)/1 Arial, Helvetica, sans-serif;
             letter-spacing: -.08em;
+            --touch-x: 50%; --touch-y: 50%;
+            background: radial-gradient(circle 85px at var(--touch-x) var(--touch-y), #ffffff 0%, #9fc8d9 46%, #d6eaf2 100%);
+            -webkit-background-clip: text; background-clip: text;
+            transition: filter .25s ease;
+          }
+          .halftone-footer__mobile-word[data-touching="true"] {
+            filter: drop-shadow(0 0 12px rgba(159, 200, 217, .45));
           }
           .halftone-footer__mobile-letter {
             display: inline-block; transform-origin: 50% 85%;
             animation: mobile-signature-bounce 850ms cubic-bezier(.16,1,.3,1) both;
           }
           .halftone-footer__mobile-letter:last-child { color: var(--ice, #5d8fa6); }
+          .halftone-footer__mobile-word[data-touching="true"] .halftone-footer__mobile-letter {
+            text-shadow: 0 0 22px rgba(159,200,217,.35);
+          }
           .halftone-footer__mobile-hint {
             font: 500 10px/1.5 var(--font-geist-mono), monospace;
             letter-spacing: .14em; text-transform: uppercase;
