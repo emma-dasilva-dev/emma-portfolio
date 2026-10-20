@@ -60,7 +60,11 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       const ascent = measured.actualBoundingBoxAscent || fitted * 0.72;
       maskCtx.fillStyle = "#000";
       maskCtx.textBaseline = "alphabetic";
-      maskCtx.fillText(word, Math.max(0, (width - measured.width) / 2), height + ascent * 0.17);
+      // Desktop intentionally crops the signature; on phones keep the dots fully in view.
+      const baseline = width < 600
+        ? Math.min(height - 24, height * 0.58 + ascent * 0.55)
+        : height + ascent * 0.17;
+      maskCtx.fillText(word, Math.max(0, (width - measured.width) / 2), baseline);
 
       const pixels = maskCtx.getImageData(0, 0, width, height).data;
       // A slightly wider grid dramatically reduces Canvas 2D draw calls on large screens.
