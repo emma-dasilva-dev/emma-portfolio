@@ -824,7 +824,7 @@
 .githubActivity :global(.github-skyline-shell .grid) { display: grid; }
 .githubActivity :global(.github-skyline-shell .grid-cols-2) { grid-template-columns: repeat(2,minmax(0,1fr)); }
 .githubActivity :global(.github-skyline-shell .gap-5) { gap: 20px; }
-.githubActivity :global(.github-skyline-shell .gap-1\\.5) { gap: 6px; }
+.githubActivity :global(.github-skyline-shell .gap-1\.5) { gap: 6px; }
 .githubActivity :global(.github-skyline-shell .gap-x-4) { column-gap: 16px; }
 .githubActivity :global(.github-skyline-shell .gap-y-4) { row-gap: 16px; }
 .githubActivity :global(.github-skyline-shell .overflow-hidden) { overflow: hidden; }
@@ -832,27 +832,27 @@
 .githubActivity :global(.github-skyline-shell .font-semibold) { font-weight: 600; }
 .githubActivity :global(.github-skyline-shell .tabular-nums) { font-variant-numeric: tabular-nums; }
 .githubActivity :global(.github-skyline-shell .truncate) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.githubActivity :global(.github-skyline-shell .text-\\[12px\\]) { font-size: 12px; }
-.githubActivity :global(.github-skyline-shell .text-\\[13px\\]) { font-size: 13px; }
-.githubActivity :global(.github-skyline-shell .text-\\[14px\\]) { font-size: 14px; }
-.githubActivity :global(.github-skyline-shell .text-\\[15px\\]) { font-size: 15px; }
+.githubActivity :global(.github-skyline-shell .text-\[12px\]) { font-size: 12px; }
+.githubActivity :global(.github-skyline-shell .text-\[13px\]) { font-size: 13px; }
+.githubActivity :global(.github-skyline-shell .text-\[14px\]) { font-size: 14px; }
+.githubActivity :global(.github-skyline-shell .text-\[15px\]) { font-size: 15px; }
 .githubActivity :global(.github-skyline-shell .min-w-0) { min-width: 0; }
 .githubActivity :global(.github-skyline-shell .min-h-0) { min-height: 0; }
 .githubActivity :global(.github-skyline-shell .mt-1) { margin-top: 4px; }
-.githubActivity :global(.github-skyline-shell .mt-0\\.5) { margin-top: 2px; }
+.githubActivity :global(.github-skyline-shell .mt-0\.5) { margin-top: 2px; }
 .githubActivity :global(.github-skyline-shell .px-3) { padding-left: 12px; padding-right: 12px; }
 .githubActivity :global(.github-skyline-shell .pt-3) { padding-top: 12px; }
 .githubActivity :global(.github-skyline-shell .pt-4) { padding-top: 16px; }
 .githubActivity :global(.github-skyline-shell .pb-3) { padding-bottom: 12px; }
 .githubActivity :global(.github-skyline-shell .pb-1) { padding-bottom: 4px; }
 .githubActivity :global(.github-skyline-shell .items-center) { align-items: center; }
-.githubActivity :global(.github-skyline-shell .gap-1\\.5) { gap: 6px; }
+.githubActivity :global(.github-skyline-shell .gap-1\.5) { gap: 6px; }
 .githubActivity :global(.github-skyline-shell .gap-2) { gap: 8px; }
-.githubActivity :global(.github-skyline-shell .w-\\[11px\\]) { width: 11px; }
-.githubActivity :global(.github-skyline-shell .h-\\[11px\\]) { height: 11px; }
-.githubActivity :global(.github-skyline-shell .rounded-\\[2px\\]) { border-radius: 2px; }
+.githubActivity :global(.github-skyline-shell .w-\[11px\]) { width: 11px; }
+.githubActivity :global(.github-skyline-shell .h-\[11px\]) { height: 11px; }
+.githubActivity :global(.github-skyline-shell .rounded-\[2px\]) { border-radius: 2px; }
 .githubActivity :global(.github-skyline-shell .flex-1) { flex: 1; }
 .githubActivity :global(.github-skyline-shell .whitespace-nowrap) { white-space: nowrap; }
 .githubActivity :global(.github-skyline-shell .sr-only) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
-@media(min-width:768px) { .githubActivity :global(.github-skyline-shell .md\\:grid-cols-4) { grid-template-columns: repeat(4,minmax(0,1fr)); } }
+@media(min-width:768px) { .githubActivity :global(.github-skyline-shell .md\:grid-cols-4) { grid-template-columns: repeat(4,minmax(0,1fr)); } }
 @media(max-width:719px) { .githubActivity .sectionInner { padding-top: 78px; padding-bottom: 90px; } .githubActivityHead { align-items: start; flex-direction: column; } .githubActivity :global(.github-skyline-shell > section) { padding: 12px; } }
