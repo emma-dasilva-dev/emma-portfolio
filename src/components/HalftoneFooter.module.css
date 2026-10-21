@@ -1,0 +1,251 @@
+.footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  height: clamp(480px, 43vw, 700px);
+  background: var(--bg);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Readable wordmark until the canvas has painted (or if it never does). */
+.fallback {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: -0.12em;
+  font-size: 30vw;
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.055em;
+  text-align: center;
+  color: transparent;
+  background-image: radial-gradient(circle, var(--ink) 1.9px, transparent 2.3px);
+  background-size: 7.5px 7.5px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  pointer-events: none;
+}
+
+.footer[data-dots-ready="true"] .fallback {
+  visibility: hidden;
+}
+
+/* ───── Editorial navigation ───── */
+
+.top {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(28px, 3vw, 44px) var(--gutter) 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.7;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: clamp(24px, 3.5vw, 56px);
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+
+.group a {
+  color: var(--ink-soft);
+  transition: color 0.2s;
+}
+
+.group a:hover {
+  color: var(--accent);
+}
+
+.strong {
+  color: var(--ink);
+}
+
+.muted {
+  color: var(--faint);
+  margin-bottom: 4px;
+}
+
+.mail {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+}
+
+.bar {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 14px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.back span {
+  transition: transform 0.4s var(--ease);
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+.back:hover span {
+  transform: translateY(-3px);
+}
+
+/* ───── Phone: touch-to-replay halftone signature ───── */
+
+.mobile {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .columns {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    height: auto;
+    min-height: 0;
+  }
+
+  .canvas,
+  .fallback {
+    display: none;
+  }
+
+  .top {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .columns {
+    gap: 24px 18px;
+    padding-bottom: 22px;
+  }
+
+  .group a {
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .back {
+    min-height: 44px;
+  }
+
+  .mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 0 0;
+    overflow: hidden;
+  }
+
+  .mobileAction {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    touch-action: manipulation;
+  }
+
+  .mobileWord {
+    --touch-x: 50%;
+    --touch-y: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom: -0.02em;
+    font-size: 29vw;
+    font-weight: 700;
+    line-height: 0.86;
+    letter-spacing: -0.06em;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-image:
+      radial-gradient(circle 70px at var(--touch-x) var(--touch-y), var(--accent) 0%, rgba(233, 118, 43, 0) 100%),
+      radial-gradient(circle, var(--ink) 1.6px, transparent 1.95px);
+    background-size:
+      100% 100%,
+      6px 6px;
+    background-repeat: no-repeat, repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .mobileWord:not([data-touching]) {
+    background-image:
+      radial-gradient(circle 0px at 50% 50%, transparent, transparent),
+      radial-gradient(circle, var(--ink) 1.6px, transparent 1.95px);
+  }
+
+  .mobileLetter {
+    display: inline-block;
+    transform-origin: 50% 85%;
+    animation: signature 900ms var(--ease) backwards;
+  }
+
+  .hint {
+    order: -1;
+    font-size: 9px;
+    color: var(--muted);
+    pointer-events: none;
+  }
+}
+
+@keyframes signature {
+  0% {
+    opacity: 0.1;
+    transform: translateY(32%) scale(0.86);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5%) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}

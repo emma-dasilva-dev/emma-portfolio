@@ -1,0 +1,322 @@
+.intro {
+  max-width: 44ch;
+  margin: 0 0 clamp(40px, 5vw, 72px) auto;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.list {
+  border-top: 1px solid var(--line-strong);
+}
+
+/* Each row is a full-width line in an index; the primary link stretches over it. */
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr);
+  column-gap: 24px;
+  align-items: start;
+  padding: clamp(28px, 3vw, 44px) 0;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.row > * {
+  transition: opacity 0.5s var(--ease-soft);
+}
+
+.row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.8s var(--ease);
+}
+
+.index {
+  padding-top: 0.9em;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+  transition:
+    color 0.4s,
+    opacity 0.5s var(--ease-soft);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.title {
+  font-size: clamp(40px, 5.4vw, 92px);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  transition:
+    transform 0.8s var(--ease),
+    color 0.4s;
+}
+
+.kind {
+  font-size: 10px;
+}
+
+.description {
+  padding-top: 0.6em;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.details {
+  display: grid;
+  gap: 22px;
+  padding-top: 0.7em;
+}
+
+.details dl {
+  display: grid;
+  gap: 14px;
+}
+
+.details dl div {
+  display: grid;
+  gap: 6px;
+}
+
+.details dt {
+  font-size: 9px;
+  color: var(--faint);
+}
+
+.details dd {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+}
+
+.stack li {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line-strong);
+  transition:
+    color 0.3s,
+    border-color 0.3s;
+}
+
+.primary span[aria-hidden],
+.secondary span[aria-hidden] {
+  color: var(--accent);
+  transition: transform 0.5s var(--ease);
+}
+
+/* Stretch the primary link over the whole row. */
+.primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.primary:focus-visible {
+  outline: none;
+}
+
+.row:has(.primary:focus-visible) {
+  outline: 1px solid var(--accent);
+  outline-offset: 6px;
+}
+
+.secondary {
+  position: relative;
+  z-index: 2;
+}
+
+.secondary:hover {
+  border-color: var(--accent);
+}
+
+.private {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  font-size: 10px;
+  color: var(--faint);
+}
+
+.lock {
+  width: 7px;
+  height: 7px;
+  border: 1px solid currentColor;
+}
+
+/* Interaction states, shared by hover and keyboard focus. */
+.row[data-linked]:hover::before,
+.row:focus-within::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.row[data-linked]:hover .index,
+.row:focus-within .index {
+  color: var(--accent);
+}
+
+.row[data-linked]:hover .title,
+.row:focus-within .title {
+  transform: translateX(clamp(8px, 1.2vw, 20px));
+}
+
+.row[data-linked]:hover .primary span[aria-hidden] {
+  transform: translate(2px, -2px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .list:hover .row:not(:hover) > * {
+    opacity: 0.38;
+  }
+}
+
+/* ───── Cursor label ───── */
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  pointer-events: none;
+  display: none;
+}
+
+.cursor span {
+  display: block;
+  padding: 7px 11px 6px;
+  transform: translate(14px, 14px) scale(0.6);
+  opacity: 0;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    opacity 0.25s,
+    transform 0.4s var(--ease);
+}
+
+.cursor[data-visible] span {
+  opacity: 1;
+  transform: translate(14px, 14px) scale(1);
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .cursor {
+    display: block;
+  }
+}
+
+/* ───── Tablet ───── */
+
+@media (max-width: 1023px) {
+  .row {
+    grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr);
+    row-gap: 22px;
+  }
+
+  .heading {
+    grid-column: 2 / -1;
+  }
+
+  .description {
+    grid-column: 2;
+    padding-top: 0;
+  }
+
+  .details {
+    grid-column: 3;
+    padding-top: 0;
+  }
+}
+
+/* ───── Phone: a stacked card per project, every action visible ───── */
+
+@media (max-width: 719px) {
+  .intro {
+    margin-left: 0;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+    padding: 28px 0 32px;
+  }
+
+  .index {
+    padding-top: 0;
+    color: var(--accent);
+  }
+
+  .heading,
+  .description,
+  .details {
+    grid-column: 1;
+  }
+
+  .title {
+    font-size: clamp(40px, 13vw, 60px);
+  }
+
+  .primary::after {
+    content: none;
+  }
+
+  .primary,
+  .secondary {
+    min-height: 44px;
+  }
+
+  .details {
+    gap: 18px;
+  }
+}

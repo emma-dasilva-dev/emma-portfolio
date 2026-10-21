@@ -1,0 +1,287 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.field {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  animation: fade 2.4s var(--ease-soft) 0.2s both;
+}
+
+.inner {
+  max-width: var(--max);
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: calc(var(--header-h) + clamp(28px, 4vw, 56px)) var(--gutter) clamp(28px, 3vw, 44px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+/* ───── Meta row ───── */
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.meta li {
+  display: flex;
+  gap: 12px;
+  color: var(--ink-soft);
+  font-size: 10px;
+}
+
+.meta li:last-child {
+  justify-self: end;
+  color: var(--muted);
+}
+
+.metaIndex {
+  color: var(--accent);
+}
+
+/* ───── Name ───── */
+
+.name {
+  align-self: center;
+  margin: clamp(40px, 6vw, 72px) 0;
+  font-size: clamp(84px, 16.4vw, 290px);
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.065em;
+  color: var(--ink);
+}
+
+.line {
+  display: block;
+  overflow: hidden;
+  padding: 0.04em 0 0.1em;
+  margin-bottom: -0.1em;
+  white-space: nowrap;
+}
+
+.lineTwo {
+  padding-left: 0.9em;
+}
+
+.letter {
+  display: inline-block;
+  animation: letterUp 1.5s var(--ease) var(--d, 0s) backwards;
+  transition:
+    color 0.5s var(--ease-soft),
+    transform 0.7s var(--ease);
+}
+
+.square {
+  display: inline-block;
+  width: 0.13em;
+  height: 0.13em;
+  margin-left: 0.06em;
+  background: var(--accent);
+  animation: fade 1s var(--ease-soft) 1.1s both;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .letter:hover {
+    color: var(--accent);
+    transform: translateY(-0.05em);
+    transition-duration: 0.2s, 0.3s;
+  }
+}
+
+/* ───── Bottom row ───── */
+
+.bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 3fr) minmax(0, 3fr);
+  gap: 24px;
+  align-items: end;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.statement {
+  max-width: 30ch;
+  font-size: clamp(20px, 1.9vw, 30px);
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.statement span {
+  color: var(--muted);
+}
+
+.ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  font-size: 15px;
+  color: var(--ink);
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 100% / 0 1px;
+  transition: background-size 0.6s var(--ease);
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background-size: 100% 1px;
+}
+
+.ctaIndex {
+  color: var(--accent);
+  transition: transform 0.5s var(--ease);
+}
+
+.cta:hover .ctaIndex {
+  transform: translateX(4px);
+}
+
+.scroll {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 36px;
+  color: var(--muted);
+}
+
+.scrollLine {
+  position: relative;
+  width: 1px;
+  height: 36px;
+  overflow: hidden;
+  background: var(--line-strong);
+}
+
+.scrollLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  animation: scrollCue 2.4s var(--ease) 1.6s infinite;
+}
+
+.enter {
+  animation: rise 1.2s var(--ease) var(--d, 0s) both;
+}
+
+@keyframes letterUp {
+  from {
+    transform: translateY(105%);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes scrollCue {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* ───── Tablet ───── */
+
+@media (max-width: 1023px) {
+  .meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 8px;
+  }
+
+  .meta li:last-child {
+    justify-self: start;
+  }
+
+  .bottom {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 28px;
+  }
+
+  .statement {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ───── Phone: name stacks large, actions become a full-width list ───── */
+
+@media (max-width: 719px) {
+  .inner {
+    padding-top: calc(60px + 20px);
+  }
+
+  .meta {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+  }
+
+  .meta li:nth-child(n + 3) {
+    color: var(--muted);
+  }
+
+  .name {
+    align-self: end;
+    margin: 56px 0 36px;
+    font-size: clamp(64px, 25vw, 160px);
+    line-height: 0.82;
+  }
+
+  .lineTwo {
+    padding-left: 0;
+  }
+
+  .statement {
+    font-size: 20px;
+  }
+
+  .bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .ctas {
+    border-top: 1px solid var(--line);
+    gap: 0;
+  }
+
+  .cta {
+    width: 100%;
+    min-height: 52px;
+    border-bottom: 1px solid var(--line);
+    background: none;
+  }
+
+  .scroll {
+    display: none;
+  }
+}
