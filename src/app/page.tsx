@@ -115,9 +115,6 @@ export default function Page() {
    </div></section>
   </main>
   <HalftoneFooter language={lang} />
-  <footer className={styles.footer}>
-   <span>© 2026 Emma DaSilva. {t.footer}</span>
-   <a href="#accueil">↑ Back to top</a>
-  </footer>
+
  </div>;
 }
