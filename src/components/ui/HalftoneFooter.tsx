@@ -284,11 +284,35 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
   return (
     <div ref={rootRef} className="halftone-footer" aria-label={language === "fr" ? "Signature visuelle" : "Visual wordmark"}>
       <span className="halftone-footer__fallback" aria-hidden="true">emma.</span>
-      <div className="halftone-footer__top">
-        <span>Emma Da Silva <span aria-hidden="true">/</span> {language === "fr" ? "Portfolio" : "Portfolio"}</span>
-        <button type="button" onClick={toTop}>
-          {language === "fr" ? "Retour en haut" : "Back to top"} <span aria-hidden="true">↗</span>
-        </button>
+      <div className="halftone-footer__navigation">
+        <div className="halftone-footer__links">
+          <div className="halftone-footer__group">
+            <span className="halftone-footer__heading">Emma DaSilva</span>
+            <span className="halftone-footer__muted">© 2026 · Cotonou / Bénin</span>
+          </div>
+          <nav className="halftone-footer__group" aria-label={language === "fr" ? "Navigation du pied de page" : "Footer navigation"}>
+            <span className="halftone-footer__muted">{language === "fr" ? "Explorer" : "Explore"}</span>
+            <a href="#accueil">{language === "fr" ? "Accueil" : "Home"}</a>
+            <a href="#apropos">{language === "fr" ? "À propos" : "About"}</a>
+            <a href="#competences">{language === "fr" ? "Compétences" : "Skills"}</a>
+          </nav>
+          <nav className="halftone-footer__group" aria-label={language === "fr" ? "Activité et contact" : "Activity and contact"}>
+            <span className="halftone-footer__muted">{language === "fr" ? "Découvrir" : "Discover"}</span>
+            <a href="#github-activity-heading">{language === "fr" ? "Activité GitHub" : "GitHub activity"}</a>
+            <a href="#contact">Contact</a>
+            <a href="https://github.com/emma-dasilva-dev" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </nav>
+          <div className="halftone-footer__group">
+            <span className="halftone-footer__muted">Contact</span>
+            <a href="mailto:emma.dasilva.dev@gmail.com">E-mail ↗</a>
+            <a href="https://www.linkedin.com/in/emmadasilvadev" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </div>
+        </div>
+        <div className="halftone-footer__back">
+          <button type="button" onClick={toTop}>
+            {language === "fr" ? "Retour en haut" : "Back to top"} <span aria-hidden="true">↑</span>
+          </button>
+        </div>
       </div>
       <canvas ref={canvasRef} aria-hidden="true" />
       <div className="halftone-footer__mobile">
@@ -328,7 +352,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
       <style>{`
         .halftone-footer {
           position: relative; isolation: isolate; overflow: hidden; width: 100%;
-          height: clamp(265px, 39vw, 590px); background: var(--abyss, #0a121a); color: var(--glacier, #d6eaf2);
+          height: clamp(390px, 46vw, 650px); max-width: 1440px; width: calc(100% - 2 * clamp(22px, 3.5vw, 68px)); margin: 0 auto; background: var(--abyss, #0a121a); color: var(--glacier, #d6eaf2);
           border-top: 1px solid var(--edge, #22404d);
         }
         .halftone-footer canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
@@ -340,31 +364,39 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
           pointer-events: none;
         }
         .halftone-footer[data-dots-ready="true"] .halftone-footer__fallback { visibility: hidden; }
-        .halftone-footer__top {
-          position: relative; z-index: 2; display: flex; justify-content: space-between;
-          gap: 1.25rem; align-items: center; padding: clamp(1.25rem, 3vw, 3rem);
-          font: 500 clamp(.65rem, 1vw, .78rem)/1.4 var(--font-geist-mono), monospace;
-          text-transform: uppercase; letter-spacing: .08em; pointer-events: none;
+        .halftone-footer__navigation {
+          position: relative; z-index: 2; padding: 28px 0 0;
+          font: 500 12px/1.65 var(--font-geist-mono), monospace;
+          letter-spacing: .16em; text-transform: uppercase;
         }
-        .halftone-footer__top button {
-          pointer-events: auto; color: inherit; background: transparent;
-          border: 0; font: inherit; letter-spacing: inherit; text-transform: inherit;
-          cursor: pointer; padding: .4rem 0; border-bottom: 1px solid currentColor;
+        .halftone-footer__links {
+          display: grid; grid-template-columns: 1.35fr 1fr 1fr 1fr;
+          gap: clamp(24px, 3.5vw, 56px);
+          padding-bottom: 30px; border-bottom: 1px solid var(--edge, #22404d);
         }
-        .halftone-footer__top button:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+        .halftone-footer__group { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; }
+        .halftone-footer__group a { color: #becbd1; text-decoration: none; transition: color .2s ease; }
+        .halftone-footer__group a:hover { color: #fff; }
+        .halftone-footer__group a:focus-visible, .halftone-footer__back button:focus-visible { outline: 2px solid var(--glacier, #d6eaf2); outline-offset: 5px; }
+        .halftone-footer__heading { color: var(--glacier, #d6eaf2); }
+        .halftone-footer__muted { color: #75828a; }
+        .halftone-footer__back { display: flex; justify-content: flex-end; padding: 18px 0 0; }
+        .halftone-footer__back button {
+          pointer-events: auto; border: 0; padding: 4px 0;
+          background: transparent; color: #aebbc1; cursor: pointer;
+          font: inherit; font-size: 11px; letter-spacing: .19em; text-transform: uppercase;
+        }
+        .halftone-footer__back button:hover { color: #fff; }
+        .halftone-footer__back button span { margin-left: 5px; }
         .halftone-footer__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
         @media (max-width: 600px) {
           .halftone-footer { height: clamp(240px, 76vw, 390px); }
-          .halftone-footer__top {
-            padding: 1.25rem max(18px, env(safe-area-inset-right)) 0 max(18px, env(safe-area-inset-left));
-            gap: 12px;
-            font-size: 10px;
-            align-items: flex-start;
-          }
-          .halftone-footer__top > span { max-width: 50%; line-height: 1.6; }
-          .halftone-footer__top button {
-            min-height: 44px; text-align: right; padding: 6px 0;
-          }
+          .halftone-footer__navigation { padding: 16px 0 0; font-size: 9px; letter-spacing: .1em; }
+          .halftone-footer__links { grid-template-columns: 1fr 1fr; gap: 12px 18px; padding-bottom: 12px; }
+          .halftone-footer__group { gap: 3px; }
+          .halftone-footer__group:nth-child(3), .halftone-footer__group:nth-child(4) { display: none; }
+          .halftone-footer__back { padding-top: 8px; }
+          .halftone-footer__back button { min-height: 36px; font-size: 9px; }
           .halftone-footer canvas, .halftone-footer__fallback { display: none; }
           .halftone-footer__mobile {
             position: absolute; inset: 76px 0 8px; display: flex;
@@ -435,7 +467,7 @@ export default function HalftoneFooter({ language }: { language: "fr" | "en" }) 
           .halftone-footer__mobile-letter { opacity: 1; transform: none; filter: none; }
         }
         @media (max-width: 360px) {
-          .halftone-footer__top { font-size: 9px; }
+          .halftone-footer__navigation { font-size: 8px; }
           .halftone-footer { height: 245px; }
         }
       `}</style>
