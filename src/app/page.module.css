@@ -784,3 +784,75 @@
     font-size: 15px;
   }
 }
+
+/* GitHub Contribution Skyline — scoped styles; this project intentionally does not use Tailwind. */
+.githubActivity { position: relative; padding: 0; border-top: 1px solid var(--edge); }
+.githubActivity .sectionInner { padding-top: 110px; padding-bottom: 130px; }
+.githubActivityHead { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 36px; }
+.githubActivityHead h2 { max-width: 770px; font-size: clamp(34px, 4.1vw, 62px); }
+.githubActivityHead p { color: var(--muted); font-size: 15px; line-height: 1.7; margin: 18px 0 0; }
+.githubActivityHead > a { flex-shrink: 0; border-bottom: 1px solid var(--ice); color: var(--frost); font: 11px var(--font-mono), monospace; letter-spacing: .12em; padding: 12px 0; }
+.githubActivity :global(.github-skyline-shell) { --color-background: #0e1c26; --color-foreground: #d6eaf2; --color-border: #294651; --color-muted-foreground: #91aebc; width: 100%; }
+.githubActivity :global(.github-skyline-status) { padding: 48px 28px; min-height: 160px; border: 1px solid #294651; background: #0e1c26; color: #a9c6d3; }
+.githubActivity :global(.github-skyline-status a) { display: inline-block; color: var(--frost); border-bottom: 1px solid currentColor; margin-top: 12px; }
+.githubActivity :global(.github-skyline-profile) { display: inline-flex; gap: 24px; margin-top: 24px; padding-bottom: 8px; border-bottom: 1px solid #416e85; font: 12px var(--font-mono), monospace; color: var(--frost); }
+.githubActivity :global(.github-skyline-shell > section) { position: relative; width: 100%; padding: 24px; border: 1px solid #294651; border-radius: 8px; font-family: var(--font-sans), sans-serif; }
+.githubActivity :global(.github-skyline-shell > section > header) { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; }
+.githubActivity :global(.github-skyline-shell > section > header h3) { font-size: 15px; margin: 0; font-weight: 400; }
+.githubActivity :global(.github-skyline-shell > section > header [role="group"]) { position: relative; display: inline-flex; align-items: center; border: 1px solid #294651; border-radius: 5px; padding: 2px; }
+.githubActivity :global(.github-skyline-shell > section > header [role="group"] > span) { position: absolute; top: 2px; bottom: 2px; left: 2px; width: 32px; border-radius: 4px; }
+.githubActivity :global(.github-skyline-shell > section > header [role="group"] button) { position: relative; z-index: 1; display: grid; place-items: center; width: 32px; height: 28px; cursor: pointer; border: 0; background: transparent; }
+.githubActivity :global(.github-skyline-shell > section > div:nth-of-type(1)) { position: relative; border: 1px solid #294651; border-radius: 7px; overflow: hidden; }
+.githubActivity :global(.github-skyline-shell > section > div:nth-of-type(1) > div:first-child) { position: relative; padding: 16px; }
+.githubActivity :global(.github-skyline-shell canvas) { position: absolute; top: 0; left: 0; display: block; outline: none; }
+.githubActivity :global(.github-skyline-shell canvas:focus-visible) { outline: 2px solid #d6eaf2; outline-offset: -2px; }
+.githubActivity :global(.github-skyline-shell [role="tooltip"]) { position: absolute; z-index: 20; top: 16px; left: 16px; padding: 8px 12px; border-radius: 5px; font-size: 12px; pointer-events: none; white-space: nowrap; }
+.githubActivity :global(.github-skyline-shell [role="tooltip"] span:last-child) { position: absolute; top: 100%; height: 0; width: 0; }
+.githubActivity :global(.github-skyline-shell .pointer-events-none) { pointer-events: none; }
+.githubActivity :global(.github-skyline-shell .absolute) { position: absolute; }
+.githubActivity :global(.github-skyline-shell .relative) { position: relative; }
+.githubActivity :global(.github-skyline-shell .top-1) { top: 4px; }
+.githubActivity :global(.github-skyline-shell .right-1) { right: 4px; }
+.githubActivity :global(.github-skyline-shell .bottom-1) { bottom: 4px; }
+.githubActivity :global(.github-skyline-shell .left-1) { left: 4px; }
+.githubActivity :global(.github-skyline-shell .flex) { display: flex; }
+.githubActivity :global(.github-skyline-shell .flex-col) { flex-direction: column; }
+.githubActivity :global(.github-skyline-shell .flex-wrap) { flex-wrap: wrap; }
+.githubActivity :global(.github-skyline-shell .items-end) { align-items: end; }
+.githubActivity :global(.github-skyline-shell .items-baseline) { align-items: baseline; }
+.githubActivity :global(.github-skyline-shell .justify-between) { justify-content: space-between; }
+.githubActivity :global(.github-skyline-shell .grid) { display: grid; }
+.githubActivity :global(.github-skyline-shell .grid-cols-2) { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.githubActivity :global(.github-skyline-shell .gap-5) { gap: 20px; }
+.githubActivity :global(.github-skyline-shell .gap-1\\.5) { gap: 6px; }
+.githubActivity :global(.github-skyline-shell .gap-x-4) { column-gap: 16px; }
+.githubActivity :global(.github-skyline-shell .gap-y-4) { row-gap: 16px; }
+.githubActivity :global(.github-skyline-shell .overflow-hidden) { overflow: hidden; }
+.githubActivity :global(.github-skyline-shell .text-right) { text-align: right; }
+.githubActivity :global(.github-skyline-shell .font-semibold) { font-weight: 600; }
+.githubActivity :global(.github-skyline-shell .tabular-nums) { font-variant-numeric: tabular-nums; }
+.githubActivity :global(.github-skyline-shell .truncate) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.githubActivity :global(.github-skyline-shell .text-\\[12px\\]) { font-size: 12px; }
+.githubActivity :global(.github-skyline-shell .text-\\[13px\\]) { font-size: 13px; }
+.githubActivity :global(.github-skyline-shell .text-\\[14px\\]) { font-size: 14px; }
+.githubActivity :global(.github-skyline-shell .text-\\[15px\\]) { font-size: 15px; }
+.githubActivity :global(.github-skyline-shell .min-w-0) { min-width: 0; }
+.githubActivity :global(.github-skyline-shell .min-h-0) { min-height: 0; }
+.githubActivity :global(.github-skyline-shell .mt-1) { margin-top: 4px; }
+.githubActivity :global(.github-skyline-shell .mt-0\\.5) { margin-top: 2px; }
+.githubActivity :global(.github-skyline-shell .px-3) { padding-left: 12px; padding-right: 12px; }
+.githubActivity :global(.github-skyline-shell .pt-3) { padding-top: 12px; }
+.githubActivity :global(.github-skyline-shell .pt-4) { padding-top: 16px; }
+.githubActivity :global(.github-skyline-shell .pb-3) { padding-bottom: 12px; }
+.githubActivity :global(.github-skyline-shell .pb-1) { padding-bottom: 4px; }
+.githubActivity :global(.github-skyline-shell .items-center) { align-items: center; }
+.githubActivity :global(.github-skyline-shell .gap-1\\.5) { gap: 6px; }
+.githubActivity :global(.github-skyline-shell .gap-2) { gap: 8px; }
+.githubActivity :global(.github-skyline-shell .w-\\[11px\\]) { width: 11px; }
+.githubActivity :global(.github-skyline-shell .h-\\[11px\\]) { height: 11px; }
+.githubActivity :global(.github-skyline-shell .rounded-\\[2px\\]) { border-radius: 2px; }
+.githubActivity :global(.github-skyline-shell .flex-1) { flex: 1; }
+.githubActivity :global(.github-skyline-shell .whitespace-nowrap) { white-space: nowrap; }
+.githubActivity :global(.github-skyline-shell .sr-only) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+@media(min-width:768px) { .githubActivity :global(.github-skyline-shell .md\\:grid-cols-4) { grid-template-columns: repeat(4,minmax(0,1fr)); } }
+@media(max-width:719px) { .githubActivity .sectionInner { padding-top: 78px; padding-bottom: 90px; } .githubActivityHead { align-items: start; flex-direction: column; } .githubActivity :global(.github-skyline-shell > section) { padding: 12px; } }
