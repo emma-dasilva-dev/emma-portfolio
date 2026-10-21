@@ -4,6 +4,7 @@ import { useEffect, useState, useSyncExternalStore, type CSSProperties } from "r
 import styles from "./page.module.css";
 import ScrambleText from "@/components/ScrambleText";
 import HalftoneFooter from "@/components/ui/HalftoneFooter";
+import GitHubActivity from "@/components/GitHubActivity";
 import { useReducedMotion, useScrollChoreography } from "@/lib/useScrollChoreography";
 
 type Lang = "fr" | "en";
@@ -14,6 +15,7 @@ const copy = {
   intro:"Je m'intéresse à la cybersécurité et à la programmation. J'aime comprendre les problèmes, explorer leur logique et construire des solutions fiables.",
   discover:"Découvrir mon profil", reach:"Me contacter", location:"Cotonou, Bénin",
   about:"À propos", aboutLead:"Comprendre avant d’agir.", aboutBody:"Je suis Emma DaSilva, développeuse web junior avec un intérêt croissant pour la cybersécurité. Le développement m’a appris à construire des applications. Aujourd’hui, je m’intéresse aussi à la manière dont elles fonctionnent, communiquent et se protègent.", aboutBody2:"J’apprends par la pratique, avec une attention particulière à Linux, aux réseaux et à l’analyse technique. Mon objectif est de continuer à progresser et de construire une carrière dans la cybersécurité.",
+  githubActivity:"Activité GitHub", githubActivityLead:"Une année de code, jour après jour.", githubActivityIntro:"Explorez mes contributions réelles en 2D ou en 3D.",
   skills:"Compétences", skillsIntro:"Un socle technique que je développe et approfondis.", categories:["Programmation","Développement web","Sécurité & outils"],
   contact:"Contact", contactLead:"Parlons technique.", contactBody:"Je suis ouverte aux opportunités de stage, aux collaborations techniques et aux échanges autour de la cybersécurité et du développement.", mail:"M’envoyer un e-mail", footer:"Tous droits réservés.",
   menuOpen:"Ouvrir le menu", menuClose:"Fermer le menu"
@@ -24,6 +26,7 @@ const copy = {
   intro:"I'm interested in cybersecurity and programming. I enjoy understanding problems, exploring the logic behind them, and building reliable solutions.",
   discover:"About me", reach:"Get in touch", location:"Cotonou, Benin",
   about:"About", aboutLead:"Understand before you act.", aboutBody:"I'm Emma DaSilva, a junior web developer with a growing interest in cybersecurity. Development taught me how to build applications. Today, I'm also interested in how they work, communicate, and stay protected.", aboutBody2:"I learn through hands-on practice, with a particular focus on Linux, networking, and technical analysis. My goal is to keep developing my skills and build a career in cybersecurity.",
+  githubActivity:"GitHub activity", githubActivityLead:"A year of code, day by day.", githubActivityIntro:"Explore my real contributions in 2D or 3D.",
   skills:"Skills", skillsIntro:"A technical foundation I'm building on.", categories:["Programming","Web development","Security & tools"],
   contact:"Contact", contactLead:"Let's talk technology.", contactBody:"I'm open to internships, technical collaborations, and conversations about cybersecurity and development.", mail:"Send an email", footer:"All rights reserved.",
   menuOpen:"Open menu", menuClose:"Close menu"
@@ -95,6 +98,12 @@ export default function Page() {
     <div className={`${styles.sectionHead} ${styles.reveal}`}>{label(2,t.skills)}<span className={styles.rule}/></div>
     <div className={styles.skillsHead}><h2 className={styles.reveal} style={delay(0.08)}>{t.skills}</h2><p className={styles.reveal} style={delay(0.16)}>{t.skillsIntro}</p></div>
     <div className={styles.skillGroups}>{groups.map((group,i)=><div className={`${styles.skillRow} ${styles.reveal}`} style={delay(0.24+i*0.1)} key={i}><h3><span className={styles.rowIndex} aria-hidden="true">{index(i)}</span>{t.categories[i]}</h3><div className={styles.skillNames}>{group.map(s=><span key={s}>{s}</span>)}</div></div>)}</div>
+   </div></section>
+
+   <section className={styles.githubActivity} aria-labelledby="github-activity-heading"><div className={styles.sectionInner}>
+    <div className={styles.sectionHead}><span className={styles.smallLabel}><span className={styles.index}>04</span>{t.githubActivity}</span><span className={styles.rule}/></div>
+    <div className={styles.githubActivityHead}><div><h2 id="github-activity-heading">{t.githubActivityLead}</h2><p>{t.githubActivityIntro}</p></div><a href="https://github.com/emma-dasilva-dev" target="_blank" rel="noopener noreferrer">GITHUB ↗</a></div>
+    <GitHubActivity language={lang}/>
    </div></section>
 
    <section className={`${styles.section} ${styles.contact}`} id="contact" data-revealed={shown(3)||undefined}><div className={styles.sectionInner}>
