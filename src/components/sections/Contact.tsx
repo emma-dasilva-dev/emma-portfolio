@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { useLanguage } from "@/components/ui/LanguageProvider";
 
 const socials = [
-  ["Instagram", "https://www.instagram.com/emmadev.bj"],
+  ["Instagram", "https://www.instagram.com/reine.dsv"],
   ["GitHub", "https://github.com/emma-dasilva-dev"],
   ["Email", "mailto:emma.dasilva.dev@gmail.com"],
   ["LinkedIn", "https://www.linkedin.com/in/emmadasilvadev"],
